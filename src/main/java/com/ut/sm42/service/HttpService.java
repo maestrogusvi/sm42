@@ -1,10 +1,6 @@
 package com.ut.sm42.service;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
