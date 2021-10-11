@@ -4,6 +4,9 @@ public class MartinezDTO {
     int id;
     String name;
 
+    public MartinezDTO() {
+    }
+
     public int getId() {
         return id;
     }
