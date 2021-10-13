@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class ApplicationService {
+public class  ApplicationService {
 
     @Autowired
     HttpService httpService;
@@ -37,5 +37,25 @@ public class ApplicationService {
         noeDTO.setID(json.get("ID").getAsString());
         noeDTO.setNAME(json.get("NAME").getAsString());
         return noeDTO;
+    }
+
+    public MezaDTO aldo() throws  IOException {
+        JsonParser aar = new JsonParser();
+        JsonObject json = (JsonObject) aar.parse(httpService.sendRequestHttpS("https://aldodto.free.beeceptor.com", "GET", null, null, "json", null, null));
+        MezaDTO AldoDTO = new MezaDTO();
+        AldoDTO.setStatus(json.get("status").getAsString());
+        AldoDTO.setId(json.get("id").getAsInt());
+        AldoDTO.setName(json.get("name").getAsString());
+        return AldoDTO;
+    }
+
+    public FragosoDTO david() throws  IOException {
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://davidendpoint.free.beeceptor.com", "GET", null, null, "json", null, null));
+        FragosoDTO DavidDTO = new FragosoDTO();
+        DavidDTO.setStatus(json.get("status").getAsString());
+        DavidDTO.setId(json.get("id").getAsInt());
+        DavidDTO.setName(json.get("name").getAsString());
+        return DavidDTO;
     }
 }
