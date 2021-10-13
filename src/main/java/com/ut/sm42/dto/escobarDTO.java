@@ -4,7 +4,6 @@ public class escobarDTO {
 
     int id;
     String name;
-
     public escobarDTO() {
     }
 
