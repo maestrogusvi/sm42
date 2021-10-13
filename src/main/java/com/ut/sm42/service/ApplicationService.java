@@ -48,4 +48,14 @@ public class  ApplicationService {
         AldoDTO.setName(json.get("name").getAsString());
         return AldoDTO;
     }
+
+    public FragosoDTO david() throws  IOException {
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://davidendpoint.free.beeceptor.com", "GET", null, null, "json", null, null));
+        FragosoDTO DavidDTO = new FragosoDTO();
+        DavidDTO.setStatus(json.get("status").getAsString());
+        DavidDTO.setId(json.get("id").getAsInt());
+        DavidDTO.setName(json.get("name").getAsString());
+        return DavidDTO;
+    }
 }
