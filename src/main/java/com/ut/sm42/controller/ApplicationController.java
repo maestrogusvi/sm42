@@ -2,6 +2,7 @@ package com.ut.sm42.controller;
 
 import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.NoeliDTO;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,4 +25,11 @@ public class ApplicationController {
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
     }
+    //tercero
+    @GetMapping("/noe")
+    public NoeliDTO noe() throws IOException {
+        return applicationService.noe();
+    }
+
+
 }
