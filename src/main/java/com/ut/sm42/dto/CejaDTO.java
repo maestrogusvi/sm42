@@ -3,7 +3,7 @@ package com.ut.sm42.dto;
 public class CejaDTO {
     int id;
     String name;
-    int status;
+    String status;
 
     public CejaDTO() {
     }
@@ -24,11 +24,11 @@ public class CejaDTO {
         this.name = name;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }
