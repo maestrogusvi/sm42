@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+import com.ut.sm42.dto.MezaDTO;
+
+
+
 @RestController
 @RequestMapping("/api/v1")
 public class ApplicationController {
@@ -31,5 +35,9 @@ public class ApplicationController {
         return applicationService.noe();
     }
 
+    @GetMapping("/aldo")
+    public MezaDTO aldo() throws IOException {
+        return applicationService.aldo();
+    }
 
 }
