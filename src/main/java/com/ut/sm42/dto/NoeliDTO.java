@@ -1,25 +1,28 @@
 package com.ut.sm42.dto;
-
+//primero
 public class NoeliDTO {
-    int idnoe;
-    String namenoe;
+    String status;
+    String ID;
+    String NAME;
 
     public NoeliDTO() {
     }
 
-    public int getIdnoe() {
-        return idnoe;
+    public String getStatus() {
+        return status;
     }
 
-    public void setIdnoe(int idnoe) {
-        this.idnoe = idnoe;
+    public void setStatus(String status) { this.status = status;}
+
+    public String getID() { return ID;}
+
+    public void setID(String ID) { this.ID = ID;}
+
+    public String getNAME() {
+        return NAME;
     }
 
-    public String getNamenoe() {
-        return namenoe;
-    }
-
-    public void setNamenoe(String namenoe) {
-        this.namenoe = namenoe;
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
     }
 }
