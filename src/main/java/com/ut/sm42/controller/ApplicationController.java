@@ -24,4 +24,8 @@ public class ApplicationController {
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
     }
+    @GetMapping("/lester")
+    public DTOLES lester() throws IOException {
+        return applicationService.lester();
+    }
 }
