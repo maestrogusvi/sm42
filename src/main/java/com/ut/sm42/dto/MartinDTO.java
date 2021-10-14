@@ -2,18 +2,18 @@ package com.ut.sm42.dto;
 
 public class MartinDTO {
 
-    String Status;
+    Varchar Status;
     int id;
-    String name;
+    Varchar name;
 
     public MartinDTO() {
     }
 
-    public String getStatus() {
+    public Varchar getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Varchar status) {
         Status = status;
     }
 
@@ -25,11 +25,11 @@ public class MartinDTO {
         this.id = id;
     }
 
-    public String getName() {
+    public Varchar getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Varchar name) {
         this.name = name;
     }
 }
