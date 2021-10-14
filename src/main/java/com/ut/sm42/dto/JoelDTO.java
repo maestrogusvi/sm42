@@ -28,7 +28,7 @@ public class JoelDTO {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String Status) {
         this.status = status;
     }
 }
