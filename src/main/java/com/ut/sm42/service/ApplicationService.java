@@ -24,7 +24,19 @@ public class ApplicationService {
         BeeceptorDTO beeceptorDTO = new BeeceptorDTO();
         beeceptorDTO.setCode(json.get("code").getAsString());
         beeceptorDTO.setMessage(json.get("message").getAsString());
-        beeceptorDTO.setStatus(json.get("status").getAsString());
+        beeceptorDTO.setStatusS(json.get("status").getAsString());
         return beeceptorDTO;
+    }
+
+    public DTOLES lester() throws IOException {
+
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
+        DTOLES lesterDTO = new DTOLES();
+        lesterDTO.setSTATUS(json.get("Status").getAsString());
+        lesterDTO.setID(json.get("id").getAsInt());
+        lesterDTO.setNAME(json.get("name").getAsString());
+        return lesterDTO;
+
     }
 }
