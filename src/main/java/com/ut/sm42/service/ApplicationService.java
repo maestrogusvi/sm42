@@ -50,4 +50,16 @@ public class ApplicationService {
         return polancoDTO;
 
     }
+
+    public CatzinDTO omar() throws IOException {
+
+        JsonParser amp = new JsonParser();
+        JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://omarcatzin.free.beeceptor.com", "GET", null, null, "json", null, null));
+        CatzinDTO chaconDTO = new CatzinDTO();
+        chaconDTO.setId(json.get("Id").getAsInt());
+        chaconDTO.setName(json.get("Name").getAsString());
+        chaconDTO.setStatus(json.get("Status").getAsString());
+        return chaconDTO;
+
+    }
 }

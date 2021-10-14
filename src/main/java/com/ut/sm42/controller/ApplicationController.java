@@ -33,4 +33,9 @@ public class ApplicationController {
     public MartinezDTO arturo() throws IOException {
         return applicationService.arturo();
     }
+
+    @GetMapping("/omar")
+    public CatzinDTO omar() throws IOException {
+        return applicationService.omar();
+    }
 }
