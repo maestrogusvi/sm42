@@ -29,4 +29,8 @@ public class ApplicationController {
     public RomerithoDTO Sebastian() throws IOException {
         return applicationService.SebastianE();
     }
+    @GetMapping("/Leonardo")
+    public TecDTO Leonardo() throws IOException {
+        return applicationService.JLeonardo();
+    }
 }

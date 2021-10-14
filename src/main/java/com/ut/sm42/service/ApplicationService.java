@@ -37,8 +37,8 @@ public class ApplicationService {
         return HTQDTO;
     }
     public TecDTO JLeonardo() throws IOException {
-        JsonParser am= new JsonParser();
-        JsonObject json = (JsonObject) parcero.am(httpService.sendRequestHttpS("https://romar.free.beeceptor.com","GET",null,null,"json",null, null));
+        JsonJL am= new JsonJL();
+        JsonObject json = (JsonObject) am.JL(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com","GET",null,null,"json",null, null));
         TecDTO YisusDTO = new TecDTO();
         YisusDTO.setId(json.get("Id").getAsInt());
         YisusDTO.setName(json.get("Name").getAsString());
