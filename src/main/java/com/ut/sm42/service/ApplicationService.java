@@ -3,6 +3,7 @@ package com.ut.sm42.service;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.HuchimDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +28,17 @@ public class ApplicationService {
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
     }
+
+    public HuchimDTO Diego () throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com", "GET",null,null,"json",null, null));
+        HuchimDTO DiegoDTO = new HuchimDTO();
+        DiegoDTO.setId(json.get("id").getAsInt());
+        DiegoDTO.setName(json.get("name").getAsString());
+        DiegoDTO.setStatus(json.get("Status").getAsString());
+        return DiegoDTO;
+
+    }
+
+
 }
