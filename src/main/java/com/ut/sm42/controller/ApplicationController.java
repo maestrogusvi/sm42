@@ -30,4 +30,6 @@ public class ApplicationController {
     public HuchimDTO Diego() throws IOException {
         return applicationService.Diego();
     }
+
+
 }
