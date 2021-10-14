@@ -4,6 +4,7 @@ public class HuchimDTO {
 
     int id;
     String name;
+    String status;
 
     public HuchimDTO() {
     }
@@ -22,5 +23,13 @@ public class HuchimDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
