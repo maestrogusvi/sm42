@@ -1,12 +1,12 @@
 package com.ut.sm42.dto;
 
-public class RamirezDTO {
+public class MartinDTO {
 
     String Status;
     int id;
     String name;
 
-    public RamirezDTO() {
+    public MartinDTO() {
     }
 
     public String getStatus() {
