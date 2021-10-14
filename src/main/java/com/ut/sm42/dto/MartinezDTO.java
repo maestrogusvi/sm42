@@ -3,6 +3,7 @@ package com.ut.sm42.dto;
 public class MartinezDTO {
     int id;
     String name;
+    String status;
 
     public MartinezDTO() {
     }
@@ -23,6 +24,13 @@ public class MartinezDTO {
         this.name = name;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
-
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
+//Hola
+

@@ -1,4 +1,4 @@
-package sm42.src.main.java.com.ut.sm42.dto;
+package com.ut.sm42.dto;
 
 public class DTOLES {
 
