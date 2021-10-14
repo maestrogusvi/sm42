@@ -29,7 +29,6 @@ public class ApplicationService {
         return beeceptorDTO;
     }
 
-
     public HuchimDTO Diego () throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com", "GET",null,null,"json",null, null));
