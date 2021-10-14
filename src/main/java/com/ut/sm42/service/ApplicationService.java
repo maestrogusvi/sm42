@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.HuchimDTO;
+import com.ut.sm42.dto.escobarDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,14 @@ public class ApplicationService {
 
     }
 
+    public escobarDTO Cruz () throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/", "GET", null, null, "json", null, null));
+        escobarDTO cruzDTO = new escobarDTO();
+        cruzDTO.setStatus(json.get("Status").getAsString());
+        cruzDTO.setId(json.get("id").getAsInt());
+        cruzDTO.setName(json.get("name").getAsString());
+        return cruzDTO;
 
+    }
 }

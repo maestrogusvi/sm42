@@ -4,6 +4,7 @@ public class escobarDTO {
 
     int id;
     String name;
+    String Status;
 
     public escobarDTO() {
     }
@@ -22,5 +23,13 @@ public class escobarDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 }
