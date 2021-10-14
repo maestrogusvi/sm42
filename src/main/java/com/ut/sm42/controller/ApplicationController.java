@@ -17,7 +17,7 @@ public class ApplicationController {
     ApplicationService applicationService;
 
     @GetMapping("/")
-    public String inicio(){
+    public String inicio() {
         return applicationService.firstService();
     }
 
@@ -30,6 +30,8 @@ public class ApplicationController {
     public HuchimDTO Diego() throws IOException {
         return applicationService.Diego();
     }
+
+
 
 
 }
