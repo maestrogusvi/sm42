@@ -62,4 +62,17 @@ public class ApplicationService {
         return chaconDTO;
 
     }
+
+    public JoelDTO joel() throws IOException {
+
+        JsonParser par = new JsonParser();
+        JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com", "GET", null, null, "json", null, null));
+        JoelDTO joelDTO = new JoelDTO();
+        joelDTO.setId(json.get("Id").getAsInt());
+        joelDTO.setName(json.get("Name").getAsString());
+        joelDTO.setStatus(json.get("Status").getAsString());
+        return joelDTO;
+
+    }
+
 }

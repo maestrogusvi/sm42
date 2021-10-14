@@ -38,4 +38,10 @@ public class ApplicationController {
     public CatzinDTO omar() throws IOException {
         return applicationService.omar();
     }
+
+    @GetMapping("/joel")
+    public JoelDTO joel() throws IOException {
+        return applicationService.joel();
+    }
+
 }
