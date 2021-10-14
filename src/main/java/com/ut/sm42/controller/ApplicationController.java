@@ -5,6 +5,7 @@ import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.ut.sm42.dto.*;
 
 import java.io.IOException;
 
@@ -23,5 +24,9 @@ public class ApplicationController {
     @GetMapping("/testHttp")
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
+    }
+    @GetMapping("/Sebastian")
+    public RomerithoDTO Sebastian() throws IOException {
+        return applicationService.SebastianE();
     }
 }
