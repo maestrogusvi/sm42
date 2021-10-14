@@ -1,10 +1,20 @@
 package com.ut.sm42.dto;
 
 public class RomerithoDTO {
-    int id ;
+
+    String Status;
+    int id;
     String name;
 
     public RomerithoDTO() {
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 
     public int getId() {
@@ -21,9 +31,5 @@ public class RomerithoDTO {
 
     public void setName(String name) {
         this.name = name;
-
     }
-
-
-
 }
