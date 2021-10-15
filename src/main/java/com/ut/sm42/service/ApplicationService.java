@@ -27,13 +27,13 @@ public class ApplicationService {
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
     }
-    public RomerithoDTO SebastianE() throws IOException {
+    public RomerithoDTO sebastiane() throws IOException {
         JsonParser parcero = new JsonParser();
         JsonObject json = (JsonObject) parcero.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com","GET",null,null,"json",null, null));
-        RomerithoDTO HTQDTO = new RomerithoDTO();
-        HTQDTO.setId(json.get("Id").getAsInt());
-        HTQDTO.setName(json.get("Name").getAsString());
-        HTQDTO.setStatus(json.get("status").getAsString());
-        return HTQDTO;
+        RomerithoDTO htqDTO = new RomerithoDTO();
+        htqDTO.setId(json.get("Id").getAsInt());
+        htqDTO.setName(json.get("Name").getAsString());
+        htqDTO.setStatus(json.get("status").getAsString());
+        return htqDTO;
     }
 }
