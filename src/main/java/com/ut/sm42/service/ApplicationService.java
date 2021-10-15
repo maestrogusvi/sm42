@@ -31,14 +31,14 @@ public class ApplicationService {
         return beeceptorDTO;
     }
 
-    public HuchimDTO Diego () throws IOException {
+    public HuchimDTO diego () throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com", "GET",null,null,"json",null, null));
-        HuchimDTO DiegoDTO = new HuchimDTO();
-        DiegoDTO.setId(json.get("id").getAsInt());
-        DiegoDTO.setName(json.get("name").getAsString());
-        DiegoDTO.setStatus(json.get("Status").getAsString());
-        return DiegoDTO;
+        HuchimDTO diegoDTO = new HuchimDTO();
+        diegoDTO.setId(json.get("id").getAsInt());
+        diegoDTO.setName(json.get("name").getAsString());
+        diegoDTO.setStatus(json.get("Status").getAsString());
+        return diegoDTO;
 
     }
 

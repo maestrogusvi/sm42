@@ -28,9 +28,9 @@ public class ApplicationController {
         return applicationService.testHttp();
     }
 
-    @GetMapping("/Diego")
-    public HuchimDTO Diego() throws IOException {
-        return applicationService.Diego();
+    @GetMapping("/diego")
+    public HuchimDTO diego() throws IOException {
+        return applicationService.diego();
     }
 
     @GetMapping("/Cruz")
