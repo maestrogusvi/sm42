@@ -49,11 +49,11 @@ public class ApplicationService {
     public MezaDTO aldo() throws  IOException {
         JsonParser aar = new JsonParser();
         JsonObject json = (JsonObject) aar.parse(httpService.sendRequestHttpS("https://aldodto.free.beeceptor.com", "GET", null, null, "json", null, null));
-        MezaDTO AldoDTO = new MezaDTO();
-        AldoDTO.setStatus(json.get("status").getAsString());
-        AldoDTO.setId(json.get("id").getAsInt());
-        AldoDTO.setName(json.get("name").getAsString());
-        return AldoDTO;
+        MezaDTO aldoDTO = new MezaDTO();
+        aldoDTO.setStatus(json.get("status").getAsString());
+        aldoDTO.setId(json.get("id").getAsInt());
+        aldoDTO.setName(json.get("name").getAsString());
+        return aldoDTO;
     }
 
     public FragosoDTO david() throws  IOException {
