@@ -3,15 +3,7 @@ package com.ut.sm42.dto;
 public class MezaDTO {
     int id;
     String name;
-    String apellido;
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+    String status;
 
     public MezaDTO() {
     }
@@ -32,6 +24,13 @@ public class MezaDTO {
         this.name = name;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
 

@@ -25,8 +25,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/")
-    public String inicio(){
-        return applicationService.firstService();
+    public String inicio(){return applicationService.firstService();
     }
 
     @GetMapping("/testHttp")
@@ -39,5 +38,17 @@ public class ApplicationController {
         return applicationService.noe();
     }
 
+    @GetMapping("/aldo")
+    public MezaDTO aldo() throws IOException {
+        return applicationService.aldo();
+    }
 
+    @GetMapping("/david")
+    public FragosoDTO david() throws IOException {
+        return applicationService.david();
+    }
+    @GetMapping("/cesar")
+    public CejaDTO cesar()throws IOException{
+        return applicationService.cesar();
+    }
 }
