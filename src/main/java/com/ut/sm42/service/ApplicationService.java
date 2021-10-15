@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.ut.sm42.dto.HuchimDTO;
 import com.ut.sm42.dto.LairDTO;
-import com.ut.sm42.dto.escobarDTO;
+import com.ut.sm42.dto.EscobarDTO;
 import java.io.IOException;
 
 @Service
@@ -36,7 +36,7 @@ public class ApplicationService {
         return beeceptorDTO;
     }
 
-    public HuchimDTO Diego () throws IOException {
+    public HuchimDTO  diego() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com", "GET",null,null,"json",null, null));
         HuchimDTO DiegoDTO = new HuchimDTO();
@@ -47,10 +47,10 @@ public class ApplicationService {
 
     }
 
-    public escobarDTO Cruz () throws IOException {
+    public EscobarDTO cruz() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/", "GET", null, null, "json", null, null));
-        escobarDTO cruzDTO = new escobarDTO();
+        EscobarDTO cruzDTO = new EscobarDTO();
         cruzDTO.setStatus(json.get("Status").getAsString());
         cruzDTO.setId(json.get("id").getAsInt());
         cruzDTO.setName(json.get("name").getAsString());
@@ -58,14 +58,14 @@ public class ApplicationService {
 
     }
 
-        public LairDTO Carlos () throws IOException {
+        public LairDTO carlos() throws IOException {
             JsonParser asd = new JsonParser();
             JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://carlos.free.beeceptor.com", "GET",null,null,"json",null, null));
-            LairDTO CarlosDTO = new LairDTO();
-            CarlosDTO.setId(json.get("id").getAsInt());
-            CarlosDTO.setName(json.get("name").getAsString());
-            CarlosDTO.setStatus(json.get("Status").getAsString());
-            return CarlosDTO;
+            LairDTO carlosDTO = new LairDTO();
+            carlosDTO.setId(json.get("id").getAsInt());
+            carlosDTO.setName(json.get("name").getAsString());
+            carlosDTO.setStatus(json.get("Status").getAsString());
+            return carlosDTO;
 
         }
     }

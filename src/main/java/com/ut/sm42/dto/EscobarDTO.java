@@ -1,12 +1,12 @@
 package com.ut.sm42.dto;
 
-public class escobarDTO {
+public class EscobarDTO {
 
     int id;
     String name;
     String Status;
 
-    public escobarDTO() {
+    public EscobarDTO() {
     }
 
     public int getId() {

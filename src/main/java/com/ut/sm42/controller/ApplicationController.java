@@ -1,6 +1,5 @@
 package com.ut.sm42.controller;
 
-import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
@@ -9,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ut.sm42.dto.HuchimDTO;
 import com.ut.sm42.dto.LairDTO;
-import com.ut.sm42.dto.escobarDTO;
+import com.ut.sm42.dto.EscobarDTO;
 import java.io.IOException;
 
 @RestController
@@ -35,21 +34,21 @@ public class ApplicationController {
         return applicationService.testHttp();
     }
 
-    @GetMapping("/Diego")
-    public HuchimDTO Diego() throws IOException {
-        return applicationService.Diego();
+    @GetMapping("/diego")
+    public HuchimDTO diego() throws IOException {
+        return applicationService.diego();
     }
 
-    @GetMapping("/Cruz")
-    public escobarDTO Cruz() throws IOException {
-        return applicationService.Cruz();
+    @GetMapping("/cruz")
+    public EscobarDTO cruz() throws IOException {
+        return applicationService.cruz();
 
 
     }
 
-    @GetMapping("/Carlos")
-    public LairDTO Carlos() throws IOException {
-        return applicationService.Carlos();
+    @GetMapping("/carlos")
+    public LairDTO carlos() throws IOException {
+        return applicationService.carlos();
 
     }
 }
