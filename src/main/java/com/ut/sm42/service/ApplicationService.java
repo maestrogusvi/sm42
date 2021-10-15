@@ -53,14 +53,14 @@ public class ApplicationService {
 
     }
 
-        public LairDTO Carlos () throws IOException {
+        public LairDTO carlos () throws IOException {
             JsonParser asd = new JsonParser();
             JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://carlos.free.beeceptor.com", "GET",null,null,"json",null, null));
-            LairDTO CarlosDTO = new LairDTO();
-            CarlosDTO.setId(json.get("id").getAsInt());
-            CarlosDTO.setName(json.get("name").getAsString());
-            CarlosDTO.setStatus(json.get("Status").getAsString());
-            return CarlosDTO;
+            LairDTO carlosDTO = new LairDTO();
+            carlosDTO.setId(json.get("id").getAsInt());
+            carlosDTO.setName(json.get("name").getAsString());
+            carlosDTO.setStatus(json.get("Status").getAsString());
+            return carlosDTO;
 
         }
     }

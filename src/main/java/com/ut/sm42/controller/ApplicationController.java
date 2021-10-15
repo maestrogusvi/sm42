@@ -37,9 +37,9 @@ public class ApplicationController {
         return applicationService.cruz();
     }
 
-    @GetMapping("/Carlos")
-    public LairDTO Carlos() throws IOException {
-        return applicationService.Carlos();
+    @GetMapping("/carlos")
+    public LairDTO carlos() throws IOException {
+        return applicationService.carlos();
 
     }
 }
