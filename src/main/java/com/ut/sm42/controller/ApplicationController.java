@@ -36,8 +36,6 @@ public class ApplicationController {
     @GetMapping("/Cruz")
     public escobarDTO Cruz() throws IOException {
         return applicationService.Cruz();
-
-
     }
 
     @GetMapping("/Carlos")
