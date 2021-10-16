@@ -32,8 +32,8 @@ public class ApplicationController {
         return applicationService.diego();
     }
 
-    @GetMapping("/Cruz")
-    public EscobarDTO Cruz() throws IOException {
+    @GetMapping("/cruz")
+    public EscobarDTO cruz() throws IOException {
         return applicationService.cruz();
     }
 
@@ -43,3 +43,4 @@ public class ApplicationController {
 
     }
 }
+
