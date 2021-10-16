@@ -1,13 +1,13 @@
 package com.ut.sm42.dto;
 
-public class Camara_DTO {
+public class CamaraDTO {
 
     int id;
     String name;
     String status;
 
 
-    public Camara_DTO() {
+    public CamaraDTO() {
     }
 
     public int getId() { return id;}
