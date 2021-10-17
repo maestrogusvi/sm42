@@ -54,10 +54,10 @@ public class ApplicationController {
     }
     @GetMapping("/Sebastian")
     public RomerithoDTO Sebastian() throws IOException {
-        return applicationService.SebastianE();
+        return applicationService.sebastiane();
     }
     @GetMapping("/Erick")
     public MartinDTO Erick() throws IOException {
-        return applicationService.ErickR();
+        return applicationService.Erick();
     }
 }
