@@ -95,10 +95,10 @@ public class ApplicationService {
     public TecDTO JLeonardo() throws IOException {
         JsonParser am= new JsonParser();
         JsonObject json = (JsonObject) parcero.am(httpService.sendRequestHttpS("https://romar.free.beeceptor.com","GET",null,null,"json",null, null));
-        TecDTO YisusDTO = new TecDTO();
-        YisusDTO.setId(json.get("Id").getAsInt());
-        YisusDTO.setName(json.get("Name").getAsString());
-        YisusDTO.setStatus(json.get("status").getAsString());
-        return YisusDTO;
+        TecDTO yisusDTO = new TecDTO();
+        yisusDTO.setId(json.get("Id").getAsInt());
+        yisusDTO.setName(json.get("Name").getAsString());
+        yisusDTO.setStatus(json.get("status").getAsString());
+        return yisusDTO;
     }
 }
