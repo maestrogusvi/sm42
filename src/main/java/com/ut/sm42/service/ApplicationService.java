@@ -101,4 +101,13 @@ public class ApplicationService {
         yisusDTO.setStatus(json.get("status").getAsString());
         return yisusDTO;
     }
+    public RamirezDTO OscarL() throws IOException {
+        JsonParser parcera = new JsonParser();
+        JsonObject json = (JsonObject) parcera.parse(httpService.sendRequestHttpS("https://lemons.free.beeceptor.com","GET",null,null,"json",null, null));
+        RamirezDTO lemon = new RamirezDTO();
+        lemon.setId(json.get("Id").getAsInt());
+        lemon.setName(json.get("Name").getAsString());
+        lemon.setStatus(json.get("status").getAsString());
+        return lemon;
+    }
 }

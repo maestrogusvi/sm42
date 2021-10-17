@@ -64,4 +64,8 @@ public class ApplicationController {
     public TecDTO jesus() throws IOException {
         return applicationService.jesus();
     }
+    @GetMapping("/Oscar")
+    public RamirezDTO Oscar() throws IOException {
+        return applicationService.OscarL();
+    }
 }
