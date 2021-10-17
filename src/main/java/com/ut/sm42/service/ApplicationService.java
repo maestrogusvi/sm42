@@ -92,7 +92,7 @@ public class ApplicationService {
         ersDTO.setStatus(json.get("status").getAsString());
         return ersDTO;
     }
-    public TecDTO leonardo() throws IOException {
+    public TecDTO jleonardo() throws IOException {
         JsonParser am= new JsonParser();
         JsonObject json = (JsonObject) am.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com","GET",null,null,"json",null, null));
         TecDTO yisusDTO = new TecDTO();

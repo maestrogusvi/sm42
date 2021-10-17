@@ -62,6 +62,6 @@ public class ApplicationController {
     }
     @GetMapping("/leonardo")
     public TecDTO leonardo() throws IOException {
-        return applicationService.leonardo();
+        return applicationService.jleonardo();
     }
 }
