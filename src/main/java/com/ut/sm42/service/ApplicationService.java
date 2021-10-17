@@ -31,7 +31,7 @@ public class ApplicationService {
 
     public EscalanteDTO pan() throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm41.free.beeceptor.com","GET",null,null,"json",null, null));
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com","GET",null,null,"json",null, null));
         EscalanteDTO pan = new EscalanteDTO();
         pan.setId(json.get("id").getAsInt());
         pan.setName(json.get("name").getAsString());
