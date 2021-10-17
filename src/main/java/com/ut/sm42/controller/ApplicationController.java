@@ -17,7 +17,7 @@ public class ApplicationController {
     ApplicationService applicationService;
 
     @GetMapping("/")
-    public String inicio(){
+    public String inicio2(){
         return applicationService.firstService();
     }
 
