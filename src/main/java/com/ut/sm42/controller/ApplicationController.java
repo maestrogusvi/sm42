@@ -56,12 +56,12 @@ public class ApplicationController {
     public RomerithoDTO sebastian() throws IOException {
         return applicationService.sebastiane();
     }
-    @GetMapping("/Erick")
-    public MartinDTO Erick() throws IOException {
-        return applicationService.Erick();
+    @GetMapping("/erick")
+    public MartinDTO erick() throws IOException {
+        return applicationService.erick();
     }
-    @GetMapping("/leonardo")
-    public TecDTO leonardo() throws IOException {
-        return applicationService.leonardot();
+    @GetMapping("/jesusl")
+    public TecDTO jesusl() throws IOException {
+        return applicationService.jesusl();
     }
 }
