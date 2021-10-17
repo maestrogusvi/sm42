@@ -60,8 +60,8 @@ public class ApplicationController {
     public MartinDTO erick() throws IOException {
         return applicationService.erick();
     }
-    @GetMapping("/jesusl")
-    public TecDTO jesusl() throws IOException {
+    @GetMapping("/jesus")
+    public TecDTO jesus() throws IOException {
         return applicationService.jesusl();
     }
 }
