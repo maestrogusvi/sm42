@@ -58,21 +58,21 @@ public class ApplicationService {
     public MezaDTO aldo() throws  IOException {
         JsonParser aar = new JsonParser();
         JsonObject json = (JsonObject) aar.parse(httpService.sendRequestHttpS("https://aldodto.free.beeceptor.com", "GET", null, null, "json", null, null));
-        MezaDTO AldoDTO = new MezaDTO();
-        AldoDTO.setStatus(json.get("status").getAsString());
-        AldoDTO.setId(json.get("id").getAsInt());
-        AldoDTO.setName(json.get("name").getAsString());
-        return AldoDTO;
+        MezaDTO aldoDTO = new MezaDTO();
+        aldoDTO.setStatus(json.get("status").getAsString());
+        aldoDTO.setId(json.get("id").getAsInt());
+        aldoDTO.setName(json.get("name").getAsString());
+        return aldoDTO;
     }
 
     public FragosoDTO david() throws  IOException {
         JsonParser por = new JsonParser();
         JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://davidendpoint.free.beeceptor.com", "GET", null, null, "json", null, null));
-        FragosoDTO DavidDTO = new FragosoDTO();
-        DavidDTO.setStatus(json.get("status").getAsString());
-        DavidDTO.setId(json.get("id").getAsInt());
-        DavidDTO.setName(json.get("name").getAsString());
-        return DavidDTO;
+        FragosoDTO davidDTO = new FragosoDTO();
+        davidDTO.setStatus(json.get("status").getAsString());
+        davidDTO.setId(json.get("id").getAsInt());
+        davidDTO.setName(json.get("name").getAsString());
+        return davidDTO;
     }
     public CejaDTO cesar() throws  IOException {
         JsonParser ahhh = new JsonParser();
