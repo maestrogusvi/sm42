@@ -52,8 +52,8 @@ public class ApplicationController {
     public CejaDTO cesar()throws IOException{
         return applicationService.cesar();
     }
-    @GetMapping("/Sebastian")
-    public RomerithoDTO Sebastian() throws IOException {
+    @GetMapping("/sebastian")
+    public RomerithoDTO sebastian() throws IOException {
         return applicationService.sebastiane();
     }
     @GetMapping("/Erick")
