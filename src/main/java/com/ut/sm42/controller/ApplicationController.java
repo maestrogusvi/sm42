@@ -56,4 +56,8 @@ public class ApplicationController {
     public RomerithoDTO Sebastian() throws IOException {
         return applicationService.SebastianE();
     }
+    @GetMapping("/Erick")
+    public MartinDTO Erick() throws IOException {
+        return applicationService.ErickR();
+    }
 }

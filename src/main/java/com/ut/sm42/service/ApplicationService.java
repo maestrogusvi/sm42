@@ -83,4 +83,13 @@ public class ApplicationService {
         cesarDTO.setName(json.get("name").getAsString());
         return cesarDTO;
     }
+    public MartinDTO Erick() throws IOException {
+        JsonParser crack = new JsonParser();
+        JsonObject json = (JsonObject) crack.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com","GET",null,null,"json",null, null));
+        MartinDTO ERSDTO = new MartinDTO();
+        ERSDTO.setId(json.get("Id").getAsInt());
+        ERSDTO.setName(json.get("Name").getAsString());
+        ERSDTO.setStatus(json.get("status").getAsString());
+        return ERSDTO;
+    }
 }
