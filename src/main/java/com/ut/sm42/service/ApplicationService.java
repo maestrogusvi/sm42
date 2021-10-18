@@ -17,6 +17,9 @@ public interface ApplicationService {
 
     String firstService();
     BeeceptorDTO testHttp() throws IOException;
-
+    RomerithoDTO sebastian() throws IOException;
+    MartinDTO erick() throws IOException;
+    TecDTO jesus() throws IOException;
+    RamirezDTO oscarl() throws IOException;
 }
 
