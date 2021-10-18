@@ -32,23 +32,5 @@ public class ApplicationController {
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
     }
-    //tercero
-    @GetMapping("/noe")
-    public NoeliDTO noe() throws IOException {
-        return applicationService.noe();
-    }
 
-    @GetMapping("/aldo")
-    public MezaDTO aldo() throws IOException {
-        return applicationService.aldo();
-    }
-
-    @GetMapping("/david")
-    public FragosoDTO david() throws IOException {
-        return applicationService.david();
-    }
-    @GetMapping("/cesar")
-    public CejaDTO cesar()throws IOException{
-        return applicationService.cesar();
-    }
 }
