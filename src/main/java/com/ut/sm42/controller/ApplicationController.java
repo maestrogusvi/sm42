@@ -47,7 +47,7 @@ public class ApplicationController {
         return applicationService.jesus();
     }
     @GetMapping("/oscarl")
-    public RamirezDTO Oscar() throws IOException {
+    public RamirezDTO oscarl() throws IOException {
         return applicationService.oscarl();
     }
 }
