@@ -16,16 +16,9 @@ import java.io.IOException;
 public interface ApplicationService {
 
     String firstService();
-
     BeeceptorDTO testHttp() throws IOException;
-
     HuchimDTO diego() throws IOException;
-
-
     AranaDTO ivan() throws IOException;
-
     EscobarDTO cruz() throws IOException;
-
     LairDTO carlos() throws IOException;
-
 }
