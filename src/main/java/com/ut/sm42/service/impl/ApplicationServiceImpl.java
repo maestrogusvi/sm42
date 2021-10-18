@@ -1,16 +1,23 @@
-package sm42.src.main.java.com.ut.sm42.service.impl;
 
+package com.ut.sm42.service.impl;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ut.sm42.dto.*;
 import com.ut.sm42.service.ApplicationService;
+import com.ut.sm42.service.HttpService;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.io.IOException;
+
 
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
-    @override
+    @Override
     public String firstService(){
         return "service";
     }
-    @override
+    @Override
     public BeeceptorDTO testHttp() throws IOException {
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm41.free.beeceptor.com","GET",null,null,"json",null, null));
@@ -22,7 +29,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     public DTOLES lester() throws IOException {
-
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
         DTOLES lesterDTO = new DTOLES();

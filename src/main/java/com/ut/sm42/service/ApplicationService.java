@@ -2,7 +2,7 @@ package com.ut.sm42.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,11 @@ import java.io.IOException;
 @Service
 public interface ApplicationService {
 
-
-
-    public String firstService();
-
-   BeeceptorDTO testHttp();
-   DTOLES lester();
-   MartinezDTO arturo();
-   CatzinDTO omar();
-   JoelDTO joel();
+   String firstService();
+   BeeceptorDTO testHttp() throws IOException;
+   DTOLES lester() throws IOException;
+   MartinezDTO arturo() throws IOException;
+   CatzinDTO omar() throws IOException;
+   JoelDTO joel() throws IOException;
 
 }
