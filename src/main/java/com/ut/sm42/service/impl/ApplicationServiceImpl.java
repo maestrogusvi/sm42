@@ -37,7 +37,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
     }
-    public RomerithoDTO sebastiane() throws IOException {
+    public RomerithoDTO sebastian() throws IOException {
         JsonParser parcero = new JsonParser();
         JsonObject json = (JsonObject) parcero.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com","GET",null,null,"json",null, null));
         RomerithoDTO htqDTO = new RomerithoDTO();

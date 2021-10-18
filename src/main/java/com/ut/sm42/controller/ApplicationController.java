@@ -36,7 +36,7 @@ public class ApplicationController {
 
     @GetMapping("/sebastian")
     public RomerithoDTO sebastian() throws IOException {
-        return applicationService.sebastiane();
+        return applicationService.sebastian();
     }
     @GetMapping("/erick")
     public MartinDTO erick() throws IOException {
