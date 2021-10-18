@@ -1,14 +1,10 @@
 package com.ut.sm42.controller;
 
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.dto.*;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.ut.sm42.dto.HuchimDTO;
-import com.ut.sm42.dto.LairDTO;
-import com.ut.sm42.dto.EscobarDTO;
+
 import java.io.IOException;
 
 @RestController
@@ -18,14 +14,8 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
-    @ExceptionHandler({ BusinessException.class })
-    @ResponseBody
-    public ResponseEntity<String> userHandler(BusinessException ex) {
-        return new ResponseEntity<String>(ex.getMessage(), ex.getHttpStatus());
-    }
-
     @GetMapping("/")
-    public String inicio(){
+    public String inicio() {
         return applicationService.firstService();
     }
 
@@ -42,8 +32,6 @@ public class ApplicationController {
     @GetMapping("/cruz")
     public EscobarDTO cruz() throws IOException {
         return applicationService.cruz();
-
-
     }
 
     @GetMapping("/carlos")
@@ -51,4 +39,11 @@ public class ApplicationController {
         return applicationService.carlos();
 
     }
+
+    @GetMapping("/ivan")
+    public AranaDTO ivan() throws IOException{
+        return applicationService.ivan();
+    }
+
+
 }
