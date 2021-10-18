@@ -1,12 +1,13 @@
 package com.ut.sm42.dto;
 
-public class IvanAranaDTO {
+public class AranaDTO {
     int identificador;
     String Nombre;
+    String status;
 
     /*Constructor*/
 
-    public IvanAranaDTO() {
+    public AranaDTO() {
     }
 
     /* getter & setter */
@@ -27,5 +28,13 @@ public class IvanAranaDTO {
         Nombre = nombre;
     }
 
+    /* Nuevo getter & setter de status :) */
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

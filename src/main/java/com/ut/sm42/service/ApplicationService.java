@@ -2,10 +2,7 @@ package com.ut.sm42.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.HuchimDTO;
-import com.ut.sm42.dto.LairDTO;
-import com.ut.sm42.dto.EscobarDTO;
+import com.ut.sm42.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +39,16 @@ public class ApplicationService {
 
     }
 
+    public AranaDTO ivan () throws IOException{
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arana.free.beeceptor.com", "GET", null,null,"json", null,null));
+        AranaDTO ivanDTO = new AranaDTO();
+        ivanDTO.setIdentificador(json.get("identificador").getAsInt());
+        ivanDTO.setNombre(json.get("Nombre").getAsString());
+        ivanDTO.setStatus(json.get("status").getAsString());
+        return ivanDTO;
+    }
+
     public EscobarDTO cruz () throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/", "GET", null, null, "json", null, null));
@@ -63,4 +70,6 @@ public class ApplicationService {
             return carlosDTO;
 
         }
+
+
     }

@@ -1,9 +1,6 @@
 package com.ut.sm42.controller;
 
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.HuchimDTO;
-import com.ut.sm42.dto.LairDTO;
-import com.ut.sm42.dto.EscobarDTO;
+import com.ut.sm42.dto.*;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,4 +39,11 @@ public class ApplicationController {
         return applicationService.carlos();
 
     }
+
+    @GetMapping("/ivan")
+    public AranaDTO ivan() throws IOException{
+        return applicationService.ivan();
+    }
+
+
 }
