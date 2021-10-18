@@ -65,7 +65,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         yisusDTO.setStatus(json.get("status").getAsString());
         return yisusDTO;
     }
-    public RamirezDTO OscarL() throws IOException {
+    public RamirezDTO oscarl() throws IOException {
         JsonParser parcera = new JsonParser();
         JsonObject json = (JsonObject) parcera.parse(httpService.sendRequestHttpS("https://lemons.free.beeceptor.com","GET",null,null,"json",null, null));
         RamirezDTO lemon = new RamirezDTO();
