@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Service
 
-public interface ApplicationServiceImpl implements ApplicationService {
+public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     HttpService httpService;
