@@ -33,31 +33,21 @@ public class ApplicationController {
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
     }
-    //tercero
-    @GetMapping("/noe")
-    public NoeliDTO noe() throws IOException {
-        return applicationService.noe();
-    }
 
-    @GetMapping("/aldo")
-    public MezaDTO aldo() throws IOException {
-        return applicationService.aldo();
+    @GetMapping("/sebastian")
+    public RomerithoDTO sebastian() throws IOException {
+        return applicationService.sebastian();
     }
-
-    @GetMapping("/david")
-    public FragosoDTO david() throws IOException {
-        return applicationService.david();
+    @GetMapping("/erick")
+    public MartinDTO erick() throws IOException {
+        return applicationService.erick();
     }
-    @GetMapping("/cesar")
-    public CejaDTO cesar()throws IOException{
-        return applicationService.cesar();
+    @GetMapping("/jesus")
+    public TecDTO jesus() throws IOException {
+        return applicationService.jesus();
     }
-    @GetMapping("/Sebastian")
-    public RomerithoDTO Sebastian() throws IOException {
-        return applicationService.sebastiane();
-    }
-    @GetMapping("/Erick")
-    public MartinDTO Erick() throws IOException {
-        return applicationService.Erick();
+    @GetMapping("/oscarl")
+    public RamirezDTO oscarl() throws IOException {
+        return applicationService.oscarl();
     }
 }

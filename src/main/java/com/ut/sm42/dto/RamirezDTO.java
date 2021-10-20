@@ -1,11 +1,12 @@
 package com.ut.sm42.dto;
 
-public class MezaDTO {
+public class RamirezDTO {
     int id;
     String name;
     String status;
 
-    public MezaDTO() {
+    public RamirezDTO() {
+
     }
 
     public int getId() {
@@ -31,7 +32,4 @@ public class MezaDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
 }
