@@ -46,5 +46,14 @@ public class ApplicationService {
         return pan;
     }
 
+    public MendozaDTO master() throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com","GET",null,null,"json",null, null));
+        MendozaDTO master = new MendozaDTO();
+        master.setId(json.get("id").getAsInt());
+        master.setName(json.get("name").getAsString());
+        master.setStatus(json.get("status").getAsString());
+        return master;
+    }
 
 }

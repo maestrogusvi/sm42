@@ -41,4 +41,9 @@ public class ApplicationController {
         return applicationService.pan();
     }
 
+    @GetMapping("/master")
+    public MendozaDTO master() throws IOException {
+        return applicationService.master();
+    }
+
 }
