@@ -57,4 +57,11 @@ public class ApplicationController {
         String as = noeliDTO.toString();
         return noeliDTO;
     }
+
+    @PostMapping("/cesarPOST")
+    public CejaDTO cesarPOST(@RequestBody CejaDTO cejaDTO) throws IOException{
+        applicationService.cejaPOST(cejaDTO);
+        String as = cejaDTO.toString();
+        return cejaDTO;
+    }
 }

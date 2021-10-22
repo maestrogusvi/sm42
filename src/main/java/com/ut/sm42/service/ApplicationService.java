@@ -1,12 +1,6 @@
 package com.ut.sm42.service;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
-import com.ut.sm42.exception.BusinessException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,5 +15,7 @@ public interface ApplicationService {
     CejaDTO cesar()throws IOException;
     //POST
     NoeliDTO noepostHttp(NoeliDTO noeliDTO) throws  IOException;
+
+    CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException;
 
 }

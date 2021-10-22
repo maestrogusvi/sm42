@@ -87,4 +87,20 @@ public class ApplicationServiceImpl implements ApplicationService {
         noeliDTO.setNAME(json.get("NAME").getAsString());
         return noeliDTO;
     }
+
+    @Override
+    public CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException {
+        JsonParser ahhh = new JsonParser();
+        JsonObject json = (JsonObject) ahhh.parse(httpService.sendRequestHttpS("https://prueba5.free.beeceptor.com/api/v1/postcesar", "POST", null, null, "json", cejaDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id was missing", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name was missing", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status was missing", HttpStatus.FORBIDDEN);
+        }
+        return cejaDTO;
+    }
 }
