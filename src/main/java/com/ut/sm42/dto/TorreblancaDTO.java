@@ -32,4 +32,21 @@ public class TorreblancaDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "TorreblancaDTO{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"id\":" +"\""+id+"\","+
+                "\"status\":" +"\""+status+"\","+
+                "\"name\":" +"\""+name+"\","+
+                '}';
+    }
 }

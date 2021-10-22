@@ -9,6 +9,7 @@ import com.ut.sm42.dto.TorreblancaDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
+import org.apache.http.annotation.Obsolete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -84,5 +85,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void testEscalanteHttp(EscalanteDTO pan) throws IOException {
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",pan.toJSON(), null));
+    }
+
+    @Override
+    public void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://gohan.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",sayayin.toJSON(), null));
     }
 }

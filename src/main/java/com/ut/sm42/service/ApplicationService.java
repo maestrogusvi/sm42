@@ -29,4 +29,5 @@ public interface ApplicationService {
 
     void testEscalanteHttp(EscalanteDTO pan) throws IOException;
 
+    void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException;
 }

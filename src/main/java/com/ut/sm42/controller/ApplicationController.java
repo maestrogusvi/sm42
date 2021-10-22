@@ -67,5 +67,17 @@ public class ApplicationController {
     }
 
     @PostMapping("/testPost")
-    public void testPost(@RequestBody EscalanteDTO pan) { String test = pan.toString();}
+    public void testPost(@RequestBody EscalanteDTO pan) {
+        String test = pan.toString();
+    }
+
+    @GetMapping("/testTorreblancaHttp")
+    public void testTorreblancaHttp(@RequestBody TorreblancaDTO sayayin) throws IOException {
+        applicationService.testTorreblancaHttp(sayayin);
+    }
+
+    @PostMapping("/testPost")
+    public void testPost(@RequestBody TorreblancaDTO sayayin) {
+        String test = sayayin.toString();
+    }
 }
