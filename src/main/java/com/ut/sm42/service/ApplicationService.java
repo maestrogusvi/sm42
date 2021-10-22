@@ -13,56 +13,15 @@ import com.ut.sm42.dto.EscalanteDTO;
 import java.io.IOException;
 
 @Service
-public class ApplicationService {
+public interface ApplicationService {
 
-    @Autowired
-    HttpService httpService;
+    String firstService();
 
-    public String firstService(){
-        return "service";
-    }
+    BeeceptorDTO testHttp() throws IOException;
 
-    public BeeceptorDTO testHttp() throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm42.free.beeceptor.com","GET",null,null,"json",null, null));
-        BeeceptorDTO beeceptorDTO = new BeeceptorDTO();
+    EscalanteDTO pan() throws IOException;
 
-        if(json.get("code")== null){
-            throw new BusinessException("Code doesn´t exist", HttpStatus.FORBIDDEN);
-        }
-        beeceptorDTO.setCode(json.get("code").getAsString());
-        beeceptorDTO.setMessage(json.get("message").getAsString());
-        beeceptorDTO.setStatus(json.get("status").getAsString());
-        return beeceptorDTO;
-    }
+    MendozaDTO master() throws IOException;
 
-    public EscalanteDTO pan() throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com","GET",null,null,"json",null, null));
-        EscalanteDTO pan = new EscalanteDTO();
-        pan.setId(json.get("id").getAsInt());
-        pan.setName(json.get("name").getAsString());
-        pan.setStatus(json.get("status").getAsString());
-        return pan;
-    }
-
-    public MendozaDTO master() throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://churru.free.beeceptor.com","GET",null,null,"json",null, null));
-        MendozaDTO master = new MendozaDTO();
-        master.setId(json.get("id").getAsInt());
-        master.setName(json.get("name").getAsString());
-        master.setStatus(json.get("status").getAsString());
-        return master;
-    }
-
-    public TorreblancaDTO sayayin() throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://gohan.free.beeceptor.com","GET",null,null,"json",null, null));
-        TorreblancaDTO sayayin = new TorreblancaDTO();
-        sayayin.setId(json.get("id").getAsInt());
-        sayayin.setName(json.get("name").getAsString());
-        sayayin.setStatus(json.get("status").getAsString());
-        return sayayin;
-    }
+    TorreblancaDTO sayayin() throws IOException;
 }
