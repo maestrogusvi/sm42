@@ -40,4 +40,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
     }
+
+    @Override
+    public void testPostHttp(BeeceptorDTO beeceptorDTO) throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm42.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",beeceptorDTO.toJSON(), null));
+
+    }
 }

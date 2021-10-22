@@ -33,4 +33,14 @@ public class ApplicationController {
         return applicationService.testHttp();
     }
 
+    @GetMapping("/testPostHttp")
+    public void testPostHttp(@RequestBody BeeceptorDTO beeceptorDTO) throws IOException{
+        applicationService.testPostHttp(beeceptorDTO);
+    }
+
+    @PostMapping("/testPost")
+    public void testPost(@RequestBody BeeceptorDTO beeceptorDTO){
+        String test = beeceptorDTO.toString();
+    }
+
 }
