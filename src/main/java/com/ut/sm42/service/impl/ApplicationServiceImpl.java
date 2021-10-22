@@ -79,4 +79,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://churru.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",master.toJSON(), null));
     }
+
+    @Override
+    public void testEscalanteHttp(EscalanteDTO pan) throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",pan.toJSON(), null));
+    }
 }

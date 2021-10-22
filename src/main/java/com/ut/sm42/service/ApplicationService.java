@@ -27,4 +27,6 @@ public interface ApplicationService {
 
     void testMendozaHttp(MendozaDTO master) throws IOException;
 
+    void testEscalanteHttp(EscalanteDTO pan) throws IOException;
+
 }

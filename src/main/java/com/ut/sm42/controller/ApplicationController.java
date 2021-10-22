@@ -60,4 +60,12 @@ public class ApplicationController {
     public void testPost(@RequestBody MendozaDTO master){
         String test = master.toString();
     }
+
+    @GetMapping("/testEscalanteHttp")
+    public void testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
+        applicationService.testEscalanteHttp(pan);
+    }
+
+    @PostMapping("/testPost")
+    public void testPost(@RequestBody EscalanteDTO pan) { String test = pan.toString();}
 }
