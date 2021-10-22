@@ -1,8 +1,10 @@
 package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.*;
+import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,6 +15,12 @@ public class ApplicationController {
 
     @Autowired
     ApplicationService applicationService;
+
+    @ExceptionHandler({BusinessException.class})
+    @ResponseBody
+    public ResponseEntity<String> userHandler(BusinessException ex) {
+        return new ResponseEntity<String>(ex.getMessage(), ex.getHttpStatus());
+    }
 
     @GetMapping("/")
     public String inicio() {
@@ -41,9 +49,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/ivan")
-    public AranaDTO ivan() throws IOException{
+    public AranaDTO ivan() throws IOException {
         return applicationService.ivan();
     }
-
-
 }
