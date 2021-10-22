@@ -50,4 +50,14 @@ public class ApplicationController {
     public TorreblancaDTO sayayin() throws IOException {
         return applicationService.sayayin();
     }
+
+    @GetMapping("/testMendozaHttp")
+    public void testMendozaHttp(@RequestBody MendozaDTO master) throws IOException {
+        applicationService.testMendozaHttp(master);
+    }
+
+    @PostMapping("/testPost")
+    public void testPost(@RequestBody MendozaDTO master){
+        String test = master.toString();
+    }
 }

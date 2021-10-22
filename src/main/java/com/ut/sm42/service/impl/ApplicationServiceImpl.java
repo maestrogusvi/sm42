@@ -73,4 +73,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         sayayin.setStatus(json.get("status").getAsString());
         return sayayin;
     }
+
+    @Override
+    public void testMendozaHttp(MendozaDTO master) throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://churru.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",master.toJSON(), null));
+    }
 }

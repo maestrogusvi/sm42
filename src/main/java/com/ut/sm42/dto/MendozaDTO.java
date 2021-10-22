@@ -32,4 +32,21 @@ public class MendozaDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "MendozaDTO{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"id\":" +"\""+id+"\","+
+                "\"status\":" +"\""+status+"\","+
+                "\"name\":" +"\""+name+"\","+
+                '}';
+    }
 }

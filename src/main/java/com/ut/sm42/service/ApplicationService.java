@@ -24,4 +24,7 @@ public interface ApplicationService {
     MendozaDTO master() throws IOException;
 
     TorreblancaDTO sayayin() throws IOException;
+
+    void testMendozaHttp(MendozaDTO master) throws IOException;
+
 }
