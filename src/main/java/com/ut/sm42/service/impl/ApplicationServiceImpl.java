@@ -8,7 +8,7 @@ import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
-
+@Override
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;

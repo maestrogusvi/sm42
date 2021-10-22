@@ -8,7 +8,6 @@ public class LesDTO {
     String status;
 
 
-
     public int getId() {
         return id;
     }
@@ -33,5 +32,20 @@ public class LesDTO {
         this.status = status;
     }
 
+    public String toString() {
+        return "LesDTO{" +
+                "id=" + id + '\'' +
+                ",status=" + status + '\'' +
+                ",name=" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "LesDTO{" +
+                "\"id\":" + "\""+id+"\","+
+                "\"status\":" + "\""+status+"\","+
+                "\"name\":" + "\""+name+"\""+
+                '}';
+    }
 
 }

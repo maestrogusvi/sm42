@@ -1,4 +1,4 @@
-package com.ut.sm42.service;
+package sm42.src.main.java.com.ut.sm42.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,4 +18,5 @@ public interface ApplicationService {
    CatzinDTO omar() throws IOException;
    JoelDTO joel() throws IOException;
 
+   void LesPost() throws IOException;
 }
