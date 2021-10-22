@@ -25,4 +25,21 @@ public class NoeliDTO {
     public void setNAME(String NAME) {
         this.NAME = NAME;
     }
+
+    @Override
+    public String toString() {
+        return "NoeliDTO{" +
+                "status='" + status + '\'' +
+                ", ID='" + ID + '\'' +
+                ", NAME='" + NAME + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"status\":" +"\""+status+"\","+
+                "\"code\":" +"\""+ID+"\","+
+                "\"message\":" +"\""+NAME+"\""+
+                '}';
+    }
 }
