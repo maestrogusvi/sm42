@@ -48,7 +48,7 @@ public class ApplicationService {
 
     public MendozaDTO master() throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://arrozconleche.free.beeceptor.com","GET",null,null,"json",null, null));
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://churru.free.beeceptor.com","GET",null,null,"json",null, null));
         MendozaDTO master = new MendozaDTO();
         master.setId(json.get("id").getAsInt());
         master.setName(json.get("name").getAsString());
@@ -56,4 +56,13 @@ public class ApplicationService {
         return master;
     }
 
+    public TorreblancaDTO sayayin() throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://gohan.free.beeceptor.com","GET",null,null,"json",null, null));
+        TorreblancaDTO sayayin = new TorreblancaDTO();
+        sayayin.setId(json.get("id").getAsInt());
+        sayayin.setName(json.get("name").getAsString());
+        sayayin.setStatus(json.get("status").getAsString());
+        return sayayin;
+    }
 }

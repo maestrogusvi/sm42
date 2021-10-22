@@ -46,4 +46,8 @@ public class ApplicationController {
         return applicationService.master();
     }
 
+    @GetMapping("/sayayin")
+    public TorreblancaDTO sayayin() throws IOException {
+        return applicationService.sayayin();
+    }
 }
