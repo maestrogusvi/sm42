@@ -29,7 +29,7 @@ public class NoeliDTO {
     @Override
     public String toString() {
         return "NoeliDTO{" +
-                "status='" + status + '\'' +
+                "status='" + NAME + '\'' +
                 ", ID='" + ID + '\'' +
                 ", NAME='" + NAME + '\'' +
                 '}';
@@ -38,8 +38,8 @@ public class NoeliDTO {
     public String toJSON() {
         return "{" +
                 "\"status\":" +"\""+status+"\","+
-                "\"code\":" +"\""+ID+"\","+
-                "\"message\":" +"\""+NAME+"\""+
+                "\"ID\":" +"\""+ID+"\","+
+                "\"NAME\":" +"\""+NAME+"\""+
                 '}';
     }
 }

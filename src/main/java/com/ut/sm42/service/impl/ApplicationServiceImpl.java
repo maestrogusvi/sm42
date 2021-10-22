@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
-
+@Service
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
@@ -72,5 +72,19 @@ public class ApplicationServiceImpl implements ApplicationService {
         cesarDTO.setId(json.get("id").getAsInt());
         cesarDTO.setName(json.get("name").getAsString());
         return cesarDTO;
+    }
+
+    //POST
+    @Override
+    public NoeliDTO noepostHttp(NoeliDTO noeliDTO) throws IOException {
+        JsonParser pri = new JsonParser();
+        JsonObject json = (JsonObject) pri.parse(httpService.sendRequestHttpS("https://equiponoe.free.beeceptor.com/api/v1/noepostHttp","POST",null,null,"json",noeliDTO.toJSON(), null));
+        if(json.get("status")== null){
+            throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
+        }
+        noeliDTO.setStatus(json.get("status").getAsString());
+        noeliDTO.setID(json.get("ID").getAsString());
+        noeliDTO.setNAME(json.get("NAME").getAsString());
+        return noeliDTO;
     }
 }

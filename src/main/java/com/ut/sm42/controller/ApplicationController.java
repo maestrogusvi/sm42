@@ -1,6 +1,5 @@
 package com.ut.sm42.controller;
 
-import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-
 @RestController
 @RequestMapping("/api/v1")
 public class ApplicationController {
@@ -50,5 +48,13 @@ public class ApplicationController {
     @GetMapping("/cesar")
     public CejaDTO cesar()throws IOException{
         return applicationService.cesar();
+    }
+
+    //POST
+    @PostMapping("/testPostHttpNoe")
+    public NoeliDTO noeli(@RequestBody NoeliDTO noeliDTO) throws IOException {
+        applicationService.noepostHttp(noeliDTO);
+        String as = noeliDTO.toString();
+        return noeliDTO;
     }
 }
