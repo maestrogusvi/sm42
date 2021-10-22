@@ -25,7 +25,7 @@ public class ApplicationController {
         return applicationService.testHttp();
     }
     @GetMapping("/lester")
-    public DTOLES lester() throws IOException {
+        public LesDTO lester() throws IOException {
         return applicationService.lester();
     }
 

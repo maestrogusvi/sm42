@@ -28,10 +28,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         return beeceptorDTO;
     }
 
-    public DTOLES lester() throws IOException {
+    public LesDTO lester() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
-        DTOLES lesterDTO = new DTOLES();
+        LesDTO lesterDTO = new LesDTO();
         lesterDTO.setStatus(json.get("Status").getAsString());
         lesterDTO.setId(json.get("id").getAsInt());
         lesterDTO.setName(json.get("name").getAsString());

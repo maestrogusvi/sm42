@@ -13,7 +13,7 @@ public interface ApplicationService {
 
    String firstService();
    BeeceptorDTO testHttp() throws IOException;
-   DTOLES lester() throws IOException;
+   LesDTO lester() throws IOException;
    MartinezDTO arturo() throws IOException;
    CatzinDTO omar() throws IOException;
    JoelDTO joel() throws IOException;

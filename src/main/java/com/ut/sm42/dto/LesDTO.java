@@ -1,6 +1,6 @@
 package com.ut.sm42.dto;
 
-public class DTOLES {
+public class LesDTO {
 
 
     int id;
@@ -32,4 +32,6 @@ public class DTOLES {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 }
