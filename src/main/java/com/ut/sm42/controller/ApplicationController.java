@@ -44,5 +44,18 @@ public class ApplicationController {
         return applicationService.joel();
     }
 
+    @GetMapping("/LesPost")
+    public void LesPost(@RequestBody LesDTO lesterDTO) throws IOException{
+        ApplicationService.LesPost(lesterDTO);
+    }
+
+    @PostMapping("/LesPost")
+    public void LesPost(@RequestBody LesDTO lesterDTO ) {
+        string test = lesterDTO.toString();
+    }
+
+
+
+
 }
 

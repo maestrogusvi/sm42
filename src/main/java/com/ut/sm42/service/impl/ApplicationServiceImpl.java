@@ -76,18 +76,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
 
-    public void LesPost() throws IOException{
+    public void LesPost(LesDTO lesterDTO) throws IOException{
         JsonParser asd = new JsonParser();
-        LesDTO lesterDTO = new LesDTO();
-        LesDTO.setId("200");
-        LesDTO.setStatus("testpoststatus");
-        LesDTO.setName("testpostname");
-        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com/api/v1/LesPost", "POST", null, null, "json", LesDto.toJSON(), null));
 
 
     }
 
-    public void MartinePost() throws IOException{
+    public void MartinezPost() throws IOException{
         JsonParser amp = new JsonParser();
         MartinezDTO polancoDTO = new MartinezDTO();
         MartinezDTO.setId("200");
