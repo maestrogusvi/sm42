@@ -103,4 +103,20 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         return cejaDTO;
     }
+
+    @Override
+    public FragosoDTO fragosoPOST(FragosoDTO fragosoDTO) throws IOException {
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://davidendpoint.free.beeceptor.com/api/v1/fragosoPOST", "POST", null, null, "json", fragosoDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+        }
+        return fragosoDTO;
+    }
 }

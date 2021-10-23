@@ -64,4 +64,11 @@ public class ApplicationController {
         String as = cejaDTO.toString();
         return cejaDTO;
     }
+
+    @PostMapping("/fragosoPOST")
+    public FragosoDTO fragosoPOST(@RequestBody FragosoDTO fragosoDTO) throws  IOException{
+        applicationService.fragosoPOST(fragosoDTO);
+        String otro = fragosoDTO.toString();
+        return fragosoDTO;
+    }
 }
