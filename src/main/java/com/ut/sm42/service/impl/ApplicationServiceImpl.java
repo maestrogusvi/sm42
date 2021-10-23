@@ -94,14 +94,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
-    public void ChavezPost() throws IOException{
+    public void ChavezPost(JoelDTO joelDTO) throws IOException{
         JsonParser par = new JsonParser();
-        JoelDTO joelDTO = new JoelDTO();
-        JoelDTO.setId("200");
-        JoelDTO.setStatus("hola");
-        JoelDTO.SetName("hola2");
-        JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com", "GET", null, null, "json", null, null));
-
-
-    }
+        JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com/api/v1/ChavezPost", "POST", null, null, "json", joelDTO.toJSON(), null));
 }

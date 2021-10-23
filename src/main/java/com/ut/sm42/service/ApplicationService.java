@@ -20,5 +20,5 @@ public interface ApplicationService {
 
    void LesPost(LesDTO lesterDTO) throws IOException;
    void MartinezPost() throws IOException;
-   void ChavezPost() throws IOException;
+   void ChavezPost(JoelDTO joelDTO) throws IOException;
 }

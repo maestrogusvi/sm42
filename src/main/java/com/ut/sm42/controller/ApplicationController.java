@@ -56,6 +56,16 @@ public class ApplicationController {
 
 
 
+    @GetMapping("ChavezPost")
+    public void ChavezPost(@RequestBody JoelDTO joelDTO) throws IOException{
+        ApplicationService.ChavezPost(joelDTO);
+    }
+
+    @PostMapping("/ChavezPost")
+    public void ChavezPost(@RequestBody JoelDTO joelDTO ) {
+        string test = joelDTO.toString();
+    }
+
 
 }
 
