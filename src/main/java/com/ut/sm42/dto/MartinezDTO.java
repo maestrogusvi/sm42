@@ -31,6 +31,22 @@ public class MartinezDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String toString() {
+        return "LesDTO{" +
+                "id=" + id + '\'' +
+                ",status=" + status + '\'' +
+                ",name=" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "LesDTO{" +
+                "\"id\":" + "\""+id+"\","+
+                "\"status\":" + "\""+status+"\","+
+                "\"name\":" + "\""+name+"\""+
+                '}';
+    }
 }
 //Hola
 

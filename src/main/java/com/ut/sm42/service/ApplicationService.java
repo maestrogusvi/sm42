@@ -19,4 +19,6 @@ public interface ApplicationService {
    JoelDTO joel() throws IOException;
 
    void LesPost() throws IOException;
+   void MartinezPost() throws IOException;
+   void ChavezPost() throws IOException;
 }

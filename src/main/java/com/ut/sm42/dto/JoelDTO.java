@@ -31,4 +31,20 @@ public class JoelDTO {
     public void setStatus(String Status) {
         this.status = status;
     }
+
+    public String toString() {
+        return "LesDTO{" +
+                "id=" + id + '\'' +
+                ",status=" + status + '\'' +
+                ",name=" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "LesDTO{" +
+                "\"id\":" + "\""+id+"\","+
+                "\"status\":" + "\""+status+"\","+
+                "\"name\":" + "\""+name+"\""+
+                '}';
+    }
 }

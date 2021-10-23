@@ -8,7 +8,7 @@ import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
-@Override
+
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
@@ -74,4 +74,38 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
+    @Override
+
+    public void LesPost() throws IOException{
+        JsonParser asd = new JsonParser();
+        LesDTO lesterDTO = new LesDTO();
+        LesDTO.setId("200");
+        LesDTO.setStatus("testpoststatus");
+        LesDTO.setName("testpostname");
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
+
+
+    }
+
+    public void MartinePost() throws IOException{
+        JsonParser amp = new JsonParser();
+        MartinezDTO polancoDTO = new MartinezDTO();
+        MartinezDTO.setId("200");
+        MartinezDTO.setStatus("testpoststatus");
+        MartinezDTO.setName("testpostname");
+        JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://arturo.free.beeceptor.com", "GET", null, null, "json", null, null));
+
+
+    }
+
+    public void ChavezPost() throws IOException{
+        JsonParser par = new JsonParser();
+        JoelDTO joelDTO = new JoelDTO();
+        JoelDTO.setId("200");
+        JoelDTO.setStatus("hola");
+        JoelDTO.SetName("hola2");
+        JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com", "GET", null, null, "json", null, null));
+
+
+    }
 }
