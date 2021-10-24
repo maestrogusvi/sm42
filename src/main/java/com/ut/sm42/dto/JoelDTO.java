@@ -33,7 +33,7 @@ public class JoelDTO {
     }
 
     public String toString() {
-        return "LesDTO{" +
+        return "JoelDTO{" +
                 "id=" + id + '\'' +
                 ",status=" + status + '\'' +
                 ",name=" + name + '\'' +
@@ -41,7 +41,7 @@ public class JoelDTO {
     }
 
     public String toJSON() {
-        return "LesDTO{" +
+        return "JoelDTO{" +
                 "\"id\":" + "\""+id+"\","+
                 "\"status\":" + "\""+status+"\","+
                 "\"name\":" + "\""+name+"\""+
