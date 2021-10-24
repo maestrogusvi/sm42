@@ -89,8 +89,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public HuchimDTO HuchimPOST() throws IOException {
-        return null;
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com/api/v1/HuchimPOST", "POST", null, null, "json", HuchimPOST().toJSON(), null));
+        if(json.get("id")== null){
+                throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+            }
+        if(json.get("name")== null){
+                throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+            }
+        if(json.get("status")== null){
+                throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+            }
+            return null;
+        }
     }
 
 
-}
+
