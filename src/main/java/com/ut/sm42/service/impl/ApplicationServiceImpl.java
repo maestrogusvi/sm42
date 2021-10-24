@@ -87,7 +87,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
-
+    @Override
+    public HuchimDTO HuchimPOST() throws IOException {
+        return null;
+    }
 
 
 }
