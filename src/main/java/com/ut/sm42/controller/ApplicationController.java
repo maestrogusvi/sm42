@@ -48,19 +48,19 @@ public class ApplicationController {
 
     @PostMapping("/lesPost")
     public LesDTO lesPost(@RequestBody LesDTO lesterDTO )throws IOException{
-        LesDTO n1 = applicationService.lesPOST(LesDTO);
-        return n1;
+        applicationService.lesPOST(lesDTO);
+        return lesPost;
     }
     @PostMapping("/chavezPost")
         JoelDTO chavezPost(@RequestBody JoelDTO joelDTO )throws IOException{
-        JoelDTO n2 = applicationService.chavezPOST(JoelDTO);
-        return n2;
+        applicationService.chavezPOST(joelDTO);
+        return chavezPost;
     }
    
     @PostMapping("/martinezPost")
         MarintezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
-        MartinezDTO n3 = applicationService.martinezPOST(MartinezDTO);
-        return n3;
+        applicationService.martinezPOST(martinezDTO);
+        return martinezPost;
     }
 
    
