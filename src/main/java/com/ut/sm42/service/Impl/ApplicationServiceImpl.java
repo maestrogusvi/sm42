@@ -106,7 +106,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         return MartinezDTO;
 
     }
-    public JoelDTO martinezPost(JoelDTO joelDTO) throws IOException {
+    public JoelDTO chavezPost(JoelDTO joelDTO) throws IOException {
         JsonParser amp = new JsonParser();
         JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com/api/v1/ChavezPost", "POST", null, null, "json", joelDTO.toJSON(), null));
         if (json.get("id") == null) {
@@ -119,6 +119,20 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return JoelDTO;
+        {
+        public CatzinDTO omarPost(CatzinDTO chaconDTO) throws IOException {
+            JsonParser amp = new JsonParser();
+            JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://omarcatzin.free.beeceptor.com/api/v1/omarpost", "POST", null, null, "json", chaconDTO.toJSON(), null));
+            if (json.get("id") == null) {
+                throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+            }
+            if (json.get("name") == null) {
+                throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+            }
+            if (json.get("status") == null) {
+                throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+            }
+            return CatzinDTO;
 
     }
 

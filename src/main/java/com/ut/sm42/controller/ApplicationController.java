@@ -58,10 +58,16 @@ public class ApplicationController {
     }
    
     @PostMapping("/martinezPost")
-        MarintezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
+        MartinezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
         applicationService.martinezPOST(polancoDTO);
         return martinezPost;
     }
+
+    @PostMapping("/omarpost")
+    CatzinDTO catzinPost(@RequestBody CatzinDTO chaconDTO )throws IOException{
+        applicationService.omarPOST(chaconDTO);
+        return omarPost;
+
 
    
 }
