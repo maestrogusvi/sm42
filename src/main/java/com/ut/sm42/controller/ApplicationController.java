@@ -70,8 +70,7 @@ public class ApplicationController {
     }
     @PostMapping("/mezaPOST")
     public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
-        applicationService.mezaPOST(mezaDTO);
-        String as = mezaDTO.toString();
-        return mezaDTO;
+        MezaDTO amm =  applicationService.mezaPOST(mezaDTO);
+        return amm;
     }
 }
