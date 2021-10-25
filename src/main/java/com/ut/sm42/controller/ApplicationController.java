@@ -60,4 +60,11 @@ public class ApplicationController {
         return huchimDTO;
     }
 
+    @PostMapping("/lairPOST")
+    public LairDTO lairPOST(@RequestBody LairDTO lairDTO) throws  IOException{
+        applicationService.lairPOST(lairDTO);
+        String tets = lairDTO.toString();
+        return lairDTO;
+    }
+
 }
