@@ -17,9 +17,9 @@ public interface ApplicationService {
    MartinezDTO arturo() throws IOException;
    CatzinDTO omar() throws IOException;
    JoelDTO joel() throws IOException;
-   lesPost(LesDTO lesterDTO) throws IOException;
-   martinezPost(MartinezDTO polancoDTO) throws IOException;
-   chavezPost(JoelDTO joelDTO) throws IOException;
+   LesDTO lesPost(LesDTO lesterDTO) throws IOException;
+   MartinezDTO martinezPost(MartinezDTO polancoDTO) throws IOException;
+   JoelDTO chavezPost(JoelDTO joelDTO) throws IOException;
 }
 
 
