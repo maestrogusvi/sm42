@@ -19,7 +19,7 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
-    @ExceptionHandler({ BusinessException.class })
+    @ExceptionHandler({BusinessException.class})
     @ResponseBody
     public ResponseEntity<String> userHandler(BusinessException ex) {
         return new ResponseEntity<String>(ex.getMessage(), ex.getHttpStatus());
@@ -51,33 +51,21 @@ public class ApplicationController {
         return applicationService.sayayin();
     }
 
-    @GetMapping("/testMendozaHttp")
-    public void testMendozaHttp(@RequestBody MendozaDTO master) throws IOException {
+    @PostMapping("/testMendozaHttp")
+    public MendozaDTO testMendozaHttp(@RequestBody MendozaDTO master) throws IOException {
         applicationService.testMendozaHttp(master);
+        return master;
     }
 
-    @PostMapping("/testPost")
-    public void testPost(@RequestBody MendozaDTO master){
-        String test = master.toString();
-    }
-
-    @GetMapping("/testEscalanteHttp")
-    public void testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
+    @PostMapping("/testEscalanteHttp")
+    public EscalanteDTO testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
         applicationService.testEscalanteHttp(pan);
+        return pan;
     }
 
-    @PostMapping("/testPost")
-    public void testPost(@RequestBody EscalanteDTO pan) {
-        String test = pan.toString();
-    }
-
-    @GetMapping("/testTorreblancaHttp")
-    public void testTorreblancaHttp(@RequestBody TorreblancaDTO sayayin) throws IOException {
+    @PostMapping("/testTorreblancaHttp")
+    public TorreblancaDTO testTorreblancaHttp(@RequestBody TorreblancaDTO sayayin) throws IOException {
         applicationService.testTorreblancaHttp(sayayin);
-    }
-
-    @PostMapping("/testPost")
-    public void testPost(@RequestBody TorreblancaDTO sayayin) {
-        String test = sayayin.toString();
+        return sayayin;
     }
 }
