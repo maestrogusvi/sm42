@@ -65,4 +65,13 @@ public class ApplicationController {
         return lairDTO;
     }
 
+    @PostMapping("/aranaPOST")
+    public AranaDTO aranaDTO(@RequestBody AranaDTO aranaDTO) throws IOException{
+        applicationService.aranaPOST(aranaDTO);
+        String tets = aranaDTO.toString();
+        return aranaDTO;
+    }
+
+
+
 }
