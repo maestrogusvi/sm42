@@ -78,7 +78,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",beeceptorDTO.toJSON(), null));
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",romerithoDTO.toJSON(), null));
         if(json.get("id")== null){
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
