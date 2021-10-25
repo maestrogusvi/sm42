@@ -57,7 +57,7 @@ public class ApplicationController {
         return n2;
     }
    
-    @PostMapping("/lesPost")
+    @PostMapping("/martinezPost")
         MarintezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
         MartinezDTO n3 = applicationService.martinezPOST(MartinezDTO);
         return n3;
