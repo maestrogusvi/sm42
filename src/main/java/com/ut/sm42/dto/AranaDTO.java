@@ -37,4 +37,25 @@ public class AranaDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    //Act 22 oct 2021
+
+    @Override
+    public String toString() {
+        return "AranaDTO{" +
+                "identificador=" + identificador +
+                ", Nombre='" + Nombre + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"identificador\":" + "\""+identificador+"\"," +
+                "\"Nombre\":" + "\""+Nombre+"\"," +
+                "\"status\":" + "\""+status+"\"," +
+                '}';
+    }
+
+
 }
