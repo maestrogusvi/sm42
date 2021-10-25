@@ -36,17 +36,17 @@ public class RomerithoDTO {
     @Override
     public String toString() {
         return "RomerithoDTO{" +
-                "status='" + NAME + '\'' +
-                ", code='" + ID + '\'' +
-                ", message='" + NAME + '\'' +
+                "status='" + name + '\'' +
+                ", code='" + id + '\'' +
+                ", message='" + name + '\'' +
                 '}';
     }
 
     public String toJSON() {
         return "{" +
-                "\"status\"=" + "\"" + status + "\"," +
-                "\"code\"=" + "\"" + ID + "\"," +
-                "\"message\"=" + "\"" + NAME + "\"," +
+                "\"status\"=" + "\"" + Status + "\"," +
+                "\"code\"=" + "\"" + id + "\"," +
+                "\"message\"=" + "\"" + name + "\"," +
                 '}';
     }
 }
