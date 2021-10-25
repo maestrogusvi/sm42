@@ -22,5 +22,5 @@ public interface ApplicationService {
     EscobarDTO cruz() throws IOException;
     LairDTO carlos() throws IOException;
 
-    HuchimDTO HuchimPOST() throws IOException;
+
 }
