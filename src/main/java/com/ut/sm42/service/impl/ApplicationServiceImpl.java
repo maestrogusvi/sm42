@@ -82,9 +82,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         if(json.get("status")== null){
             throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
         }
-        noeliDTO.setStatus(json.get("status").getAsString());
-        noeliDTO.setID(json.get("ID").getAsString());
-        noeliDTO.setNAME(json.get("NAME").getAsString());
+        if(json.get("NAME")== null){
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("ID")== null){
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+        }
         return noeliDTO;
     }
 
