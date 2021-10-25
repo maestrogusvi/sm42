@@ -54,50 +54,42 @@ public class ApplicationController {
     @GetMapping("/romeroPostHttp")
     public RomerithoDTO  romeroPostHttp(@RequestBody RomerithoDTO romerithoDTO) throws IOException {
         applicationService.romeroPostHttp(romerithoDTO);
-        String as= romerithoDTO.toString();
         return romerithoDTO;
     }
     @GetMapping("/jlPostHttp")
     public TecDTO  jlPostHttp(@RequestBody TecDTO tecDTO) throws IOException {
         applicationService.jlPostHttp(tecDTO);
-        String as= tecDTO.toString();
         return tecDTO;
     }
     @GetMapping("/oscarlPostHttp")
     public RamirezDTO  oscarlPostHttp(@RequestBody RamirezDTO ramirezDTO) throws IOException {
         applicationService.oscarlPostHttp(ramirezDTO);
-        String as= ramirezDTO.toString();
         return ramirezDTO;
     }
     @GetMapping("/erickPostHttp")
     public MartinDTO  erickPostHttp(@RequestBody MartinDTO martinDTO) throws IOException {
         applicationService.erickPostHttp(martinDTO);
-        String as= martinDTO.toString();
         return martinDTO;
     }
 
     @PostMapping("/romeroPost")
     public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
         applicationService. romeroPostHttp(romerithoDTO);
-        String as= romerithoDTO.toString();
         return romerithoDTO;
     }
     @PostMapping("/jlPost")
     public TecDTO tecPost(@RequestBody TecDTO tecDTO) throws IOException{
         applicationService. jlPostHttp(tecDTO);
-        String as= tecDTO.toString();
         return tecDTO;
     }
     @PostMapping("/oscarlPost")
     public RamirezDTO oscarlPost(@RequestBody RamirezDTO ramirezDTO) throws IOException{
         applicationService.oscarlPostHttp(ramirezDTO);
-        String as= ramirezDTO.toString();
         return ramirezDTO;
     }
     @PostMapping("/erickPost")
     public MartinDTO erickPost(@RequestBody MartinDTO martinDTO) throws IOException{
         applicationService.erickPostHttp(martinDTO);
-        String as= martinDTO.toString();
         return martinDTO;
     }
 }
