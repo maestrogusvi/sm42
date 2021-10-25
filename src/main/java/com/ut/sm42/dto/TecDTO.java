@@ -44,4 +44,7 @@ public class TecDTO {
                 '}';
 
     }
+
+    public void setName(String name) {
+    }
 }
