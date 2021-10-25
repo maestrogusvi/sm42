@@ -44,7 +44,7 @@ public class RamirezDTO {
 
     public String toJSON() {
         return "{" +
-                "\"status\"=" + "\"" + Status + "\"," +
+                "\"status\"=" + "\"" + name + "\"," +
                 "\"code\"=" + "\"" + id + "\"," +
                 "\"message\"=" + "\"" + name + "\"," +
                 '}';
