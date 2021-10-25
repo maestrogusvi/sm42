@@ -81,8 +81,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/postHttp", "POST", null, null, "json", romerithoDTO.toJSON(), null));
+        JsonParser abc = new JsonParser();
+        JsonObject json = (JsonObject) abc.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/postHttp", "POST", null, null, "json", romerithoDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
@@ -96,8 +96,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     public TecDTO jlPostHttp(TecDTO tecDTO) throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com", "POST", null, null, "json", tecDTO.toJSON(), null));
+        JsonParser ame = new JsonParser();
+        JsonObject json = (JsonObject) ame.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com", "POST", null, null, "json", tecDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
@@ -111,8 +111,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     public MartinDTO erickPostHttp(MartinDTO martinDTO) throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com", "POST", null, null, "json", martinDTO.toJSON(), null));
+        JsonParser uno = new JsonParser();
+        JsonObject json = (JsonObject) uno.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com", "POST", null, null, "json", martinDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
