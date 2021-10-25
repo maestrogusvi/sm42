@@ -71,4 +71,10 @@ public class ApplicationController {
         String otro = fragosoDTO.toString();
         return fragosoDTO;
     }
+    @PostMapping("/mezaPOST")
+    public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
+        applicationService.mezaPOST(mezaDTO);
+        String as = mezaDTO.toString();
+        return mezaDTO;
+    }
 }
