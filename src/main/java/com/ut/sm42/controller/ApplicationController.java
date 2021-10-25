@@ -53,23 +53,20 @@ public class ApplicationController {
     //POST
     @PostMapping("/testPostHttpNoe")
     public NoeliDTO noeli(@RequestBody NoeliDTO noeliDTO) throws IOException {
-        applicationService.noepostHttp(noeliDTO);
-        String as = noeliDTO.toString();
-        return noeliDTO;
+        NoeliDTO nrm = applicationService.noepostHttp(noeliDTO);
+        return nrm;
     }
 
     @PostMapping("/cesarPOST")
     public CejaDTO cesarPOST(@RequestBody CejaDTO cejaDTO) throws IOException{
-        applicationService.cejaPOST(cejaDTO);
-        String as = cejaDTO.toString();
-        return cejaDTO;
+        CejaDTO cac = applicationService.cejaPOST(cejaDTO);
+        return cac;
     }
 
     @PostMapping("/fragosoPOST")
     public FragosoDTO fragosoPOST(@RequestBody FragosoDTO fragosoDTO) throws  IOException{
-        applicationService.fragosoPOST(fragosoDTO);
-        String otro = fragosoDTO.toString();
-        return fragosoDTO;
+        FragosoDTO df = applicationService.fragosoPOST(fragosoDTO);
+        return df;
     }
     @PostMapping("/mezaPOST")
     public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
