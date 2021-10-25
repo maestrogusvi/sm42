@@ -27,24 +27,25 @@ public class TecDTO {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "TecDTO{" +
                 "Status='" + Status + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
+                ", code=" + id +
+                ", message='" + name + '\'' +
                 '}';
     }
 
-    public String TecDTO() {
+    public String toJSON() {
         return "{" +
                 "\"status\"=" + "\"" + Status + "\"," +
                 "\"code\"=" + "\"" + id + "\"," +
                 "\"message\"=" + "\"" + name + "\"," +
                 '}';
 
-    }
-
-    public void setName(String name) {
     }
 }

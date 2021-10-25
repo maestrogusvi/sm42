@@ -82,7 +82,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException {
         JsonParser abc = new JsonParser();
-        JsonObject json = (JsonObject) abc.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/postHttp", "POST", null, null, "json", romerithoDTO.toJSON(), null));
+        JsonObject json = (JsonObject) abc.parse(httpService.sendRequestHttpS("https://romar.free.beeceptor.com/api/v1/romeropostHttp", "POST", null, null, "json", romerithoDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
@@ -97,7 +97,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     public TecDTO jlPostHttp(TecDTO tecDTO) throws IOException {
         JsonParser ame = new JsonParser();
-        JsonObject json = (JsonObject) ame.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com", "POST", null, null, "json", tecDTO.toJSON(), null));
+        JsonObject json = (JsonObject) ame.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com/api/v1/jlpostHttp", "POST", null, null, "json", tecDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
@@ -112,7 +112,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     public RamirezDTO oscarlPostHttp(RamirezDTO ramirezDTO) throws IOException {
         JsonParser parsera = new JsonParser();
-        JsonObject json = (JsonObject) parsera.parse(httpService.sendRequestHttpS("https://lemon.free.beeceptor.com", "POST", null, null, "json", ramirezDTO.toJSON(), null));
+        JsonObject json = (JsonObject) parsera.parse(httpService.sendRequestHttpS("https://lemon.free.beeceptor.com/api/v1/oscarlpostHttp", "POST", null, null, "json", ramirezDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
@@ -127,7 +127,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     public MartinDTO erickPostHttp(MartinDTO martinDTO) throws IOException {
         JsonParser uno = new JsonParser();
-        JsonObject json = (JsonObject) uno.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com", "POST", null, null, "json", martinDTO.toJSON(), null));
+        JsonObject json = (JsonObject) uno.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com/api/v1/erickpostHttp", "POST", null, null, "json", martinDTO.toJSON(), null));
         if (json.get("id") == null) {
             throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
         }
