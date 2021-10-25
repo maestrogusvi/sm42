@@ -30,7 +30,22 @@ public class MartinDTO {
         this.name = name;
     }
 
-    public MartinDTO() {
+    @Override
+    public String toString() {
+        return "MartinDTO{" +
+                "Status='" + Status + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public String MartinDTO() {
+        return "{" +
+                "\"status\"=" + "\"" + Status + "\"," +
+                "\"code\"=" + "\"" + id + "\"," +
+                "\"message\"=" + "\"" + name + "\"," +
+                '}';
+
 
     }
 }
