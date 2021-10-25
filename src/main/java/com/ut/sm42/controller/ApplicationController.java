@@ -52,13 +52,16 @@ public class ApplicationController {
     }
 
     @GetMapping("/romeroPostHttp")
-    public void  romeroPostHttp(@RequestBody BeeceptorDTO beeceptorDTO) throws IOException {
-        applicationService.romeroPostHttp(beeceptorDTO);
+    public RomerithoDTO  romeroPostHttp(@RequestBody RomerithoDTO romerithoDTO) throws IOException {
+        applicationService.romeroPostHttp(romerithoDTO);
+        String as= romerithoDTO.toString();
+        return romerithoDTO;
     }
 
     @PostMapping("/romeroPost")
-    public void romeroPost(@RequestBody RomerithoDTO beeceptorDTO){
-        String test = beeceptorDTO.toString();
+    public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
+        applicationService. romeroPostHttp(romerithoDTO);
+        String as= romerithoDTO.toString();
     }
 
 }
