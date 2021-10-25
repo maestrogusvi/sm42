@@ -32,4 +32,21 @@ public class RomerithoDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "BeeceptorDTO{" +
+                "status='" + NAME + '\'' +
+                ", code='" + ID + '\'' +
+                ", message='" + NAME + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"status\"=" +"\""+status+"\","+
+                "\"code\"=" +"\""+ID+"\","+
+                "\"message\"=" +"\""+NAME+"\","+
+                '}';
 }
+

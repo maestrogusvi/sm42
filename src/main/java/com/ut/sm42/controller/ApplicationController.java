@@ -62,6 +62,7 @@ public class ApplicationController {
     public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
         applicationService. romeroPostHttp(romerithoDTO);
         String as= romerithoDTO.toString();
+        return romerithoDTO;
     }
 
 }

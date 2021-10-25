@@ -33,20 +33,5 @@ public class BeeceptorDTO {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "BeeceptorDTO{" +
-                "status='" + status + '\'' +
-                ", code='" + code + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
-
-    public String toJSON() {
-        return "{" +
-                "\"status\"=" +"\""+status+"\","+
-                "\"code\"=" +"\""+code+"\","+
-                "\"message\"=" +"\""+message+"\","+
-                '}';
     }
 }
