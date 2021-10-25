@@ -62,11 +62,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     public TecDTO jesus() throws IOException {
         JsonParser am = new JsonParser();
         JsonObject json = (JsonObject) am.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com", "GET", null, null, "json", null, null));
-        TecDTO yisusDTO = new TecDTO();
-        yisusDTO.setId(json.get("Id").getAsInt());
-        yisusDTO.setName(json.get("Name").getAsString());
-        yisusDTO.setStatus(json.get("status").getAsString());
-        return yisusDTO;
+        TecDTO canulDTO = new TecDTO();
+        canulDTO.setId(json.get("Id").getAsInt());
+        canulDTO.setName(json.get("Name").getAsString());
+        canulDTO.setStatus(json.get("status").getAsString());
+        return canulDTO;
     }
 
     public RamirezDTO oscarl() throws IOException {
