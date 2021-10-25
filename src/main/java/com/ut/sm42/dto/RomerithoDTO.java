@@ -44,9 +44,10 @@ public class RomerithoDTO {
 
     public String toJSON() {
         return "{" +
-                "\"status\"=" +"\""+status+"\","+
-                "\"code\"=" +"\""+ID+"\","+
-                "\"message\"=" +"\""+NAME+"\","+
+                "\"status\"=" + "\"" + status + "\"," +
+                "\"code\"=" + "\"" + ID + "\"," +
+                "\"message\"=" + "\"" + NAME + "\"," +
                 '}';
+    }
 }
 
