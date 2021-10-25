@@ -44,35 +44,25 @@ public class ApplicationController {
         return applicationService.joel();
     }
 
-    @GetMapping("/LesPost")
-    public void LesPost(@RequestBody LesDTO lesterDTO) throws IOException{
-        ApplicationService.LesPost(lesterDTO);
+   
+
+    @PostMapping("/lesPost")
+    public LesDTO lesPost(@RequestBody LesDTO lesterDTO )throws IOException{
+        LesDTO n1 = applicationService.lesPOST(LesDTO);
+        return n1;
+    }
+    @PostMapping("/chavezPost")
+        JoelDTO chavezPost(@RequestBody JoelDTO joelDTO )throws IOException{
+        JoelDTO n2 = applicationService.chavezPOST(JoelDTO);
+        return n2;
+    }
+   
+    @PostMapping("/lesPost")
+        MarintezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
+        MartinezDTO n3 = applicationService.martinezPOST(MartinezDTO);
+        return n3;
     }
 
-    @PostMapping("/LesPost")
-    public void LesPost(@RequestBody LesDTO lesterDTO ) {
-        string test = lesterDTO.toString();
-    }
-
-
-
-    @GetMapping("ChavezPost")
-    public void ChavezPost(@RequestBody JoelDTO joelDTO) throws IOException{
-        ApplicationService.ChavezPost(joelDTO);
-    }
-
-    @PostMapping("/ChavezPost")
-    public void ChavezPost(@RequestBody JoelDTO joelDTO ) {
-        string test = joelDTO.toString();
-    }
-    @GetMapping("/MartinezPost")
-    public void MartinezPost(@RequestBody MartinezDTO polancoDTO) throws IOException{
-        ApplicationService.MartinezPost(polancoDTO);
-    }
-    @PostMapping("/MartinezPost")
-    public void MartinezPost(@RequestBody MartinezDTO polancoDTO) {
-        string test = polancoDTO.toString();
-    }
-
+   
 }
 
