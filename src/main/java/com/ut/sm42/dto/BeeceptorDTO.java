@@ -5,6 +5,7 @@ public class BeeceptorDTO {
     String status;
     String code;
     String message;
+    ExampleDTO exampleDTO;
 
     public BeeceptorDTO() {
     }

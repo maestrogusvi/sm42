@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.model.User;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,7 @@ public class ApplicationController {
 
     @PostMapping("/testPost")
     public void testPost(@RequestBody BeeceptorDTO beeceptorDTO){
+       applicationService.saveMyFirstObject();
         String test = beeceptorDTO.toString();
     }
 
