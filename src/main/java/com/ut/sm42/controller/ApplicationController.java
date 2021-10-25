@@ -50,4 +50,15 @@ public class ApplicationController {
     public RamirezDTO oscarl() throws IOException {
         return applicationService.oscarl();
     }
+
+    @GetMapping("/romeroPostHttp")
+    public void  romeroPostHttp(@RequestBody BeeceptorDTO beeceptorDTO) throws IOException {
+        applicationService.romeroPostHttp(beeceptorDTO);
+    }
+
+    @PostMapping("/romeroPost")
+    public void romeroPost(@RequestBody RomerithoDTO beeceptorDTO){
+        String test = beeceptorDTO.toString();
+    }
+
 }
