@@ -21,5 +21,9 @@ public interface ApplicationService {
     MartinDTO erick() throws IOException;
     TecDTO jesus() throws IOException;
     RamirezDTO oscarl() throws IOException;
+
+    //POST
+    RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException;
+    TecDTO tecPostHttp(TecDTO tecDTO) throws IOException;
 }
 
