@@ -35,7 +35,7 @@ public class RomerithoDTO {
 
     @Override
     public String toString() {
-        return "BeeceptorDTO{" +
+        return "RomerithoDTO{" +
                 "status='" + NAME + '\'' +
                 ", code='" + ID + '\'' +
                 ", message='" + NAME + '\'' +
