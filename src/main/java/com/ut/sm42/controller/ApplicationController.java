@@ -52,4 +52,12 @@ public class ApplicationController {
     public AranaDTO ivan() throws IOException {
         return applicationService.ivan();
     }
+
+    @PostMapping("/huchimPOST")
+    public HuchimDTO huchimPOST(@RequestBody HuchimDTO huchimDTO) throws IOException{
+        applicationService.huchimPOST(huchimDTO);
+        String tets = huchimDTO.toString();
+        return huchimDTO;
+    }
+
 }
