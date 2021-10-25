@@ -110,6 +110,21 @@ public class ApplicationServiceImpl implements ApplicationService {
         return tecDTO;
     }
 
+    public RamirezDTO oscarlPostHttp(RamirezDTO ramirezDTO) throws IOException {
+        JsonParser parsera = new JsonParser();
+        JsonObject json = (JsonObject) parsera.parse(httpService.sendRequestHttpS("https://lemon.free.beeceptor.com", "POST", null, null, "json", ramirezDTO.toJSON(), null));
+        if (json.get("id") == null) {
+            throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+        }
+        if (json.get("name") == null) {
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if (json.get("status") == null) {
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+        }
+        return ramirezDTO;
+    }
+
     public MartinDTO erickPostHttp(MartinDTO martinDTO) throws IOException {
         JsonParser uno = new JsonParser();
         JsonObject json = (JsonObject) uno.parse(httpService.sendRequestHttpS("https://erickr.free.beeceptor.com", "POST", null, null, "json", martinDTO.toJSON(), null));
@@ -123,5 +138,4 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return martinDTO;
-    }
 }

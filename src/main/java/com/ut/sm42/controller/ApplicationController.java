@@ -63,6 +63,12 @@ public class ApplicationController {
         String as= tecDTO.toString();
         return tecDTO;
     }
+    @GetMapping("/oscarlPostHttp")
+    public RamirezDTO  oscarlPostHttp(@RequestBody RamirezDTO ramirezDTO) throws IOException {
+        applicationService.oscarlPostHttp(ramirezDTO);
+        String as= ramirezDTO.toString();
+        return ramirezDTO;
+    }
     @GetMapping("/erickPostHttp")
     public MartinDTO  erickPostHttp(@RequestBody MartinDTO martinDTO) throws IOException {
         applicationService.erickPostHttp(martinDTO);
@@ -81,6 +87,12 @@ public class ApplicationController {
         applicationService. jlPostHttp(tecDTO);
         String as= tecDTO.toString();
         return tecDTO;
+    }
+    @PostMapping("/oscarlPost")
+    public RamirezDTO oscarlPost(@RequestBody RamirezDTO ramirezDTO) throws IOException{
+        applicationService.oscarlPostHttp(ramirezDTO);
+        String as= ramirezDTO.toString();
+        return ramirezDTO;
     }
     @PostMapping("/erickPost")
     public MartinDTO erickPost(@RequestBody MartinDTO martinDTO) throws IOException{

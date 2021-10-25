@@ -32,4 +32,21 @@ public class RamirezDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "RamirezDTO{" +
+                "status=" + name +
+                ", code='" + id + '\'' +
+                ", message='" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"status\"=" + "\"" + Status + "\"," +
+                "\"code\"=" + "\"" + id + "\"," +
+                "\"message\"=" + "\"" + name + "\"," +
+                '}';
+    }
 }
