@@ -87,7 +87,45 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
+    @Override
+    public HuchimDTO huchimPOST(HuchimDTO huchimDTO) throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com/api/v1/huchimPOST", "GET", null, null, "json", huchimDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id doen´t exit", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name doen´t exit", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status doen´t exit", HttpStatus.FORBIDDEN);
+        }
 
+        return huchimDTO;
+    }
 
+    @Override
+    public LairDTO lairPOST(LairDTO lairDTO) throws IOException {
+
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://carlos.free.beeceptor.com/api/v1/lairPOST", "POST", null, null, "json", lairDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name doesn’ exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        return lairDTO;
+    }
 
 }
+
+
+
+
+
+
+
