@@ -15,7 +15,7 @@ public interface ApplicationService {
     CejaDTO cesar()throws IOException;
     //POST
     NoeliDTO noepostHttp(NoeliDTO noeliDTO) throws  IOException;
-
+    MezaDTO mezaPOST(MezaDTO mezaDTO) throws IOException;
     CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException;
     FragosoDTO fragosoPOST(FragosoDTO fragosoDTO) throws IOException;
 

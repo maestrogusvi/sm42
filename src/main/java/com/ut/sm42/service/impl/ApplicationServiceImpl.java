@@ -91,6 +91,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         return noeliDTO;
     }
 
+
     @Override
     public CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException {
         JsonParser ahhh = new JsonParser();
@@ -121,5 +122,20 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return fragosoDTO;
+    }
+    @Override
+    public MezaDTO mezaPOST(MezaDTO mezaDTO) throws IOException {
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://davidendpoint.free.beeceptor.com/api/v1/mezaPOST", "POST", null, null, "json", mezaDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+        }
+        return mezaDTO;
     }
 }
