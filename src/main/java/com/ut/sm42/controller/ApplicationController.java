@@ -57,6 +57,12 @@ public class ApplicationController {
         String as= romerithoDTO.toString();
         return romerithoDTO;
     }
+    @GetMapping("/jlPostHttp")
+    public TecDTO  jlPostHttp(@RequestBody TecDTO tecDTO) throws IOException {
+        applicationService.jlPostHttp(tecDTO);
+        String as= tecDTO.toString();
+        return tecDTO;
+    }
 
     @PostMapping("/romeroPost")
     public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
@@ -64,5 +70,10 @@ public class ApplicationController {
         String as= romerithoDTO.toString();
         return romerithoDTO;
     }
-
+    @PostMapping("/jlPost")
+    public TecDTO tecPost(@RequestBody TecDTO tecDTO) throws IOException{
+        applicationService. tecPostHttp(tecDTO);
+        String as= tecDTO.toString();
+        return tecDTO;
+    }
 }

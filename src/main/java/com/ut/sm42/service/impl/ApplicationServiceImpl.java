@@ -87,7 +87,20 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         if(json.get("status")== null){
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+            return romerithoDTO;
         }
-        return romerithoDTO;
     }
-}
+    public TecDTO jlPostHttp(TecDTO tecDTO) throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://yisus.free.beeceptor.com","POST",null,null,"json",tecDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("status")== null){
+            throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
+            return tecDTO;
+        }
+    }
