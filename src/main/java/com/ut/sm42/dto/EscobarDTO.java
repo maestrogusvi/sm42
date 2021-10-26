@@ -32,4 +32,23 @@ public class EscobarDTO {
     public void setStatus(String status) {
         Status = status;
     }
+
+    @Override
+    public String toString() {
+        return "EscobarDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + Status + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "{" +
+                "\"id\":" + "\""+id+"\","+
+                "\"name\":" + "\""+name+"\","+
+                "\"status\":" + "\""+Status+"\""+
+                '}';
+    }
+
 }
+
