@@ -139,8 +139,21 @@ public class ApplicationServiceImpl implements ApplicationService {
         return aranaDTO;
     }
 
-
-
+    @Override
+    public EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/api/v1/escobarPOST", "POST", null, null, "json", escobarDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name doesn’ exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("Status")== null){
+            throw new BusinessException("Status doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        return escobarDTO;
+    }
 
 
 }

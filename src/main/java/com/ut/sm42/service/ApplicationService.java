@@ -25,6 +25,6 @@ public interface ApplicationService {
     HuchimDTO huchimPOST(HuchimDTO huchimDTO) throws IOException;
     LairDTO lairPOST(LairDTO lairDTO) throws IOException;
     AranaDTO aranaPOST(AranaDTO aranaDTO) throws  IOException;
-
+    EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException;
 
 }
