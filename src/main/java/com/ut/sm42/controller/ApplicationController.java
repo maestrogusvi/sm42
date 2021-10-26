@@ -74,6 +74,13 @@ public class ApplicationController {
         return aranaDTO;
     }
 
+    @PostMapping("/escobarPOST")
+    public EscobarDTO escobarPOST(@RequestBody EscobarDTO escobarDTO) throws  IOException{
+        applicationService.escobarPOST(escobarDTO);
+        String tets = escobarDTO.toString();
+        return escobarDTO;
+    }
+
 
 
 }
