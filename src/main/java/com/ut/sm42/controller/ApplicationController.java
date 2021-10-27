@@ -55,7 +55,7 @@ public class ApplicationController {
 
     @PostMapping("/huchimPOST")
     public HuchimDTO huchimPOST(@RequestBody HuchimDTO huchimDTO) throws IOException{
-        applicationService.huchimPOST(huchimDTO);
+        //applicationService.huchimPOST(huchimDTO);
         applicationService.saveMyFirstObject();
         return huchimDTO;
     }
