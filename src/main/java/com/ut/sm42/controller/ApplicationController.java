@@ -57,6 +57,12 @@ public class ApplicationController {
         return master;
     }
 
+    @PostMapping("/testPost")
+    public void testPost(@RequestBody MendozaDTO master) {
+        applicationService.saveMyFirstObjectMendoza();
+        String test = master.toString();
+    }
+
     @PostMapping("/testEscalanteHttp")
     public EscalanteDTO testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
         applicationService.testEscalanteHttp(pan);

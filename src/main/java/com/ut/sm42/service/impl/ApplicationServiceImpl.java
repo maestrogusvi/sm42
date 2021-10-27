@@ -7,6 +7,8 @@ import com.ut.sm42.dto.EscalanteDTO;
 import com.ut.sm42.dto.MendozaDTO;
 import com.ut.sm42.dto.TorreblancaDTO;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
 import org.apache.http.annotation.Obsolete;
@@ -21,6 +23,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     HttpService httpService;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public String firstService(){
@@ -92,4 +97,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://gohan.free.beeceptor.com/api/v1/postHttp","POST",null,null,"json",sayayin.toJSON(), null));
     }
+
+    @Override
+    public void saveMyFirstObjectMendoza() {
+        User user = new User();
+        user.setStatus("Funcionando");
+        user.setName("Carim Mendoza");
+        userRepository.save(user);
+    }
+
+
 }
