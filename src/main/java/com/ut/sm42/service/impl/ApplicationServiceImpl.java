@@ -4,6 +4,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.MediaStackDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -58,5 +59,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         User user = new User();
         user.setName("Armando Vivanco");
         userRepository.save(user);
+    }
+
+    @Override
+    public void getNews() throws IOException {
+        JsonParser parser = new JsonParser();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("http://api.mediastack.com/v1/news?access_key=d92941a0ae4d3326de6a9e794da1982e&palabrasclave=tenis&países=us","GET",null,null,"json",null, null));
+        MediaStackDTO mediaStackDTO =  new MediaStackDTO();
     }
 }

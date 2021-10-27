@@ -19,6 +19,7 @@ public interface ApplicationService {
      BeeceptorDTO testHttp() throws IOException;
      void testPostHttp(BeeceptorDTO beeceptorDTO) throws IOException;
      void saveMyFirstObject();
+     void getNews() throws IOException;
 
 
 }

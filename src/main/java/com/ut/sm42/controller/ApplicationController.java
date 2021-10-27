@@ -40,9 +40,9 @@ public class ApplicationController {
     }
 
     @PostMapping("/testPost")
-    public void testPost(@RequestBody BeeceptorDTO beeceptorDTO){
-       applicationService.saveMyFirstObject();
-        String test = beeceptorDTO.toString();
+    public void testPost() throws IOException {
+       applicationService.getNews();
+
     }
 
 }
