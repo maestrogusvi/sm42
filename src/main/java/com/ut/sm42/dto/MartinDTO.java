@@ -39,7 +39,7 @@ public class MartinDTO {
                 '}';
     }
 
-    public String MartinDTO() {
+    public String toJSON() {
         return "{" +
                 "\"status\"=" + "\"" + Status + "\"," +
                 "\"code\"=" + "\"" + id + "\"," +
@@ -48,4 +48,5 @@ public class MartinDTO {
 
 
     }
+
 }
