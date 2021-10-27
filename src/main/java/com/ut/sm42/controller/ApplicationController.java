@@ -59,7 +59,7 @@ public class ApplicationController {
 
     @PostMapping("/testPost")
     public void testPost(@RequestBody MendozaDTO master) {
-        applicationService.saveMyFirstObjectMendoza();
+        applicationService.saveMyFirstObject();
         String test = master.toString();
     }
 

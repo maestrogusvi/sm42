@@ -99,7 +99,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void saveMyFirstObjectMendoza() {
+    public void saveMyFirstObject() {
         User user = new User();
         user.setStatus("Funcionando");
         user.setName("Carim Mendoza");
