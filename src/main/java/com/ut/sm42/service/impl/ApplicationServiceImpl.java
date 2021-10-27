@@ -7,7 +7,8 @@ import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
-import com.ut.sm42.user.UserRepository;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -142,13 +143,14 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return martinDTO;
+    }
 
-        @Override
-        public void saveMyFirstObject() {
+    @Override
+    public void saveMyFirstObject() {
             User user = new User();
             user.setStatus("Funciona");
             user.setName("Sebastian Romero");
-            user.Repository.save(user);
+            userRepository.save(user);
 
         }
-}
+    }

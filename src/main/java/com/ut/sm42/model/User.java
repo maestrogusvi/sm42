@@ -10,6 +10,9 @@ public class User {
     String status;
     String name;
 
+    public User(){
+    }
+
     public int getId() {
         return id;
     }
@@ -34,7 +37,5 @@ public class User {
         this.name = name;
     }
 
-    public User(){
 
-    }
 }
