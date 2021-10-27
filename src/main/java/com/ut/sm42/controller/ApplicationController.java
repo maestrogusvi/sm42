@@ -54,6 +54,7 @@ public class ApplicationController {
     @PostMapping("/testPostHttpNoe")
     public NoeliDTO noeli(@RequestBody NoeliDTO noeliDTO) throws IOException {
         NoeliDTO nrm = applicationService.noepostHttp(noeliDTO);
+        applicationService.myObjectNoe();
         return nrm;
     }
 

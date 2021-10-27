@@ -19,4 +19,5 @@ public interface ApplicationService {
     CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException;
     FragosoDTO fragosoPOST(FragosoDTO fragosoDTO) throws IOException;
     void saveMyFirstObject();
+    void myObjectNoe();
 }

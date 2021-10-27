@@ -147,4 +147,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         user.setName("Cesar Ceja");
         userRepository.save(user);
     }
+    public  void myObjectNoe(){
+        User usury = new  User();
+        usury.setName("Noeli");
+        userRepository.save(usury);
+    }
 }
