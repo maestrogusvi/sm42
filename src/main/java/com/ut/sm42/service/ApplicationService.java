@@ -18,8 +18,8 @@ public interface ApplicationService {
 
     LesDTO lesPOST(LesDTO lesDTO) throws IOException;
     JoelDTO joelPOST(JoelDTO joelDTO) throws IOException;
-    MartinezDTO arturoPOST(MartinezDTO arturoDTO) throws  IOException;
-    CatzinDTO omarPOST(CatzinDTO omarDTO) throws IOException;
+    MartinezDTO arturoPOST(MartinezDTO martinezDTO) throws  IOException;
+    CatzinDTO omarPOST(CatzinDTO chaconDTO) throws IOException;
     void saveMyFirstObject();
 
 }

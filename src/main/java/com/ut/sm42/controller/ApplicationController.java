@@ -58,10 +58,13 @@ public class ApplicationController {
 //post
 
     @PostMapping("/lesPost")
-    LesDTO lesPost(@RequestBody LesDTO lesterDTO) throws IOException {
-        LesDTO arp =  applicationService.lesPOST(lesterDTO);
-        return arp;
-    }
+
+
+   public void lesPost(@RequestBody LesDTO lesDTO) throws IOException {
+    applicationService.saveMyFirstObject();
+   String test = lesDTO.toString();
+
+   }
 
     @PostMapping("/chavezPost")
     public JoelDTO chavezPost(@RequestBody JoelDTO joelDTO) throws IOException {
@@ -70,8 +73,8 @@ public class ApplicationController {
     }
 
     @PostMapping("/martinezPost")
-    public  MartinezDTO martinezPost(@RequestBody MartinezDTO polancoDTO) throws IOException {
-     MartinezDTO are =  applicationService.arturoPOST(polancoDTO);
+    public  MartinezDTO martinezPost(@RequestBody MartinezDTO martinezDTO) throws IOException {
+     MartinezDTO are =  applicationService.arturoPOST(martinezDTO);
         return are;
     }
 
