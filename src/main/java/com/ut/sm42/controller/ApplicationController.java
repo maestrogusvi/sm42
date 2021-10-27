@@ -56,12 +56,14 @@ public class ApplicationController {
     @PostMapping("/huchimPOST")
     public HuchimDTO huchimPOST(@RequestBody HuchimDTO huchimDTO) throws IOException{
         applicationService.huchimPOST(huchimDTO);
+        applicationService.saveMyFirstObject();
         return huchimDTO;
     }
 
     @PostMapping("/lairPOST")
     public LairDTO lairPOST(@RequestBody LairDTO lairDTO) throws  IOException{
         applicationService.lairPOST(lairDTO);
+        String tets = lairDTO.toString();
         return lairDTO;
     }
 
@@ -70,6 +72,13 @@ public class ApplicationController {
         applicationService.aranaPOST(aranaDTO);
         String tets = aranaDTO.toString();
         return aranaDTO;
+    }
+
+    @PostMapping("/escobarPOST")
+    public EscobarDTO escobarPOST(@RequestBody EscobarDTO escobarDTO) throws  IOException{
+        applicationService.escobarPOST(escobarDTO);
+        String tets = escobarDTO.toString();
+        return escobarDTO;
     }
 
 

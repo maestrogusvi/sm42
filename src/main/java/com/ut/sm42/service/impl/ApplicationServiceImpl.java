@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     HttpService httpService;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public String firstService() {
@@ -139,8 +144,29 @@ public class ApplicationServiceImpl implements ApplicationService {
         return aranaDTO;
     }
 
+    @Override
+    public EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/api/v1/escobarPOST", "POST", null, null, "json", escobarDTO.toJSON(), null));
+        if(json.get("id")== null){
+            throw new BusinessException("id doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("name")== null){
+            throw new BusinessException("name doesn’ exist", HttpStatus.FORBIDDEN);
+        }
+        if(json.get("Status")== null){
+            throw new BusinessException("Status doesn’t exist", HttpStatus.FORBIDDEN);
+        }
+        return escobarDTO;
+    }
 
-
+    @Override
+    public void saveMyFirstObject() {
+        User user = new User();
+        user.setName("Diego Huchim");
+        user.setStatus("Disponible");
+        userRepository.save(user);
+    }
 
 
 }
