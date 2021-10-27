@@ -1,8 +1,9 @@
 package com.ut.sm42.controller;
 
-import com.google.gson.JsonObject;
+
 import com.ut.sm42.dto.*;
-import com.ut.sm42.service.ApplicationService;
+
+import com.ut.sm42.service.Impl.ApplicationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +12,29 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/v1")
 public class ApplicationController {
-
     @Autowired
     ApplicationService applicationService;
 
+    @ExceptionHandler({ BusinessException.class })
+    @ResponseBody
+    public ResponseEntity<String> userHandler(BusinessException ex) {
+        return new ResponseEntity<String>(ex.getMessage(), ex.getHttpStatus());
+    }
+
     @GetMapping("/")
-    public String inicio2(){
-        return applicationService.firstService();
+    public String inicio(){return applicationService.firstService();
     }
 
     @GetMapping("/testHttp")
     public BeeceptorDTO testHttp() throws IOException {
         return applicationService.testHttp();
     }
-    @GetMapping("/lester")
-        public LesDTO lester() throws IOException {
-        return applicationService.lester();
+
+
+//asdasdasdas
+    @GetMapping("/les")
+    public LesDTO les() throws IOException {
+        return applicationService.les();
     }
 
     @GetMapping("/arturo")
@@ -44,31 +52,30 @@ public class ApplicationController {
         return applicationService.joel();
     }
 
-   
+//post
 
     @PostMapping("/lesPost")
-       LesDTO lesPost(@RequestBody LesDTO lesterDTO )throws IOException{
-        applicationService.lesPOST(lesterDTO);
-        return lesPost;
+    LesDTO lesPost(@RequestBody LesDTO lesterDTO) throws IOException {
+        LesDTO arp =  applicationService.lesPost(lesterDTO);
+        return arp;
     }
+
     @PostMapping("/chavezPost")
-        JoelDTO chavezPost(@RequestBody JoelDTO joelDTO )throws IOException{
-        applicationService.chavezPOST(joelDTO);
-        return chavezPost;
+    public JoelDTO chavezPost(@RequestBody JoelDTO joelDTO) throws IOException {
+        JoelDTO ar =  applicationService.chavezPost(joelDTO);
+        return ar;
     }
-   
+
     @PostMapping("/martinezPost")
-        MartinezDTO martinezPost(@RequestBody MartinezDTO polancoDTO )throws IOException{
-        applicationService.martinezPOST(polancoDTO);
-        return martinezPost;
+    public  MartinezDTO martinezPost(@RequestBody MartinezDTO polancoDTO) throws IOException {
+     MartinezDTO are =  applicationService.martinezPost(polancoDTO);
+        return are;
     }
 
-    @PostMapping("/omarpost")
-    CatzinDTO catzinPost(@RequestBody CatzinDTO chaconDTO )throws IOException{
-        applicationService.omarPOST(chaconDTO);
-        return omarPost;
+    @PostMapping("/omarPost")
+    public CatzinDTO catzinPost(@RequestBody CatzinDTO chaconDTO) throws IOException {
+        CatzinDTO arr =  applicationService.omarPost(chaconDTO);
+        return arr;
 
-
-   
+    }
 }
-

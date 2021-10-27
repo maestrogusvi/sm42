@@ -17,10 +17,13 @@ public interface ApplicationService {
    MartinezDTO arturo() throws IOException;
    CatzinDTO omar() throws IOException;
    JoelDTO joel() throws IOException;
-   lesPost(LesDTO lesterDTO) throws IOException;
-   martinezPost(MartinezDTO polancoDTO) throws IOException;
-   chavezPost(JoelDTO joelDTO) throws IOException;
-   omarPost(JoelDTO joelDTO) throws IOException;
+
+   // post
+
+   LesDTO lesPost(LesDTO lesterDTO) throws IOException;
+   MartinezDTO martinezPost(MartinezDTO polancoDTO) throws IOException;
+   JoelDTO chavezPost(JoelDTO joelDTO) throws IOException;
+   CatzinDTO omarPost(CatzinDTO chaconDTO) throws IOException;
 
 }
 

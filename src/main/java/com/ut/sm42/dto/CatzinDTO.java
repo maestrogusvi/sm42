@@ -30,6 +30,23 @@ public class CatzinDTO {
         public void setStatus(String status) {
             this.status = status;
         }
+
+
+    public String toString() {
+        return "CatzinlDTO{" +
+                "id=" + id + '\'' +
+                ",status=" + status + '\'' +
+                ",name=" + name + '\'' +
+                '}';
+    }
+
+    public String toJSON() {
+        return "CatzinDTO{" +
+                "\"id\":" + "\""+id+"\","+
+                "\"status\":" + "\""+status+"\","+
+                "\"name\":" + "\""+name+"\""+
+                '}';
+    }
     }
 
 

@@ -2,33 +2,39 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
-import com.ut.sm42.service.ApplicationService;
-import com.ut.sm42.service.HttpService;
+import com.ut.sm42.exception.BusinessException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import java.io.IOException;
 
-
-public class ApplicationServiceImpl implements ApplicationService {
+ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
     @Override
-    public String firstService() {
+    public String firstService(){
         return "service";
     }
 
     @Override
     public BeeceptorDTO testHttp() throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm41.free.beeceptor.com", "GET", null, null, "json", null, null));
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm42.free.beeceptor.com","GET",null,null,"json",null, null));
         BeeceptorDTO beeceptorDTO = new BeeceptorDTO();
+
+        if(json.get("code")== null){
+            throw new BusinessException("Code doesn´t exist", HttpStatus.FORBIDDEN);
+        }
         beeceptorDTO.setCode(json.get("code").getAsString());
         beeceptorDTO.setMessage(json.get("message").getAsString());
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
     }
 
-    public LesDTO lester() throws IOException {
+
+    public LesDTO les() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://uicabgongora.free.beeceptor.com", "GET", null, null, "json", null, null));
         LesDTO lesterDTO = new LesDTO();
@@ -75,6 +81,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
+    //post
+
+
     @Override
         public LesDTO lesPost(LesDTO lesterDTO) throws IOException {
         JsonParser asd = new JsonParser();
@@ -88,9 +97,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (json.get("status") == null) {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
-        return LesDTO;
+        return lesterDTO;
 
     }
+    @Override
     public MartinezDTO martinezPost(MartinezDTO polancoDTO) throws IOException {
         JsonParser amp = new JsonParser();
         JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://arturo.free.beeceptor.com/api/v1/MartinezPost", "POST", null, null, "json", polancoDTO.toJSON(), null));
@@ -103,9 +113,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (json.get("status") == null) {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
-        return MartinezDTO;
+        return polancoDTO;
 
     }
+    @Override
     public JoelDTO chavezPost(JoelDTO joelDTO) throws IOException {
         JsonParser amp = new JsonParser();
         JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://lokera.free.beeceptor.com/api/v1/ChavezPost", "POST", null, null, "json", joelDTO.toJSON(), null));
@@ -118,8 +129,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (json.get("status") == null) {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
-        return JoelDTO;
-        {
+        return joelDTO;
+    }
+
+        @Override
         public CatzinDTO omarPost(CatzinDTO chaconDTO) throws IOException {
             JsonParser amp = new JsonParser();
             JsonObject json = (JsonObject) amp.parse(httpService.sendRequestHttpS("https://omarcatzin.free.beeceptor.com/api/v1/omarpost", "POST", null, null, "json", chaconDTO.toJSON(), null));
@@ -132,7 +145,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             if (json.get("status") == null) {
                 throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
             }
-            return CatzinDTO;
+            return chaconDTO;
 
     }
 
