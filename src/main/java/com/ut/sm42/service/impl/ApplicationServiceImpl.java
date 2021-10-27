@@ -21,8 +21,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
-    @Autowired
+    final
     UserRepository userRepository;
+
+    public ApplicationServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public String firstService() {
@@ -147,10 +151,17 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void saveMyFirstObject() {
-            User user = new User();
-            user.setName("Sebastian Romero");
-            user.setStatus("Funciona");
-            userRepository.save(user);
+        User user = new User();
+        user.setName("Sebastian Romero");
+        user.setStatus("Funciona");
+        userRepository.save(user);
 
-        }
     }
+
+    @Override
+    public void getNews () throws IOException {
+        JsonParser paser = new JsonParser();
+        JsonObject json = (JsonObject) paser.parse(httpService.sendRequestHttpS("https://ap1.mediastack.com/v1/news?access key=d92941a0ae4d3326de6a9e794da1982e&palabrasclave=tenis&paises=us", "GET", null, null, "json", null, null));
+        MediaStackDTO mediaStackDTO = new MediaStackDTO();
+    }
+}

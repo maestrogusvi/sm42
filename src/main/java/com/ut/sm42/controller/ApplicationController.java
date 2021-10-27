@@ -1,6 +1,5 @@
 package com.ut.sm42.controller;
 
-import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
@@ -8,7 +7,6 @@ import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.ut.sm42.dto.*;
 
 import java.io.IOException;
 
@@ -91,5 +89,9 @@ public class ApplicationController {
     public MartinDTO erickPost(@RequestBody MartinDTO martinDTO) throws IOException{
         applicationService.erickPostHttp(martinDTO);
         return martinDTO;
+    }
+    @PostMapping("/romeroPost")
+    public void romeroPost () throws IOException {
+        applicationService.getNews();
     }
 }

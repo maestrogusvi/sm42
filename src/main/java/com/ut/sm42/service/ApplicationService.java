@@ -22,7 +22,8 @@ public interface ApplicationService {
     TecDTO jlPostHttp(TecDTO tecDTO) throws IOException;
     MartinDTO erickPostHttp(MartinDTO martinDTO) throws IOException;
     RamirezDTO oscarlPostHttp(RamirezDTO ramirezDTO) throws IOException;
-
     void  saveMyFirstObject();
+    void getNews()throws IOException;
+
 }
 
