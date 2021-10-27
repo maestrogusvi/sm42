@@ -24,7 +24,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     UserRepository userRepository;
-    private ArturoDTO arturoDTO;
 
     @Override
     public String firstService() {
@@ -59,21 +58,21 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public ArturoDTO martinez() throws IOException {
+    public MartinezDTO martinez() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arturo.free.beeceptor.com", "GET", null, null, "json", null, null));
-        ArturoDTO arturoDTO = new ArturoDTO();
-        arturoDTO.setIdentificador(json.get("identificador").getAsInt());
-        arturoDTO.setNombre(json.get("Nombre").getAsString());
+        MartinezDTO arturoDTO = new MartinezDTO();
+        arturoDTO.setId(json.get("identificador").getAsInt());
+        arturoDTO.setName(json.get("Nombre").getAsString());
         arturoDTO.setStatus(json.get("status").getAsString());
         return arturoDTO;
     }
 
     @Override
-    public OmarDTO catzin() throws IOException {
+    public CatzinDTO catzin() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://omarcatzin.free.beeceptor.com", "GET", null, null, "json", null, null));
-        OmarDTO omarDTO = new OmarDTO();
+        CatzinDTO omarDTO = new CatzinDTO();
         omarDTO.setStatus(json.get("Status").getAsString());
         omarDTO.setId(json.get("id").getAsInt());
         omarDTO.setName(json.get("name").getAsString());
@@ -131,10 +130,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public ArturoDTO arturoPOST(ArturoDTO aranaDTO) throws  IOException{
+    public MartinezDTO arturoPOST(MartinezDTO martinezDTO) throws  IOException{
         JsonParser asd = new JsonParser();
 
-        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arturo.free.beeceptor.com/api/v1/MartinezPost","POST",null,null,"json",arturoDTO.toJSON(),null));
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arturo.free.beeceptor.com/api/v1/MartinezPost","POST",null,null,"json",martinezDTO.toJSON(),null));
         if(json.get("identificador")==null){
             throw new BusinessException("identificador doesn't exist", HttpStatus.FORBIDDEN);
         }
@@ -144,11 +143,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         if(json.get("status")==null){
             throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
         }
-        return arturoDTO;
+        return martinezDTO;
     }
 
     @Override
-    public OmarDTO omarPOST(OmarDTO omarDTO) throws IOException {
+    public CatzinDTO omarPOST(CatzinDTO omarDTO) throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://omarcatzin.free.beeceptor.com/api/v1/omarpost", "POST", null, null, "json", omarDTO.toJSON(), null));
         if(json.get("id")== null){
