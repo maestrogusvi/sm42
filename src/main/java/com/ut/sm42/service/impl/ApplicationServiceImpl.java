@@ -148,8 +148,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void saveMyFirstObject() {
             User user = new User();
-            user.setStatus("Funciona");
             user.setName("Sebastian Romero");
+            user.setStatus("Funciona");
             userRepository.save(user);
 
         }
