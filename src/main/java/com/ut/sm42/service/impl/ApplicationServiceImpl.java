@@ -7,6 +7,8 @@ import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     HttpService httpService;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public String firstService() {
@@ -139,4 +144,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         return martinDTO;
     }
-}
+
+    @Override
+    public void saveMyFirstObject() {
+            User user = new User();
+            user.setName("Sebastian Romero");
+            user.setStatus("Funciona");
+            userRepository.save(user);
+
+        }
+    }
