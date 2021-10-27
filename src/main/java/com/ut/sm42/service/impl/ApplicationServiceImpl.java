@@ -43,8 +43,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://equiponoe.free.beeceptor.com","GET",null,null,"json",null, null));
         NoeliDTO noeDTO = new NoeliDTO();
         noeDTO.setStatus(json.get("status").getAsString());
-        noeDTO.setID(json.get("ID").getAsString());
-        noeDTO.setNAME(json.get("NAME").getAsString());
+        noeDTO.setID(json.get("id").getAsString());
+        noeDTO.setname(json.get("name").getAsString());
         return noeDTO;
     }
 
@@ -85,10 +85,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         if(json.get("status")== null){
             throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("NAME")== null){
+        if(json.get("name")== null){
             throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
         }
-        if(json.get("ID")== null){
+        if(json.get("id")== null){
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return noeliDTO;
