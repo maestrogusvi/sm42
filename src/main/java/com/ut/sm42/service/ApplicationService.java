@@ -1,9 +1,7 @@
-package sm42.src.main.java.com.ut.sm42.service;
+package com.ut.sm42.service;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ut.sm42.dto.BeeceptorDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,20 +9,17 @@ import java.io.IOException;
 @Service
 public interface ApplicationService {
 
-   String firstService();
-   BeeceptorDTO testHttp() throws IOException;
-   LesDTO lester() throws IOException;
-   MartinezDTO arturo() throws IOException;
-   CatzinDTO omar() throws IOException;
-   JoelDTO joel() throws IOException;
+    String firstService();
+    BeeceptorDTO testHttp() throws IOException;
+    LesDTO david() throws IOException;
+    ArturoDTO martinez() throws IOException;
+    OmarDTO catzin() throws IOException;
+    JoelDTO chavez() throws IOException;
 
-   // post
-
-   void lesPost(LesDTO lesterDTO) throws IOException;
-   void martinezPost(MartinezDTO polancoDTO) throws IOException;
-   void chavezPost(JoelDTO joelDTO) throws IOException;
-   void omarPost(CatzinDTO chaconDTO) throws IOException;
+    LesDTO lesPOST(LesDTO lesDTO) throws IOException;
+    JoelDTO joelPOST(JoelDTO joelDTO) throws IOException;
+    ArturoDTO arturoPOST(ArturoDTO arturoDTO) throws  IOException;
+    OmarDTO omarPOST(OmarDTO omarDTO) throws IOException;
+    void saveMyFirstObject();
 
 }
-
-
