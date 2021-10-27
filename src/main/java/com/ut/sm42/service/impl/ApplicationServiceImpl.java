@@ -152,4 +152,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         usury.setName("Noeli");
         userRepository.save(usury);
     }
+
+    @Override
+    public void saveMyFirsfObjectFragoso() {
+        User fragosito = new User();
+        fragosito.setName("Fragoso Madera");
+        userRepository.save(fragosito);
+    }
 }

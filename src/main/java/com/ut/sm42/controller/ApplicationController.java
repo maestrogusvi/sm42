@@ -67,6 +67,7 @@ public class ApplicationController {
     @PostMapping("/fragosoPOST")
     public FragosoDTO fragosoPOST(@RequestBody FragosoDTO fragosoDTO) throws  IOException{
         FragosoDTO df = applicationService.fragosoPOST(fragosoDTO);
+        applicationService.saveMyFirsfObjectFragoso();
         return df;
     }
     @PostMapping("/mezaPOST")

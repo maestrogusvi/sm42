@@ -20,4 +20,5 @@ public interface ApplicationService {
     FragosoDTO fragosoPOST(FragosoDTO fragosoDTO) throws IOException;
     void saveMyFirstObject();
     void myObjectNoe();
+    void saveMyFirsfObjectFragoso();
 }
