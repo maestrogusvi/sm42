@@ -3,6 +3,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
-
+    @Autowired
+    UserRepository userRepository;
     @Override
     public String firstService(){
         return "service";
@@ -137,5 +140,11 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return mezaDTO;
+    }
+    @Override
+    public void saveMyFirstObject(){
+        User user = new User();
+        user.setName("Cesar Ceja");
+        userRepository.save(user);
     }
 }
