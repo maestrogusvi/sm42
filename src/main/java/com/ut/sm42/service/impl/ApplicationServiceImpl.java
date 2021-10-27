@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     HttpService httpService;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public String firstService() {
@@ -153,6 +157,11 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("Status doesn’t exist", HttpStatus.FORBIDDEN);
         }
         return escobarDTO;
+    }
+
+    @Override
+    public void saveMyFirstObject() {
+
     }
 
 
