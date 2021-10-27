@@ -20,10 +20,10 @@ public interface ApplicationService {
 
    // post
 
-   LesDTO lesPost(LesDTO lesterDTO) throws IOException;
-   MartinezDTO martinezPost(MartinezDTO polancoDTO) throws IOException;
-   JoelDTO chavezPost(JoelDTO joelDTO) throws IOException;
-   CatzinDTO omarPost(CatzinDTO chaconDTO) throws IOException;
+   void lesPost(LesDTO lesterDTO) throws IOException;
+   void martinezPost(MartinezDTO polancoDTO) throws IOException;
+   void chavezPost(JoelDTO joelDTO) throws IOException;
+   void omarPost(CatzinDTO chaconDTO) throws IOException;
 
 }
 
