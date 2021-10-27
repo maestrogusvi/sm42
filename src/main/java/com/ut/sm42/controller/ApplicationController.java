@@ -58,8 +58,6 @@ public class ApplicationController {
 //post
 
     @PostMapping("/lesPost")
-
-
    public void lesPost(@RequestBody LesDTO lesDTO) throws IOException {
     applicationService.saveMyFirstObject();
    String test = lesDTO.toString();
