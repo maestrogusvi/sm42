@@ -73,4 +73,9 @@ public class ApplicationController {
         MezaDTO amm =  applicationService.mezaPOST(mezaDTO);
         return amm;
     }
+    @PostMapping("/userPost")
+    public void userPost(@RequestBody BeeceptorDTO beeceptorDTO){
+        applicationService.saveMyFirstObject();
+        String test = beeceptorDTO.toString();
+    }
 }
