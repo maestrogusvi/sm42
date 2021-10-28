@@ -87,7 +87,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         lemon.setStatus(json.get("status").getAsString());
         return lemon;
     }
-
+    //PosHttp
     @Override
     public RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException {
         JsonParser abc = new JsonParser();

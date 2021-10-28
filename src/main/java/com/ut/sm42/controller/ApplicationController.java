@@ -49,6 +49,7 @@ public class ApplicationController {
         return applicationService.oscarl();
     }
 
+    //PostHttp
     @GetMapping("/romeroPostHttp")
     public RomerithoDTO  romeroPostHttp(@RequestBody RomerithoDTO romerithoDTO) throws IOException {
         applicationService.romeroPostHttp(romerithoDTO);
@@ -69,7 +70,7 @@ public class ApplicationController {
         applicationService.erickPostHttp(martinDTO);
         return martinDTO;
     }
-
+    //Post
     @PostMapping("/romeroPost")
     public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
         applicationService. romeroPostHttp(romerithoDTO);
