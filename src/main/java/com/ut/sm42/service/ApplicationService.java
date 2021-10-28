@@ -31,5 +31,9 @@ public interface ApplicationService {
 
     void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException;
 
-    void saveMyFirstObject();
+    void saveMyFirstObjectMen();
+
+    void saveMyFirstObjectEsc();
+
+    void saveMyFirstObjectTor();
 }

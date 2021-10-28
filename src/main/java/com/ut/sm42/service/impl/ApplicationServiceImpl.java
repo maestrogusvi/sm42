@@ -2,10 +2,7 @@ package com.ut.sm42.service.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.EscalanteDTO;
-import com.ut.sm42.dto.MendozaDTO;
-import com.ut.sm42.dto.TorreblancaDTO;
+import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -99,12 +96,26 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void saveMyFirstObject() {
+    public void saveMyFirstObjectMen() {
         User user = new User();
         user.setStatus("Funcionando");
         user.setName("Carim Mendoza");
         userRepository.save(user);
     }
 
+    @Override
+    public void saveMyFirstObjectEsc() {
+        User user = new User();
+        user.setStatus("Correcto");
+        user.setName("Sergio Escalante");
+        userRepository.save(user);
+    }
 
+    @Override
+    public void saveMyFirstObjectTor() {
+        User user = new User();
+        user.setStatus("Bien");
+        user.setName("Erick Torreblanca");
+        userRepository.save(user);
+    }
 }
