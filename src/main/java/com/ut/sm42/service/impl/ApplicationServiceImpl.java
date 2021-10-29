@@ -64,7 +64,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void getNews() throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("http://api.mediastack.com/v1/news?access_key=d92941a0ae4d3326de6a9e794da1982e&palabrasclave=tenis&países=us","GET",null,null,"json",null, null));
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("http://api.mediastack.com/v1/news?access_key=d92941a0ae4d3326de6a9e794da1982e&palabrasclave=tenis&paises=us","GET",null,null,null,null, null));
         MediaStackDTO mediaStackDTO =  new MediaStackDTO();
     }
 }

@@ -112,6 +112,22 @@ public class HttpService {
                 finalString="{\"status\":\"Created\", \"detail\":\"Not found\"}";
                  break;
 
+            case 400:
+                 in = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                // print result
+                //System.out.println(response.toString());
+                finalString=response.toString();
+
+
+                break;
+
             case 404:
                 System.out.println("POST request not worked");
                 finalString="{\"status\":\"Error\", \"detail\":\"Not found\"}";

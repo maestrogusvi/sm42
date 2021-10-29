@@ -39,7 +39,7 @@ public class ApplicationController {
         applicationService.testPostHttp(beeceptorDTO);
     }
 
-    @PostMapping("/testPost")
+    @GetMapping("/testPost")
     public void testPost() throws IOException {
        applicationService.getNews();
 
