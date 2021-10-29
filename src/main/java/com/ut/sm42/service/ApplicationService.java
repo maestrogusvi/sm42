@@ -1,12 +1,7 @@
 package com.ut.sm42.service;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.exception.BusinessException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.ut.sm42.dto.EscalanteDTO;
 
@@ -19,21 +14,35 @@ public interface ApplicationService {
 
     BeeceptorDTO testHttp() throws IOException;
 
-    EscalanteDTO pan() throws IOException;
+
+    //----------CARIM MENDOZA----------
+
 
     MendozaDTO master() throws IOException;
 
-    TorreblancaDTO sayayin() throws IOException;
-
     void testMendozaHttp(MendozaDTO master) throws IOException;
-
-    void testEscalanteHttp(EscalanteDTO pan) throws IOException;
-
-    void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException;
 
     void saveMyFirstObjectMen();
 
+    void getCell() throws IOException;
+
+
+    //----------SERGIO ESCALANTE----------
+
+
+    EscalanteDTO pan() throws IOException;
+
+    void testEscalanteHttp(EscalanteDTO pan) throws IOException;
+
     void saveMyFirstObjectEsc();
+
+
+    //----------ERICK TORRELANCA----------
+
+
+    TorreblancaDTO sayayin() throws IOException;
+
+    void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException;
 
     void saveMyFirstObjectTor();
 }

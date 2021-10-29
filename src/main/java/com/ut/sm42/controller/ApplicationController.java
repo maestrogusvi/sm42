@@ -36,24 +36,14 @@ public class ApplicationController {
         return applicationService.testHttp();
     }
 
-    @GetMapping("/pan")
-    public EscalanteDTO pan() throws IOException {
-        return applicationService.pan();
-    }
+
+    //----------CARIM MENDOZA----------
+
 
     @GetMapping("/master")
     public MendozaDTO master() throws IOException {
         return applicationService.master();
     }
-
-    @GetMapping("/sayayin")
-    public TorreblancaDTO sayayin() throws IOException {
-        return applicationService.sayayin();
-    }
-
-
-    //----------CARIM MENDOZA----------
-
 
     @PostMapping("/testMendozaHttp")
     public MendozaDTO testMendozaHttp(@RequestBody MendozaDTO master) throws IOException {
@@ -64,12 +54,18 @@ public class ApplicationController {
     @PostMapping("/testPostMen")
     public void testPost(@RequestBody MendozaDTO master) throws IOException {
         applicationService.saveMyFirstObjectMen();
+        applicationService.getCell();
         String test = master.toString();
     }
 
 
     //----------SERGIO ESCALANTE----------
 
+
+    @GetMapping("/pan")
+    public EscalanteDTO pan() throws IOException {
+        return applicationService.pan();
+    }
 
     @PostMapping("/testEscalanteHttp")
     public EscalanteDTO testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
@@ -86,6 +82,11 @@ public class ApplicationController {
 
     //----------ERICK TORREBLANCA----------
 
+
+    @GetMapping("/sayayin")
+    public TorreblancaDTO sayayin() throws IOException {
+        return applicationService.sayayin();
+    }
 
     @PostMapping("/testTorreblancaHttp")
     public TorreblancaDTO testTorreblancaHttp(@RequestBody TorreblancaDTO sayayin) throws IOException {
