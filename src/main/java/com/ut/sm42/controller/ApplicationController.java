@@ -82,7 +82,7 @@ public class ApplicationController {
     }
 
     //para youtbe
-    @PostMapping("/apiPost")
+    @GetMapping("/apiPost")
     public void apiPost() throws IOException {
         applicationService.getYouTube();
 
