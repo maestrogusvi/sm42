@@ -54,6 +54,7 @@ public class ApplicationController {
     @PostMapping("/testPostHttpNoe")
     public NoeliDTO noeli(@RequestBody NoeliDTO noeliDTO) throws IOException {
         NoeliDTO nrm = applicationService.noepostHttp(noeliDTO);
+        applicationService.myObjectNoe();
         return nrm;
     }
 
@@ -66,11 +67,28 @@ public class ApplicationController {
     @PostMapping("/fragosoPOST")
     public FragosoDTO fragosoPOST(@RequestBody FragosoDTO fragosoDTO) throws  IOException{
         FragosoDTO df = applicationService.fragosoPOST(fragosoDTO);
+        applicationService.saveMyFirsfObjectFragoso();
         return df;
     }
     @PostMapping("/mezaPOST")
     public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
         MezaDTO amm =  applicationService.mezaPOST(mezaDTO);
         return amm;
+    }
+    @PostMapping("/userPost")
+    public void userPost(@RequestBody BeeceptorDTO beeceptorDTO){
+        applicationService.saveMyFirstObject();
+        String test = beeceptorDTO.toString();
+    }
+
+    //para youtbe
+    @PostMapping("/apiPost")
+    public void apiPost() throws IOException {
+        applicationService.getYouTube();
+
+    }
+    @PostMapping("/mercadoPOST")
+    public void mercadoPost() throws IOException{
+        applicationService.getQyA();
     }
 }

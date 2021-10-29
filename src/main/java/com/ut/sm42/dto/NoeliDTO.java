@@ -2,8 +2,8 @@ package com.ut.sm42.dto;
 //primero
 public class NoeliDTO {
     String status;
-    String ID;
-    String NAME;
+    String id;
+    String name;
 
     public NoeliDTO() {
     }
@@ -14,32 +14,32 @@ public class NoeliDTO {
 
     public void setStatus(String status) { this.status = status;}
 
-    public String getID() { return ID;}
+    public String getid() { return id;}
 
-    public void setID(String ID) { this.ID = ID;}
+    public void setID(String id) { this.id = id;}
 
-    public String getNAME() {
-        return NAME;
+    public String getname() {
+        return name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public void setname(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "NoeliDTO{" +
-                "status='" + NAME + '\'' +
-                ", ID='" + ID + '\'' +
-                ", NAME='" + NAME + '\'' +
+                "status='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
     public String toJSON() {
         return "{" +
                 "\"status\":" +"\""+status+"\","+
-                "\"ID\":" +"\""+ID+"\","+
-                "\"NAME\":" +"\""+NAME+"\""+
+                "\"id\":" +"\""+id+"\","+
+                "\"name\":" +"\""+name+"\""+
                 '}';
     }
 }

@@ -2,7 +2,10 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.exception.BusinessException;
+import com.ut.sm42.model.User;
+import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
-
+    @Autowired
+    UserRepository userRepository;
     @Override
     public String firstService(){
         return "service";
@@ -40,8 +44,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonObject json = (JsonObject) par.parse(httpService.sendRequestHttpS("https://equiponoe.free.beeceptor.com","GET",null,null,"json",null, null));
         NoeliDTO noeDTO = new NoeliDTO();
         noeDTO.setStatus(json.get("status").getAsString());
-        noeDTO.setID(json.get("ID").getAsString());
-        noeDTO.setNAME(json.get("NAME").getAsString());
+        noeDTO.setID(json.get("id").getAsString());
+        noeDTO.setname(json.get("name").getAsString());
         return noeDTO;
     }
 
@@ -82,10 +86,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         if(json.get("status")== null){
             throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("NAME")== null){
+        if(json.get("name")== null){
             throw new BusinessException("name no found", HttpStatus.FORBIDDEN);
         }
-        if(json.get("ID")== null){
+        if(json.get("id")== null){
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return noeliDTO;
@@ -137,5 +141,39 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BusinessException("status no found", HttpStatus.FORBIDDEN);
         }
         return mezaDTO;
+    }
+    @Override
+    public void saveMyFirstObject(){
+        User user = new User();
+        user.setName("Cesar Ceja");
+        userRepository.save(user);
+    }
+    public  void myObjectNoe(){
+        User usury = new  User();
+        usury.setName("Noeli");
+        userRepository.save(usury);
+    }
+
+    @Override
+    public void saveMyFirsfObjectFragoso() {
+        User fragosito = new User();
+        fragosito.setName("Fragoso Madera");
+        userRepository.save(fragosito);
+    }
+
+    @Override
+    public void getYouTube() throws IOException {
+        JsonParser pr = new JsonParser();
+        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
+        YouTubeMainDTO yotubestack  = new YouTubeMainDTO();
+
+    }
+
+
+    @Override
+    public void getQyA() throws IOException{
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
+        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
     }
 }

@@ -18,5 +18,9 @@ public interface ApplicationService {
     MezaDTO mezaPOST(MezaDTO mezaDTO) throws IOException;
     CejaDTO cejaPOST(CejaDTO cejaDTO) throws IOException;
     FragosoDTO fragosoPOST(FragosoDTO fragosoDTO) throws IOException;
-
+    void saveMyFirstObject();
+    void myObjectNoe();
+    void saveMyFirsfObjectFragoso();
+    void getYouTube() throws  IOException;
+    void getQyA() throws IOException;
 }
