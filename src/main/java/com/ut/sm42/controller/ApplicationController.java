@@ -80,4 +80,11 @@ public class ApplicationController {
         applicationService.saveMyFirstObject();
         String test = beeceptorDTO.toString();
     }
+
+    //para youtbe
+    @PostMapping("/apiPost")
+    public void apiPost() throws IOException {
+        applicationService.getYouTube();
+
+    }
 }
