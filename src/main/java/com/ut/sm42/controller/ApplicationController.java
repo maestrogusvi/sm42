@@ -80,4 +80,8 @@ public class ApplicationController {
         applicationService.saveMyFirstObject();
         String test = beeceptorDTO.toString();
     }
+    @PostMapping("/mercadoPOST")
+    public void mercadoPost() throws IOException{
+        applicationService.getQyA();
+    }
 }

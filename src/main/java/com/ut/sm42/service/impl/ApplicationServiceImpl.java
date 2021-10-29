@@ -159,4 +159,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         fragosito.setName("Fragoso Madera");
         userRepository.save(fragosito);
     }
+
+    @Override
+    public void getQyA() throws IOException{
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
+        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
+    }
 }
