@@ -22,4 +22,5 @@ public interface ApplicationService {
     void myObjectNoe();
     void saveMyFirsfObjectFragoso();
     void getYouTube() throws  IOException;
+    void getQyA() throws IOException;
 }

@@ -2,6 +2,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -168,4 +169,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
+
+    @Override
+    public void getQyA() throws IOException{
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
+        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
+    }
 }

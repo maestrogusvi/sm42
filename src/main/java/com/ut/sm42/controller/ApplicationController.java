@@ -87,4 +87,8 @@ public class ApplicationController {
         applicationService.getYouTube();
 
     }
+    @PostMapping("/mercadoPOST")
+    public void mercadoPost() throws IOException{
+        applicationService.getQyA();
+    }
 }
