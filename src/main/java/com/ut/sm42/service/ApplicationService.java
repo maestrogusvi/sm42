@@ -21,6 +21,6 @@ public interface ApplicationService {
     void saveMyFirstObject();
     void myObjectNoe();
     void saveMyFirsfObjectFragoso();
-    void getYouTube() throws  IOException;
+    YouTubeMainDTO getYouTube(YouTubeMainDTO yd) throws  IOException;
     void getQyA() throws IOException;
 }

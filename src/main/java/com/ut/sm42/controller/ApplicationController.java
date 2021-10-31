@@ -82,11 +82,13 @@ public class ApplicationController {
     }
 
     //para youtbe
-    @GetMapping("/apiPost")
-    public void apiPost() throws IOException {
-        applicationService.getYouTube();
+    @GetMapping("/youtubepost")
+    public YouTubeMainDTO youtubepost(YouTubeMainDTO ydto) throws IOException {
+        YouTubeMainDTO yd = applicationService.getYouTube(ydto);
+        return yd;
 
     }
+
     @PostMapping("/mercadoPOST")
     public void mercadoPost() throws IOException{
         applicationService.getQyA();

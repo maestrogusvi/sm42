@@ -1,4 +1,5 @@
 package com.ut.sm42.service.impl;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
@@ -161,14 +162,16 @@ public class ApplicationServiceImpl implements ApplicationService {
         userRepository.save(fragosito);
     }
 
+    //servicio de youtube
     @Override
-    public void getYouTube() throws IOException {
+    public YouTubeMainDTO getYouTube(YouTubeMainDTO yd) throws IOException {
         JsonParser pr = new JsonParser();
-        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
-        YouTubeMainDTO yotubestack  = new YouTubeMainDTO();
-
+        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
+        yd.setKind(json.get("kind").getAsString());
+        yd.setEtag(json.get("etag").getAsString());
+        //yd.setTitle(json.get("title").getAsString());
+        return yd;
     }
-
 
     @Override
     public void getQyA() throws IOException{

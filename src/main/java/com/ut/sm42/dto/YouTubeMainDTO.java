@@ -1,28 +1,30 @@
 package com.ut.sm42.dto;
-import com.ut.sm42.dto.YouTube.*;
-
-import java.util.List;
 
 public class YouTubeMainDTO {
-    YouTubeDTO youtubeDTO1;
-    List<YouTubeMergeDTO> youtubemergeDTO2;
+    String kind;
+    String etag;
+    String title;
 
     public YouTubeMainDTO() {
     }
 
-    public YouTubeDTO getYoutubeDTO1() {
-        return youtubeDTO1;
+    public String getKind() {
+        return kind;
     }
 
-    public void setYoutubeDTO1(YouTubeDTO youtubeDTO1) {
-        this.youtubeDTO1 = youtubeDTO1;
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 
-    public List<YouTubeMergeDTO> getYoutubemergeDTO2() {
-        return youtubemergeDTO2;
+    public String getEtag() {
+        return etag;
     }
 
-    public void setYoutubemergeDTO2(List<YouTubeMergeDTO> youtubemergeDTO2) {
-        this.youtubemergeDTO2 = youtubemergeDTO2;
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public void setTitle(String title) {
+        this.title = "Youtube";
     }
 }
