@@ -5,6 +5,7 @@ import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import com.ut.sm42.dto.Spotify.*;
 
 @Service
 public interface ApplicationService {
@@ -23,7 +24,9 @@ public interface ApplicationService {
     MartinDTO erickPostHttp(MartinDTO martinDTO) throws IOException;
     RamirezDTO oscarlPostHttp(RamirezDTO ramirezDTO) throws IOException;
     void  saveMyFirstObject();
-    void getNews()throws IOException;
+
+    //API's
+    SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException;
 
 }
 

@@ -2,6 +2,7 @@ package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Spotify.SpotifyDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,8 +92,11 @@ public class ApplicationController {
         applicationService.erickPostHttp(martinDTO);
         return martinDTO;
     }
-    @PostMapping("/romeroPost")
-    public void romeroPost () throws IOException {
-        applicationService.getNews();
+
+    //API's
+    @GetMapping("/spotify")
+    public SpotifyDTO spotifyDTO(@RequestBody SpotifyDTO spotifyDTO) throws IOException{
+        applicationService.online(spotifyDTO);
+        return spotifyDTO;
     }
 }

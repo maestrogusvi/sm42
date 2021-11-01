@@ -4,6 +4,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Spotify.SpotifyDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
@@ -12,6 +13,7 @@ import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
 
 import java.io.IOException;
 
@@ -159,9 +161,15 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void getNews () throws IOException {
-        JsonParser paser = new JsonParser();
-        JsonObject json = (JsonObject) paser.parse(httpService.sendRequestHttpS("https://ap1.mediastack.com/v1/news?access key=d92941a0ae4d3326de6a9e794da1982e&palabrasclave=tenis&paises=us", "GET", null, null, "json", null, null));
-        MediaStackDTO mediaStackDTO = new MediaStackDTO();
+    public SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException {
+        JsonParser a= new JsonParser();
+        JsonObject json = (JsonObject) a.parse(httpService.sendRequestHttpS("https://api.spotify.com/v1/albums/43mAHKPa4iB2er88lxD9Q8/tracks?market=ES", "GET", null, null, "json", null, null));
+        onlineDTO.setHref(json.get("href").getAsString());
+        onlineDTO.setLimit(json.get("limit").getAsInt());
+        onlineDTO.setNext(json.get("next").getAsString());
+        onlineDTO.setOffset(json.get("offset").getAsInt());
+        onlineDTO.setPrevious(json.get("previous").getAsString());
+        onlineDTO.setTotal(json.get("total").getAsInt());
+        return onlineDTO;
     }
 }
