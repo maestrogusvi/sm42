@@ -3,6 +3,7 @@ package com.ut.sm42.service;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
 import org.springframework.stereotype.Service;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
 
@@ -21,5 +22,7 @@ public interface ApplicationService {
     MartinezDTO arturoPOST(MartinezDTO martinezDTO) throws  IOException;
     CatzinDTO omarPOST(CatzinDTO chaconDTO) throws IOException;
     void saveMyFirstObject();
+
+    FacebookDTO fb(FacebookDTO fbDTO) throws IOException;
 
 }

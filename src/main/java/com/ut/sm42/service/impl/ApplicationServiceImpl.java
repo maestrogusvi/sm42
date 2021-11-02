@@ -11,6 +11,7 @@ import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
 
@@ -168,6 +169,16 @@ public class ApplicationServiceImpl implements ApplicationService {
         user.setName("Lester David");
         user.setStatus("Disponible");
         userRepository.save(user);
+    }
+    public FacebookDTO fb(FacebookDTO fDTO) throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/facebook/picture?redirect=false", "GET", null, null, "json", null, null));
+        FacebookDTO FacebookDTO = new FacebookDTO();
+        FacebookDTO.setHeight(json.get("height").getAsInt());
+        FacebookDTO.setIs_silhouette(json.get("is_silhouette").getAsString());
+        FacebookDTO.setUrl(json.get("url").getAsString());
+        FacebookDTO.setWidth(json.get("width").getAsInt());
+        return FacebookDTO;
     }
 
 
