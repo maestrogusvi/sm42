@@ -27,5 +27,5 @@ public interface ApplicationService {
     AranaDTO aranaPOST(AranaDTO aranaDTO) throws  IOException;
     EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException;
     void saveMyFirstObject();
-
+    void getNews() throws IOException;
 }

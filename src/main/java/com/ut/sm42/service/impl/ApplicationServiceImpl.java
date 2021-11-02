@@ -3,6 +3,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dtoMediaStack.MediaStackDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -173,6 +174,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void getNews() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("http://api.mediastack.com/v1/news?access_key=006182e15c63854771d2495325afacd1&palabrasclave=tenis&pa%C3%ADses=us,gb,de", "GET", null, null, "json", null, null));
+        MediaStackDTO mediaStackDTO = new MediaStackDTO();
 
     }
 }
