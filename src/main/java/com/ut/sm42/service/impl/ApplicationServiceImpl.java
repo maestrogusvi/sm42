@@ -98,13 +98,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     public HuchimDTO huchimPOST(HuchimDTO huchimDTO) throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://huchim.free.beeceptor.com/api/v1/huchimPOST", "GET", null, null, "json", huchimDTO.toJSON(), null));
-        if(json.get("id")== null){
+        if (json.get("id") == null) {
             throw new BusinessException("id doen´t exit", HttpStatus.FORBIDDEN);
         }
-        if(json.get("name")== null){
+        if (json.get("name") == null) {
             throw new BusinessException("name doen´t exit", HttpStatus.FORBIDDEN);
         }
-        if(json.get("status")== null){
+        if (json.get("status") == null) {
             throw new BusinessException("status doen´t exit", HttpStatus.FORBIDDEN);
         }
 
@@ -116,29 +116,29 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://carlos.free.beeceptor.com/api/v1/lairPOST", "POST", null, null, "json", lairDTO.toJSON(), null));
-        if(json.get("id")== null){
+        if (json.get("id") == null) {
             throw new BusinessException("id doesn’t exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("name")== null){
+        if (json.get("name") == null) {
             throw new BusinessException("name doesn’ exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("status")== null){
+        if (json.get("status") == null) {
             throw new BusinessException("status doesn’t exist", HttpStatus.FORBIDDEN);
         }
         return lairDTO;
     }
 
     @Override
-    public AranaDTO  aranaPOST(AranaDTO aranaDTO) throws  IOException{
+    public AranaDTO aranaPOST(AranaDTO aranaDTO) throws IOException {
         JsonParser asd = new JsonParser();
-        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arana.free.beeceptor.com/api/v1/lairPOST","POST",null,null,"json",aranaDTO.toJSON(),null));
-        if(json.get("identificador")==null){
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://arana.free.beeceptor.com/api/v1/lairPOST", "POST", null, null, "json", aranaDTO.toJSON(), null));
+        if (json.get("identificador") == null) {
             throw new BusinessException("identificador doesn't exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("Nombre")==null){
+        if (json.get("Nombre") == null) {
             throw new BusinessException("Nombre doesn´t exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("status")==null){
+        if (json.get("status") == null) {
             throw new BusinessException("status doesn´t exist", HttpStatus.FORBIDDEN);
         }
         return aranaDTO;
@@ -148,13 +148,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     public EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://eduardoescobar.free.beeceptor.com/api/v1/escobarPOST", "POST", null, null, "json", escobarDTO.toJSON(), null));
-        if(json.get("id")== null){
+        if (json.get("id") == null) {
             throw new BusinessException("id doesn’t exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("name")== null){
+        if (json.get("name") == null) {
             throw new BusinessException("name doesn’ exist", HttpStatus.FORBIDDEN);
         }
-        if(json.get("Status")== null){
+        if (json.get("Status") == null) {
             throw new BusinessException("Status doesn’t exist", HttpStatus.FORBIDDEN);
         }
         return escobarDTO;
@@ -169,6 +169,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
 
+    @Override
+    public void getNews() throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("http://api.mediastack.com/v1/news?access_key=006182e15c63854771d2495325afacd1&palabrasclave=tenis&pa%C3%ADses=us,gb,de", "GET", null, null, "json", null, null));
+
+    }
 }
 
 
