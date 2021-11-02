@@ -3,7 +3,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.geolocalizacion.GoogleMapsDTO;
+import com.ut.sm42.dto.redes_sociales.FacebookDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -76,8 +76,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void getCell() throws IOException {
         JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://churru.free.beeceptor.com/api/v1/postHttp","GET",null,null,"json",null, null));
-        GoogleMapsDTO desesperacion = new GoogleMapsDTO();
+        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAOxQGoflu8BAHl8ZBJdZBk9UyFcxfAGpYjbkCSnOOYZCr9wCQISoIOFRA0pjCl8XAHmkOV9D2ytQleiIcnDnblIgSYf8aXGKTDSwpfjmkbUPKykUMqQz7iOESZBfUkmrUJxyMDZA2aW1iXs9wNkPZABePdvOOvhQI3dvIQUaZAENnin1g93NK2Vp2uuJmBie6MqDYNMZAJWLy2UmZBy24znTyN6QfXQYmn7SZCNvcumdE9gZDZD&fields=id,name,likes,gender,birthday","GET",null,null,"json",null, null));
+        FacebookDTO desesperacion = new FacebookDTO();
     }
 
 
