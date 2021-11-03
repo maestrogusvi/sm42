@@ -2,6 +2,7 @@ package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
@@ -98,5 +99,10 @@ public class ApplicationController {
     public SpotifyDTO spotifyDTO(@RequestBody SpotifyDTO spotifyDTO) throws IOException{
         applicationService.online(spotifyDTO);
         return spotifyDTO;
+    }
+    @GetMapping("/facebook")
+    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException{
+        applicationService.redes(facebookDTO);
+        return facebookDTO;
     }
 }

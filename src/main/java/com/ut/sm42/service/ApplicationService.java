@@ -3,6 +3,7 @@ package com.ut.sm42.service;
 
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import com.ut.sm42.dto.Spotify.*;
@@ -27,6 +28,7 @@ public interface ApplicationService {
 
     //API's
     SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException;
+    FacebookDTO redes(FacebookDTO redesDTO) throws IOException;
 
 }
 

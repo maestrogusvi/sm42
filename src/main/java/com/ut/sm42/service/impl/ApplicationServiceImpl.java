@@ -4,6 +4,7 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
@@ -12,6 +13,7 @@ import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler;
 import org.springframework.stereotype.Service;
 
 
@@ -171,5 +173,16 @@ public class ApplicationServiceImpl implements ApplicationService {
         onlineDTO.setPrevious(json.get("previous").getAsString());
         onlineDTO.setTotal(json.get("total").getAsInt());
         return onlineDTO;
+    }
+    @Override
+    public FacebookDTO redes(FacebookDTO redesDTO) throws IOException {
+        JsonParser b = new JsonParser();
+        JsonObject json = (JsonObject) b.parse(httpService.sendRequestHttpS("https://graph.facebook.com/facebook/picture?redirect=false", "GET", null, null, "json", null, null));
+        FacebookDTO FacebookDTO = new FacebookDTO();
+        FacebookDTO.setHeight(json.get("height").getAsInt());
+        FacebookDTO.setIs_silhouette(json.get("is_silhouette").getAsString());
+        FacebookDTO.setUrl(json.get("url").getAsString());
+        FacebookDTO.setWidth(json.get("width").getAsInt());
+        return FacebookDTO;
     }
 }
