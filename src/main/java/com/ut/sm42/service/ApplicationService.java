@@ -24,5 +24,6 @@ public interface ApplicationService {
     void saveMyFirstObject();
 
     FacebookDTO fb(FacebookDTO fbDTO) throws IOException;
+    void getQyA() throws IOException;
 
 }

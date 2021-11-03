@@ -90,4 +90,10 @@ public class ApplicationController {
         applicationService.fb(facebookDTO);
         return facebookDTO;
     }
+
+    @PostMapping("/mercadoPOST")
+    public void mercadoPost() throws IOException{
+        applicationService.getQyA();
+    }
+
 }
