@@ -2,7 +2,7 @@ package com.ut.sm42.dto.MercadoLibre;
 
 public class MercadoLibreAnswerDTO {
     String text;
-    Integer status;
+    String status;
     String date_created;
 
     public MercadoLibreAnswerDTO() {
@@ -16,11 +16,11 @@ public class MercadoLibreAnswerDTO {
         this.text = text;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -1,9 +1,12 @@
 package com.ut.sm42.service.impl;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreAnswerDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreQuestionsDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -13,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
@@ -174,9 +180,33 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void getQyA() throws IOException{
+    public MercadoLibreDTO getQyA() throws IOException {
         JsonParser por = new JsonParser();
         JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
-        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
+        MercadoLibreDTO ml = new MercadoLibreDTO();
+        ml.setTotal(json.get("total").getAsInt());
+        ml.setLimit(json.get("limit").getAsInt());
+        JsonArray listas = json.getAsJsonArray("questions");
+        List<MercadoLibreQuestionsDTO> questionsDTOList = new ArrayList<>();
+        for(int x = 0 ; x > listas.size(); x++){
+            JsonObject job1 = listas.get(x).getAsJsonObject();
+            MercadoLibreQuestionsDTO pan = new MercadoLibreQuestionsDTO();
+            pan.setDate_created(job1.get("data_created").getAsString());
+            pan.setItem_id(job1.get("item_id").getAsString());
+            pan.setSeller_id(job1.get("seller_id").getAsInt());
+            pan.setStatus(job1.get("status").getAsString());
+            pan.setText(job1.get("text").getAsString());
+            pan.setId(job1.get("id").getAsInt());
+            MercadoLibreAnswerDTO answersDTO = new MercadoLibreAnswerDTO();
+            JsonObject answerobject = job1.get("answer").getAsJsonObject();
+            answersDTO.setStatus(answerobject.get("status").getAsString());
+            answersDTO.setDate_created(answerobject.get("date_created").getAsString());
+            answersDTO.setText(answerobject.get("text").getAsString());
+            pan.setMercadoLibreAnswerDTO(answersDTO);
+            questionsDTOList.add(pan);
+        }
+        ml.setMercadoLibreQuestionsDTO(questionsDTOList);
+        return ml;
     }
+
 }
