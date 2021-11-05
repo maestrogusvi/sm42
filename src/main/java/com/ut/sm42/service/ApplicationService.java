@@ -29,5 +29,5 @@ public interface ApplicationService {
     EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException;
     void saveMyFirstObject();
     void getNews() throws IOException;
-    void getfacebook() throws IOException;
+    FacebookDTO getfacebook() throws IOException;
 }

@@ -1,6 +1,7 @@
 package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dtoFacebook.FacebookDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,35 +55,41 @@ public class ApplicationController {
     }
 
     @PostMapping("/huchimPOST")
-    public HuchimDTO huchimPOST(@RequestBody HuchimDTO huchimDTO) throws IOException{
+    public HuchimDTO huchimPOST(@RequestBody HuchimDTO huchimDTO) throws IOException {
         //applicationService.huchimPOST(huchimDTO);
         applicationService.saveMyFirstObject();
         return huchimDTO;
     }
 
     @PostMapping("/lairPOST")
-    public LairDTO lairPOST(@RequestBody LairDTO lairDTO) throws  IOException{
+    public LairDTO lairPOST(@RequestBody LairDTO lairDTO) throws IOException {
         applicationService.lairPOST(lairDTO);
         String tets = lairDTO.toString();
         return lairDTO;
     }
 
     @PostMapping("/aranaPOST")
-    public AranaDTO aranaDTO(@RequestBody AranaDTO aranaDTO) throws IOException{
+    public AranaDTO aranaDTO(@RequestBody AranaDTO aranaDTO) throws IOException {
         applicationService.aranaPOST(aranaDTO);
         String tets = aranaDTO.toString();
         return aranaDTO;
     }
 
     @PostMapping("/escobarPOST")
-    public EscobarDTO escobarPOST(@RequestBody EscobarDTO escobarDTO) throws  IOException{
+    public EscobarDTO escobarPOST(@RequestBody EscobarDTO escobarDTO) throws IOException {
         applicationService.escobarPOST(escobarDTO);
         String tets = escobarDTO.toString();
         return escobarDTO;
     }
 
     @PostMapping("/mediastackPOST")
-    public void mediastackPOST() throws IOException{
+    public void mediastackPOST() throws IOException {
         applicationService.getNews();
+    }
+
+    @PostMapping("/facebookPOST")
+    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException {
+        applicationService.getfacebook();
+        return facebookDTO;
     }
 }
