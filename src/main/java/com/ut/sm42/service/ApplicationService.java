@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dtoFacebook.FacebookDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,5 @@ public interface ApplicationService {
     EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException;
     void saveMyFirstObject();
     void getNews() throws IOException;
+    void getfacebook() throws IOException;
 }
