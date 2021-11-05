@@ -81,4 +81,8 @@ public class ApplicationController {
         return escobarDTO;
     }
 
+    @PostMapping("/mediastackPOST")
+    public void mediastackPOST() throws IOException{
+        applicationService.getNews();
+    }
 }
