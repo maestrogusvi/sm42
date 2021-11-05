@@ -1,7 +1,7 @@
 package com.ut.sm42.service;
 
 import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.MercadoLibre.*;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -22,6 +22,6 @@ public interface ApplicationService {
     void saveMyFirstObject();
     void myObjectNoe();
     void saveMyFirsfObjectFragoso();
-    YouTubeMainDTO getYouTube(YouTubeMainDTO yd) throws  IOException;
     MercadoLibreDTO getQyA() throws IOException;
+    YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO y1) throws IOException;
 }

@@ -1,10 +1,13 @@
 package com.ut.sm42.dto;
 
-public class YouTubeMainDTO {
+import java.util.List;
+
+public class YouTubeMergeDTO {
     String kind;
     String etag;
+    List<YouTubeItemsDTO> youtubelista;
 
-    public YouTubeMainDTO() {
+    public YouTubeMergeDTO() {
     }
 
     public String getKind() {
@@ -23,4 +26,7 @@ public class YouTubeMainDTO {
         this.etag = etag;
     }
 
+    public void setYoutubelista(List<YouTubeItemsDTO> youtubelista) {
+        this.youtubelista = youtubelista;
+    }
 }

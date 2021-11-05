@@ -82,14 +82,12 @@ public class ApplicationController {
         String test = beeceptorDTO.toString();
     }
 
-    //para youtbe
-    @GetMapping("/youtubepost")
-    public YouTubeMainDTO youtubepost(YouTubeMainDTO ydto) throws IOException {
-        YouTubeMainDTO yd = applicationService.getYouTube(ydto);
+    @GetMapping("/youtubeitem")
+    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
         return yd;
-
     }
-
+    
     @PostMapping("/mercadoPOST")
     public MercadoLibreDTO mercadoPost() throws IOException{
         MercadoLibreDTO ml = applicationService.getQyA();
