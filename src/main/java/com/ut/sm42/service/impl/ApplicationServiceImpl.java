@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
@@ -17,6 +18,7 @@ import org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler
 import org.springframework.stereotype.Service;
 
 
+import javax.el.MapELResolver;
 import java.io.IOException;
 
 @Service
@@ -175,14 +177,24 @@ public class ApplicationServiceImpl implements ApplicationService {
         return onlineDTO;
     }
     @Override
-    public FacebookDTO redes(FacebookDTO redesDTO) throws IOException {
+    public FacebookDTO redesociales (FacebookDTO redesocialesDTO) throws IOException {
         JsonParser b = new JsonParser();
-        JsonObject json = (JsonObject) b.parse(httpService.sendRequestHttpS("https://graph.facebook.com/facebook/picture?redirect=false", "GET", null, null, "json", null, null));
+        JsonObject json = (JsonObject) b.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAFdTDZBlZAasBAL1m10M3avSW9DwIZCGxcFiU5Kh1ynkPonZAZBw3xxDzTXr5JnW5tzwyfZBoskDGnA6NjN0cDGrZCqEqaRqR266953jSZA4m7gLAfmNFNL3TDVbZBEJykdvul8hkCtTUyvsdnk0Iy1lzyOzA29lOcBG1FQ3xfBtPO1TmHd4aAyka0USjgklQHW5HqM2hyjFwohQmDBWMkMGkNZCPqZAL24ZBeHOgDf8HWvxgZDZD&fields=id,name,likes,gender,birthday ", "GET", null, null, "json", null, null));
         FacebookDTO FacebookDTO = new FacebookDTO();
         FacebookDTO.setId(json.get("id").getAsInt());
         FacebookDTO.setName(json.get("name").getAsString());
         FacebookDTO.setLikes(json.get("likes").getAsString());
         FacebookDTO.setBirthday(json.get("birthday").getAsInt());
-        return redesDTO;
+        return redesocialesDTO;
+    }
+    @Override
+    public MercadoLibreDTO ecomers (MercadoLibreDTO ecomersDTO) throws IOException {
+        JsonParser c= new JsonParser();
+        JsonObject json = (JsonObject) c.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/sites/MCO/search?q=xbox", "GET", null, null, "json", null, null));
+        ecomersDTO.setSite_id(json.get("site_id").getAsString());
+        ecomersDTO.setQuery(json.get("query").getAsString());
+        ecomersDTO.setPaging(json.get("paging").getAsString());
+        ecomersDTO.setTotal(json.get("total").getAsInt());
+        return ecomersDTO;
     }
 }
