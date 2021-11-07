@@ -179,10 +179,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonParser b = new JsonParser();
         JsonObject json = (JsonObject) b.parse(httpService.sendRequestHttpS("https://graph.facebook.com/facebook/picture?redirect=false", "GET", null, null, "json", null, null));
         FacebookDTO FacebookDTO = new FacebookDTO();
-        FacebookDTO.setHeight(json.get("height").getAsInt());
-        FacebookDTO.setIs_silhouette(json.get("is_silhouette").getAsString());
-        FacebookDTO.setUrl(json.get("url").getAsString());
-        FacebookDTO.setWidth(json.get("width").getAsInt());
-        return FacebookDTO;
+        FacebookDTO.setId(json.get("id").getAsInt());
+        FacebookDTO.setName(json.get("name").getAsString());
+        FacebookDTO.setLikes(json.get("likes").getAsString());
+        FacebookDTO.setBirthday(json.get("birthday").getAsInt());
+        return redesDTO;
     }
 }

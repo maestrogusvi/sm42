@@ -2,43 +2,52 @@ package com.ut.sm42.dto.Facebook;
 
 public class FacebookDTO {
 
-    int height;
-    String is_silhouette;
-    String url;
-    int width;
+    int id;
+    String name;
+    String likes;
+    String gender;
+    int birthday;
 
     public FacebookDTO() {
     }
 
-    public int getHeight() {
-        return height;
+    public int getId() {
+        return id;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getIs_silhouette() {
-        return is_silhouette;
+    public String getName() {
+        return name;
     }
 
-    public void setIs_silhouette(String is_silhouette) {
-        this.is_silhouette = is_silhouette;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getLikes() {
+        return likes;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 
-    public int getWidth() {
-        return width;
+    public String getGender() {
+        return gender;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(int birthday) {
+        this.birthday = birthday;
     }
 }
