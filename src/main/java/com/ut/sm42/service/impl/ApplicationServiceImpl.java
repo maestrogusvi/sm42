@@ -3,10 +3,14 @@ package com.ut.sm42.service.impl;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreAnswerDTO;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreQuestionsDTO;
+import com.ut.sm42.dto.facebook.FacebookDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreAnswerDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreQuestionsDTO;
+import com.ut.sm42.dto.users.*;
+import com.ut.sm42.dto.youtube.YouTubeItemsDTO;
+import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
+import com.ut.sm42.dto.youtube.YouTubeSnippetDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -224,6 +228,22 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         yd.setYoutubelista(youtubeDTOList);
         return yd;
+    }
+
+    @Override
+    public FacebookDTO getInfo(FacebookDTO info) throws IOException {
+        //FacebookDTO info = new FacebookDTO();
+        String token = "EAAIaZBt4w3vkBAGz5ZAsi9wIZBCdqiNoAKs0oUbB3ZA7KsyggDUOKFlTb8jpWaZAcD1oDyWdWtnNnEyvf9dpwoEanf21ucnd0L1fKiMoKtNRpWkSi6jfzN3FkiquZAEIDJqUTwULTKTd8GTs9IMcA9obVFdSp2JptAV2bVTtmz6ZBaeb9OVMc6E6tl34la6pYGoOXvFeWX1plxq7yo0qZBI52oET4QJilPnZCzGtUENWMNtYvZBZAjD99pc";
+        String url = "https://graph.facebook.com/me?fields=id,name,name_format,short_name,last_name&access_token=" + token;
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS(url,"GET",null,null,"json",null, null));
+        info.setId(json.get("id").getAsString());
+        info.setName(json.get("name").getAsString());
+        if(json.get("short_name")!=null){
+            info.setShort_name(json.get("short_name").getAsString());
+        }
+
+        return info;
     }
 
 }

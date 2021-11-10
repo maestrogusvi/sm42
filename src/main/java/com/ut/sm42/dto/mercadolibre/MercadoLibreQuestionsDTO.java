@@ -1,4 +1,4 @@
-package com.ut.sm42.dto.MercadoLibre;
+package com.ut.sm42.dto.mercadolibre;
 
 public class MercadoLibreQuestionsDTO {
     String date_created;

@@ -1,17 +1,19 @@
 package com.ut.sm42.controller;
 
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.facebook.FacebookDTO;
+import com.ut.sm42.dto.users.*;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
+import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApplicationController {
 
     @Autowired
@@ -92,5 +94,11 @@ public class ApplicationController {
     public MercadoLibreDTO mercadoPost() throws IOException{
         MercadoLibreDTO ml = applicationService.getQyA();
         return ml;
+    }
+
+    @GetMapping("/facebook")
+    public FacebookDTO getinfo(FacebookDTO info) throws  IOException{
+        FacebookDTO fb = applicationService.getInfo(info);
+        return fb;
     }
 }

@@ -1,4 +1,4 @@
-package com.ut.sm42.dto;
+package com.ut.sm42.dto.youtube;
 
 public class YouTubeSnippetDTO {
     String publishedAt;
