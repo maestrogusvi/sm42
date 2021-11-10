@@ -5,7 +5,8 @@ import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
-import net.bytebuddy.asm.MemberRemoval;
+import com.ut.sm42.dto.Twitch.TwitchDTO;
+import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import com.ut.sm42.dto.Spotify.*;
@@ -32,6 +33,6 @@ public interface ApplicationService {
     SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException;
     FacebookDTO redesociales(FacebookDTO redesocialesDTO) throws IOException;
     MercadoLibreDTO e_commers(MercadoLibreDTO e_commersDTO) throws IOException;
-
+    TwitchGameDTO streaming(TwitchGameDTO streamingDTO) throws IOException;
 }
 

@@ -5,6 +5,7 @@ import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
+import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class ApplicationController {
 
     @Autowired
     ApplicationService applicationService;
+    private Object applicationservice;
+    private Object streaming;
 
     @ExceptionHandler({ BusinessException.class })
     @ResponseBody
@@ -107,8 +110,13 @@ public class ApplicationController {
         return facebookDTO;
     }
     @GetMapping("/mercadolibre")
-    public MercadoLibreDTO mercadoLibreDTO(@RequestBody MercadoLibreDTO mercadoLibreDTO) throws IOException{
+    public MercadoLibreDTO mercadoLibreDTO(@RequestBody MercadoLibreDTO mercadoLibreDTO) throws IOException {
         applicationService.e_commers(mercadoLibreDTO);
         return mercadoLibreDTO;
+    }
+    @GetMapping("/twitch")
+    public TwitchGameDTO streamingDTO(@RequestBody TwitchGameDTO twitchGameDTO) throws IOException {
+        applicationService.streaming(twitchGameDTO);
+        return twitchGameDTO;
     }
 }

@@ -1,12 +1,15 @@
 package com.ut.sm42.service.impl;
 
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
+import com.ut.sm42.dto.Twitch.TwitchDTO;
+import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
@@ -14,12 +17,12 @@ import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 
-import javax.el.MapELResolver;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
@@ -29,6 +32,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     final
     UserRepository userRepository;
+    private Object streamingDTO;
 
     public ApplicationServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -198,5 +202,18 @@ public class ApplicationServiceImpl implements ApplicationService {
         e_commersDTO.setPaging(json.get("paging").getAsString());
         e_commersDTO.setTotal(json.get("total").getAsInt());
         return e_commersDTO;
+    }
+
+    @Override
+    public TwitchGameDTO streaming (TwitchGameDTO streamingDTO) throws IOException {
+        JsonParser d= new JsonParser();
+        JsonObject json = (JsonObject) d.parse(httpService.sendRequestHttpS("https://api.twitch.tv/helix/streams/?client-id=b7vusn4u9jjl4lc2l0w6fv2yrjqy4k&client_secret=qrzq3fawqv6efne3f0b0eomvv7ulmo&grant_type=client_credentials&access_token=kvt2ilqsyexthabqju0fung8hp3a96", "GET", null, null, "json", null, null));
+        streamingDTO.setId(json.get("id").getAsInt());
+        streamingDTO.setUser_id(json.get("user_id").getAsString());
+        streamingDTO.setUser_login(json.get("user_login").getAsString());
+        streamingDTO.setUser_name(json.get("user_name").getAsString());
+        streamingDTO.setType(json.get("type").getAsString());
+        return streamingDTO;
+
     }
 }
