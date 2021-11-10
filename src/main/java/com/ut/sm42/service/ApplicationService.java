@@ -26,4 +26,5 @@ public interface ApplicationService {
     FacebookDTO fb(FacebookDTO fbDTO) throws IOException;
     void getQyA() throws IOException;
 
+    YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO y1) throws IOException;
 }

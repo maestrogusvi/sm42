@@ -1,5 +1,6 @@
 package com.ut.sm42.service.impl;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 
@@ -188,8 +191,35 @@ public class ApplicationServiceImpl implements ApplicationService {
         JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
         MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
     }
+    @Override
+    public YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO yd) throws IOException {
+        JsonParser pr = new JsonParser();
+        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
+        yd.setKind(json.get("kind").getAsString());
+        yd.setEtag(json.get("etag").getAsString());
+        JsonArray listas = json.getAsJsonArray("items");
+        List<YouTubeItemsDTO> youtubeDTOList = new ArrayList<>();
+        for(int x = 0 ; x > listas.size(); x++){
+            JsonObject job1 = listas.get(x).getAsJsonObject();
+            YouTubeItemsDTO y1 = new YouTubeItemsDTO();
+            y1.setKind(job1.get("kind").getAsString());
+            y1.setEtag(job1.get("etag").getAsString());
+            y1.setId(job1.get("id").getAsString());
+            YouTubeSnippetDTO snippetDTO = new YouTubeSnippetDTO();
+            JsonObject snippetobject = job1.get("snippet").getAsJsonObject();
+            snippetDTO.setPublishedAt(snippetobject.get("publishedAt").getAsString());
+            snippetDTO.setChannelId(snippetobject.get("channelId").getAsString());
+            snippetDTO.setTitle(snippetobject.get("title").getAsString());
+            snippetDTO.setDescription(snippetobject.get("description").getAsString());
+            y1.setSnippetDTO(snippetDTO);
+            youtubeDTOList.add(y1);
+        }
+        yd.setYoutubelista(youtubeDTOList);
+        return yd;
+    }
 
 }
+
 
 
 

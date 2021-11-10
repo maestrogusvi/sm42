@@ -95,5 +95,9 @@ public class ApplicationController {
     public void mercadoPost() throws IOException{
         applicationService.getQyA();
     }
-
+    @GetMapping("/youtubeitem")
+    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
+        return yd;
+    }
 }
