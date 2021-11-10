@@ -2,12 +2,22 @@ package com.ut.sm42.dto.MercadoLibre;
 
 public class MercadoLibreDTO {
 
+    int id;
     String site_id;
+    String tittle;
     String query;
     String paging;
     int total;
 
     public MercadoLibreDTO() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSite_id() {
@@ -16,6 +26,14 @@ public class MercadoLibreDTO {
 
     public void setSite_id(String site_id) {
         this.site_id = site_id;
+    }
+
+    public String getTittle() {
+        return tittle;
+    }
+
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
     public String getQuery() {

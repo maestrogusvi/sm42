@@ -188,13 +188,15 @@ public class ApplicationServiceImpl implements ApplicationService {
         return redesocialesDTO;
     }
     @Override
-    public MercadoLibreDTO ecomers (MercadoLibreDTO ecomersDTO) throws IOException {
+    public MercadoLibreDTO e_commers (MercadoLibreDTO e_commersDTO) throws IOException {
         JsonParser c= new JsonParser();
         JsonObject json = (JsonObject) c.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/sites/MCO/search?q=xbox", "GET", null, null, "json", null, null));
-        ecomersDTO.setSite_id(json.get("site_id").getAsString());
-        ecomersDTO.setQuery(json.get("query").getAsString());
-        ecomersDTO.setPaging(json.get("paging").getAsString());
-        ecomersDTO.setTotal(json.get("total").getAsInt());
-        return ecomersDTO;
+        e_commersDTO.setId(json.get("id").getAsInt());
+        e_commersDTO.setSite_id(json.get("site_id").getAsString());
+        e_commersDTO.setTittle(json.get("tittle").getAsString());
+        e_commersDTO.setQuery(json.get("query").getAsString());
+        e_commersDTO.setPaging(json.get("paging").getAsString());
+        e_commersDTO.setTotal(json.get("total").getAsInt());
+        return e_commersDTO;
     }
 }

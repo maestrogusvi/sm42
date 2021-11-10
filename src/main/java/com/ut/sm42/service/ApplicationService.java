@@ -31,7 +31,7 @@ public interface ApplicationService {
     //API's
     SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException;
     FacebookDTO redesociales(FacebookDTO redesocialesDTO) throws IOException;
-    MercadoLibreDTO ecomers(MercadoLibreDTO ecomersDTO) throws IOException;
+    MercadoLibreDTO e_commers(MercadoLibreDTO e_commersDTO) throws IOException;
 
 }
 

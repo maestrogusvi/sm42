@@ -108,7 +108,7 @@ public class ApplicationController {
     }
     @GetMapping("/mercadolibre")
     public MercadoLibreDTO mercadoLibreDTO(@RequestBody MercadoLibreDTO mercadoLibreDTO) throws IOException{
-        applicationService.ecomers(mercadoLibreDTO);
+        applicationService.e_commers(mercadoLibreDTO);
         return mercadoLibreDTO;
     }
 }
