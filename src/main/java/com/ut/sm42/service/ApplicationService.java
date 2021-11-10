@@ -24,6 +24,7 @@ public interface ApplicationService {
     void saveMyFirstObject();
     void myObjectNoe();
     void saveMyFirsfObjectFragoso();
+    void myObjectMeza();
     //APIS
     MercadoLibreDTO getQyA() throws IOException;
     YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO y1) throws IOException;

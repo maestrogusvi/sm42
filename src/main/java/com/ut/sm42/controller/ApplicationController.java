@@ -76,6 +76,7 @@ public class ApplicationController {
     @PostMapping("/mezaPOST")
     public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
         MezaDTO amm =  applicationService.mezaPOST(mezaDTO);
+        applicationService.myObjectMeza();
         return amm;
     }
     @PostMapping("/userPost")

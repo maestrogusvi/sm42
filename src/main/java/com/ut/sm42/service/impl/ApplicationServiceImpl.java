@@ -172,6 +172,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         userRepository.save(fragosito);
     }
 
+    @Override
+    public void myObjectMeza() {
+        User aldito = new User();
+        aldito.setName("Meza Moreno");
+        userRepository.save(aldito);
+    }
 
     @Override
     public MercadoLibreDTO getQyA() throws IOException {
