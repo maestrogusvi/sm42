@@ -176,12 +176,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     public FacebookDTO fb(FacebookDTO fDTO) throws IOException {
         JsonParser asd = new JsonParser();
-        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/facebook/picture?redirect=false", "GET", null, null, "json", null, null));
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAFTeCBiV60BAJPkX4ztHNC7Dl4O7mRDQkywRtmaUwISlU2fLWvMyZBVIdYhBfIpZApZABIiO6YFDYdG0rqmbBXVGPnzrXMe8GoPN0UgW05LIXgc5oGeSkDAYsvIQnHZCKrSh68ZAroZAGMl2k2RDlsBpNJfX5k6vZBdiLgorlTu8ZBmZAfaKhfZBQr9qbyC6KJZBr1l96WwZApHp9VDuR7sbI2Ao15nfPeRGjsKShZApcrjpCwZDZD&fields=id,name,likes,gender,birthday", "GET", null, null, "json", null, null));
         FacebookDTO FacebookDTO = new FacebookDTO();
-        FacebookDTO.setHeight(json.get("height").getAsInt());
-        FacebookDTO.setIs_silhouette(json.get("is_silhouette").getAsString());
-        FacebookDTO.setUrl(json.get("url").getAsString());
-        FacebookDTO.setWidth(json.get("width").getAsInt());
+        FacebookDTO.setId(json.get("id").getAsInt());
+        FacebookDTO.setName(json.get("name").getAsString());
+        FacebookDTO.setLikes(json.get("likes").getAsString());
+        FacebookDTO.setGender(json.get("gender").getAsString());
+        FacebookDTO.setBirthday(json.get("birthday").getAsInt());
         return FacebookDTO;
     }
 
