@@ -3,6 +3,7 @@ package com.ut.sm42.service;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.dtoFacebook.FacebookDTO;
+import com.ut.sm42.dto.dtoTwitch.TwitchDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -22,6 +23,10 @@ public interface ApplicationService {
     AranaDTO aranaPOST(AranaDTO aranaDTO) throws  IOException;
     EscobarDTO escobarPOST(EscobarDTO escobarDTO) throws IOException;
     void saveMyFirstObject();
+    //MediaStack
     void getNews() throws IOException;
+    //Facebook
     FacebookDTO getfacebook() throws IOException;
+    //Twitch
+
 }

@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.dtoFacebook.FacebookDTO;
 import com.ut.sm42.dto.dtoMediaStack.MediaStackDTO;
+import com.ut.sm42.dto.dtoTwitch.TwitchDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -191,6 +192,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         facebookDTO.setBirthday(json.get("birthday").getAsInt());
         return facebookDTO;
     }
+
 
 }
 
