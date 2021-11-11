@@ -1,5 +1,7 @@
 package com.ut.sm42.dto.dtoTwitch;
 
+import java.util.List;
+
 public class TwitchDTO {
 
     int id;
@@ -11,9 +13,10 @@ public class TwitchDTO {
     String type;
     String tittle;
 
+    List<GameDTO> gameDTO;
+
     public TwitchDTO() {
     }
-
 
     public int getId() {
         return id;
