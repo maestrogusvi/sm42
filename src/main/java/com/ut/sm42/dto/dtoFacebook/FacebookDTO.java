@@ -1,4 +1,4 @@
-package com.ut.sm42.dtoFacebook;
+package com.ut.sm42.dto.dtoFacebook;
 
 public class FacebookDTO {
 

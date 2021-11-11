@@ -1,4 +1,4 @@
-package com.ut.sm42.dtoMediaStack;
+package com.ut.sm42.dto.dtoMediaStack;
 
 public class MediaStackPaginationDTO {
 
