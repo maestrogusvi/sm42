@@ -89,14 +89,13 @@ public class ApplicationController {
     }
 
     @PostMapping("/facebookPOST")
-    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException {
-        applicationService.getfacebook();
-        return facebookDTO;
+    public FacebookDTO facebookDTO() throws IOException {
+
+        return applicationService.getfacebook();
     }
 
     @PostMapping("/twitchPOST")
-    public GameDTO gameDTO (@RequestBody GameDTO gameDTO) throws IOException {
-        applicationService.getGame();
-        return gameDTO;
+    public GameDTO gameDTO () throws IOException {
+        return applicationService.getGame();;
     }
 }
