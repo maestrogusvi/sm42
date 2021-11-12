@@ -1,8 +1,10 @@
 package com.ut.sm42.service.impl;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Mercadolibre.MercadoLibreDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -11,8 +13,11 @@ import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 
@@ -169,9 +174,53 @@ public class ApplicationServiceImpl implements ApplicationService {
         user.setStatus("Disponible");
         userRepository.save(user);
     }
+    public FacebookDTO fb(FacebookDTO fDTO) throws IOException {
+        JsonParser asd = new JsonParser();
+        JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAFTeCBiV60BAJPkX4ztHNC7Dl4O7mRDQkywRtmaUwISlU2fLWvMyZBVIdYhBfIpZApZABIiO6YFDYdG0rqmbBXVGPnzrXMe8GoPN0UgW05LIXgc5oGeSkDAYsvIQnHZCKrSh68ZAroZAGMl2k2RDlsBpNJfX5k6vZBdiLgorlTu8ZBmZAfaKhfZBQr9qbyC6KJZBr1l96WwZApHp9VDuR7sbI2Ao15nfPeRGjsKShZApcrjpCwZDZD&fields=id,name,likes,gender,birthday", "GET", null, null, "json", null, null));
+        FacebookDTO FacebookDTO = new FacebookDTO();
+        FacebookDTO.setId(json.get("id").getAsInt());
+        FacebookDTO.setName(json.get("name").getAsString());
+        FacebookDTO.setLikes(json.get("likes").getAsString());
+        FacebookDTO.setGender(json.get("gender").getAsString());
+        FacebookDTO.setBirthday(json.get("birthday").getAsInt());
+        return FacebookDTO;
+    }
 
+    @Override
+    public void getQyA() throws IOException{
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
+        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
+    }
+    @Override
+    public YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO yd) throws IOException {
+        JsonParser pr = new JsonParser();
+        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
+        yd.setKind(json.get("kind").getAsString());
+        yd.setEtag(json.get("etag").getAsString());
+        JsonArray listas = json.getAsJsonArray("items");
+        List<YouTubeItemsDTO> youtubeDTOList = new ArrayList<>();
+        for(int x = 0 ; x > listas.size(); x++){
+            JsonObject job1 = listas.get(x).getAsJsonObject();
+            YouTubeItemsDTO y1 = new YouTubeItemsDTO();
+            y1.setKind(job1.get("kind").getAsString());
+            y1.setEtag(job1.get("etag").getAsString());
+            y1.setId(job1.get("id").getAsString());
+            YouTubeSnippetDTO snippetDTO = new YouTubeSnippetDTO();
+            JsonObject snippetobject = job1.get("snippet").getAsJsonObject();
+            snippetDTO.setPublishedAt(snippetobject.get("publishedAt").getAsString());
+            snippetDTO.setChannelId(snippetobject.get("channelId").getAsString());
+            snippetDTO.setTitle(snippetobject.get("title").getAsString());
+            snippetDTO.setDescription(snippetobject.get("description").getAsString());
+            y1.setSnippetDTO(snippetDTO);
+            youtubeDTOList.add(y1);
+        }
+        yd.setYoutubelista(youtubeDTOList);
+        return yd;
+    }
 
 }
+
 
 
 

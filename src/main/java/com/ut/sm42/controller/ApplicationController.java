@@ -9,6 +9,7 @@ import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
 
@@ -81,5 +82,20 @@ public class ApplicationController {
         CatzinDTO arr =  applicationService.omarPOST(chaconDTO);
         return arr;
 
+    }
+    @GetMapping("/facebook")
+    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException {
+        applicationService.fb(facebookDTO);
+        return facebookDTO;
+    }
+
+    @PostMapping("/mercadoPOST")
+    public void mercadoPost() throws IOException{
+        applicationService.getQyA();
+    }
+    @GetMapping("/youtubeitem")
+    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
+        return yd;
     }
 }
