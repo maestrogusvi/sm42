@@ -87,8 +87,8 @@ public class ApplicationController {
     }
 
     @GetMapping("/youtubeitem")
-    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
-        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
+    public YouTubeMergeDTO youTubeDTO() throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube();
         return yd;
     }
     

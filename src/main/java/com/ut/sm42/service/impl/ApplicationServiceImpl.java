@@ -211,7 +211,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO yd) throws IOException {
+    public YouTubeMergeDTO mergeYoutube() throws IOException {
+        YouTubeMergeDTO yd = new YouTubeMergeDTO();
         JsonParser pr = new JsonParser();
         JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
         yd.setKind(json.get("kind").getAsString());
