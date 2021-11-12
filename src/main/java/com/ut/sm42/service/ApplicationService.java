@@ -29,5 +29,5 @@ public interface ApplicationService {
     //Facebook
     FacebookDTO getfacebook() throws IOException;
     //Twitch
-    GameDTO getGame (GameDTO getGame) throws IOException;
+    GameDTO getGame () throws IOException;
 }

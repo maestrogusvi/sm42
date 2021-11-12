@@ -2,6 +2,7 @@ package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.dtoFacebook.FacebookDTO;
+import com.ut.sm42.dto.dtoTwitch.GameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,5 +92,12 @@ public class ApplicationController {
     public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException {
         applicationService.getfacebook();
         return facebookDTO;
+    }
+
+
+    @PostMapping("/twitchPOST")
+    public GameDTO gameDTO (@RequestBody GameDTO gameDTO) throws IOException {
+        applicationService.getGame();
+        return gameDTO;
     }
 }

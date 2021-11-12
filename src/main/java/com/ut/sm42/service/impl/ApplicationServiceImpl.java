@@ -195,7 +195,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public GameDTO getGame(GameDTO getGame) throws IOException {
+    public GameDTO getGame() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/v12.0/oauth/access_token?client_id=611674913235979&client_secret=f09c40f9c7cd2bc659a07a4077133b92&redirect_uri=https://equipodiego.free.beeceptor.com/&code=AQCJ-zQZ721_1kTpeTIBXNh7znyrhOTIiLNzsUh0LxI9RH2boLqdkJNJwat68bLZwUtjybAHlml_ERxFUbDHuQ9Vkv35B40HtjG9sYrQzb4nLfpCwCSAN7-iwGLGF_i6urHIerlYDjLZdUqI1G94cIm3HadTzggfZwzOjCtLp5lGchb7_4aAAg2mIG8_PPEqrWej2syNW9LvRPNRDM0_SzaIQ8sZsbU_7q3BbtG_4r3g7f72KaBEHHLwWHh1yV-wI_c-fNwmxeAnkM_E3zJJtAJNKRhJZxJ9iyeA2oiuLnJIK0ar5CBRRwADu8YBZj7c5S7HmOgBl6AwmU83PFF0XDHu0O_40sSJTG7VI__POtd1KPSTnkStoA5vD6oqWevH4MQ", "GET", null, null, "json", null, null));
         GameDTO gameDTO = new GameDTO();
