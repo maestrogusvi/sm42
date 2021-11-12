@@ -174,7 +174,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         user.setStatus("Disponible");
         userRepository.save(user);
     }
-    public FacebookDTO fb(FacebookDTO fDTO) throws IOException {
+    public FacebookDTO fb() throws IOException {
         JsonParser asd = new JsonParser();
         JsonObject json = (JsonObject) asd.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAFTeCBiV60BAJPkX4ztHNC7Dl4O7mRDQkywRtmaUwISlU2fLWvMyZBVIdYhBfIpZApZABIiO6YFDYdG0rqmbBXVGPnzrXMe8GoPN0UgW05LIXgc5oGeSkDAYsvIQnHZCKrSh68ZAroZAGMl2k2RDlsBpNJfX5k6vZBdiLgorlTu8ZBmZAfaKhfZBQr9qbyC6KJZBr1l96WwZApHp9VDuR7sbI2Ao15nfPeRGjsKShZApcrjpCwZDZD&fields=id,name,likes,gender,birthday", "GET", null, null, "json", null, null));
         FacebookDTO FacebookDTO = new FacebookDTO();
@@ -193,7 +193,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
     }
     @Override
-    public YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO yd) throws IOException {
+    public YouTubeMergeDTO mergeYoutube() throws IOException {
+        YouTubeMergeDTO yd = new YouTubeMergeDTO();
         JsonParser pr = new JsonParser();
         JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
         yd.setKind(json.get("kind").getAsString());

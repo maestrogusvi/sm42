@@ -23,8 +23,8 @@ public interface ApplicationService {
     CatzinDTO omarPOST(CatzinDTO chaconDTO) throws IOException;
     void saveMyFirstObject();
 
-    FacebookDTO fb(FacebookDTO fbDTO) throws IOException;
+    FacebookDTO fb() throws IOException;
     void getQyA() throws IOException;
 
-    YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO y1) throws IOException;
+    YouTubeMergeDTO mergeYoutube() throws IOException;
 }

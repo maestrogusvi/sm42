@@ -84,9 +84,9 @@ public class ApplicationController {
 
     }
     @GetMapping("/facebook")
-    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException {
-        applicationService.fb(facebookDTO);
-        return facebookDTO;
+    public FacebookDTO facebookDTO() throws IOException {
+
+        return  applicationService.fb();
     }
 
     @PostMapping("/mercadoPOST")
@@ -94,8 +94,8 @@ public class ApplicationController {
         applicationService.getQyA();
     }
     @GetMapping("/youtubeitem")
-    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
-        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
+    public YouTubeMergeDTO youTubeDTO() throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube();
         return yd;
     }
 }
