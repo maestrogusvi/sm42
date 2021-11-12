@@ -94,7 +94,6 @@ public class ApplicationController {
         return facebookDTO;
     }
 
-
     @PostMapping("/twitchPOST")
     public GameDTO gameDTO (@RequestBody GameDTO gameDTO) throws IOException {
         applicationService.getGame();
