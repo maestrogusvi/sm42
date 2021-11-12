@@ -64,11 +64,9 @@ public class GameDTO {
         this.type = type;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTittle() {return tittle;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setTittle(String tittle) {this.tittle = tittle;
     }
 }
