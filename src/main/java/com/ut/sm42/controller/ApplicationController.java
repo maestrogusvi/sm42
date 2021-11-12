@@ -104,8 +104,8 @@ public class ApplicationController {
         return fb;
     }
     @GetMapping("/twitchSTREAMS")
-    public TwitchStreamsDTO getstream(TwitchStreamsDTO stream) throws  IOException{
-        TwitchStreamsDTO twch = applicationService.getStream(stream);
+    public TwitchStreamsDTO getstream() throws  IOException{
+        TwitchStreamsDTO twch = applicationService.getStream();
         return twch;
     }
 }

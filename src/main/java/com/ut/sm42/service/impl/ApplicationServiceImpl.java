@@ -255,9 +255,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     //Header necesario para el request de la api.
     @Override
-    public TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException {
+    public TwitchStreamsDTO getStream() throws IOException {
         String twitch_url = "https://api.twitch.tv/helix/streams?first=1";
         JsonParser twitchpor = new JsonParser();
+        TwitchStreamsDTO stream = new TwitchStreamsDTO();
         JsonObject json = (JsonObject) twitchpor.parse(httpService.sendRequestHttpS(twitch_url,"GET",null,null,"json",null, null));
         stream.setUser_name(json.get("user_id").getAsString());
         stream.setGame_name(json.get("game_name").getAsString());
