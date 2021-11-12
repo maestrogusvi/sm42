@@ -1,14 +1,16 @@
 package com.ut.sm42.controller;
 
-import com.google.gson.JsonObject;
 import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.Spotify.SpotifyDTO;
+import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.ut.sm42.dto.*;
 
 import java.io.IOException;
 
@@ -18,6 +20,8 @@ public class ApplicationController {
 
     @Autowired
     ApplicationService applicationService;
+    private Object applicationservice;
+    private Object streaming;
 
     @ExceptionHandler({ BusinessException.class })
     @ResponseBody
@@ -51,6 +55,7 @@ public class ApplicationController {
         return applicationService.oscarl();
     }
 
+    //PostHttp
     @GetMapping("/romeroPostHttp")
     public RomerithoDTO  romeroPostHttp(@RequestBody RomerithoDTO romerithoDTO) throws IOException {
         applicationService.romeroPostHttp(romerithoDTO);
@@ -71,7 +76,7 @@ public class ApplicationController {
         applicationService.erickPostHttp(martinDTO);
         return martinDTO;
     }
-
+    //Post
     @PostMapping("/romeroPost")
     public RomerithoDTO romeroPost(@RequestBody RomerithoDTO romerithoDTO) throws IOException{
         applicationService. romeroPostHttp(romerithoDTO);
@@ -91,5 +96,27 @@ public class ApplicationController {
     public MartinDTO erickPost(@RequestBody MartinDTO martinDTO) throws IOException{
         applicationService.erickPostHttp(martinDTO);
         return martinDTO;
+    }
+
+    //API's
+    @GetMapping("/spotify")
+    public SpotifyDTO spotifyDTO(@RequestBody SpotifyDTO spotifyDTO) throws IOException{
+        applicationService.online(spotifyDTO);
+        return spotifyDTO;
+    }
+    @GetMapping("/facebook")
+    public FacebookDTO facebookDTO(@RequestBody FacebookDTO facebookDTO) throws IOException{
+        applicationService.redesociales(facebookDTO);
+        return facebookDTO;
+    }
+    @GetMapping("/mercadolibre")
+    public MercadoLibreDTO mercadoLibreDTO(@RequestBody MercadoLibreDTO mercadoLibreDTO) throws IOException {
+        applicationService.e_commers(mercadoLibreDTO);
+        return mercadoLibreDTO;
+    }
+    @GetMapping("/twitch")
+    public TwitchGameDTO streamingDTO(@RequestBody TwitchGameDTO twitchGameDTO) throws IOException {
+        applicationService.streaming(twitchGameDTO);
+        return twitchGameDTO;
     }
 }

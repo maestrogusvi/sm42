@@ -1,9 +1,15 @@
 package com.ut.sm42.service.impl;
 
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.Facebook.FacebookDTO;
+import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.Spotify.SpotifyDTO;
+import com.ut.sm42.dto.Twitch.TwitchDTO;
+import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
@@ -12,8 +18,11 @@ import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import java.util.List;
+
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
@@ -21,8 +30,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     HttpService httpService;
 
-    @Autowired
+    final
     UserRepository userRepository;
+    private Object streamingDTO;
+
+    public ApplicationServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public String firstService() {
@@ -83,7 +97,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         lemon.setStatus(json.get("status").getAsString());
         return lemon;
     }
-
+    //PosHttp
     @Override
     public RomerithoDTO romeroPostHttp(RomerithoDTO romerithoDTO) throws IOException {
         JsonParser abc = new JsonParser();
@@ -147,10 +161,59 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void saveMyFirstObject() {
-            User user = new User();
-            user.setName("Sebastian Romero");
-            user.setStatus("Funciona");
-            userRepository.save(user);
+        User user = new User();
+        user.setName("Sebastian Romero");
+        user.setStatus("Funciona");
+        userRepository.save(user);
 
-        }
     }
+
+    @Override
+    public SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException {
+        JsonParser a= new JsonParser();
+        JsonObject json = (JsonObject) a.parse(httpService.sendRequestHttpS("https://api.spotify.com/v1/albums/43mAHKPa4iB2er88lxD9Q8/tracks?market=ES", "GET", null, null, "json", null, null));
+        onlineDTO.setHref(json.get("href").getAsString());
+        onlineDTO.setLimit(json.get("limit").getAsInt());
+        onlineDTO.setNext(json.get("next").getAsString());
+        onlineDTO.setOffset(json.get("offset").getAsInt());
+        onlineDTO.setPrevious(json.get("previous").getAsString());
+        onlineDTO.setTotal(json.get("total").getAsInt());
+        return onlineDTO;
+    }
+    @Override
+    public FacebookDTO redesociales (FacebookDTO redesocialesDTO) throws IOException {
+        JsonParser b = new JsonParser();
+        JsonObject json = (JsonObject) b.parse(httpService.sendRequestHttpS("https://graph.facebook.com/me?access_token=EAAFdTDZBlZAasBAPNzZASeevuVa2Ret4DTZCAkZClrr3PtDm5hdEikFDlY4ZAWRq2JRyDEAeKZB94cl46n15Sjjt3qBOOlnDZAjhtSASnnrppxP3C3vpjo7vA8xoizUuVDdpzrkMmSaDmYjjdIXRyFgnk6CXWnjmwygZCH4ah4JVzqDdfDaNBkbarNaazGJeM7JrTKwmLLgc66bWhZBjOYqaU6qHRGT2gpIScFUIK4rK5urwZDZD&fields=id,name,likes,gender,birthday ", "GET", null, null, "json", null, null));
+        FacebookDTO FacebookDTO = new FacebookDTO();
+        FacebookDTO.setId(json.get("id").getAsInt());
+        FacebookDTO.setName(json.get("name").getAsString());
+        FacebookDTO.setLikes(json.get("likes").getAsString());
+        FacebookDTO.setBirthday(json.get("birthday").getAsInt());
+        return redesocialesDTO;
+    }
+    @Override
+    public MercadoLibreDTO e_commers (MercadoLibreDTO e_commersDTO) throws IOException {
+        JsonParser c= new JsonParser();
+        JsonObject json = (JsonObject) c.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/sites/MCO/search?q=xbox", "GET", null, null, "json", null, null));
+        e_commersDTO.setId(json.get("id").getAsInt());
+        e_commersDTO.setSite_id(json.get("site_id").getAsString());
+        e_commersDTO.setTittle(json.get("tittle").getAsString());
+        e_commersDTO.setQuery(json.get("query").getAsString());
+        e_commersDTO.setPaging(json.get("paging").getAsString());
+        e_commersDTO.setTotal(json.get("total").getAsInt());
+        return e_commersDTO;
+    }
+
+    @Override
+    public TwitchGameDTO streaming (TwitchGameDTO streamingDTO) throws IOException {
+        JsonParser d= new JsonParser();
+        JsonObject json = (JsonObject) d.parse(httpService.sendRequestHttpS("https://api.twitch.tv/helix/streams/?client-id=b7vusn4u9jjl4lc2l0w6fv2yrjqy4k&client_secret=qrzq3fawqv6efne3f0b0eomvv7ulmo&grant_type=client_credentials&access_token=kvt2ilqsyexthabqju0fung8hp3a96", "GET", null, null, "json", null, null));
+        streamingDTO.setId(json.get("id").getAsInt());
+        streamingDTO.setUser_id(json.get("user_id").getAsString());
+        streamingDTO.setUser_login(json.get("user_login").getAsString());
+        streamingDTO.setUser_name(json.get("user_name").getAsString());
+        streamingDTO.setType(json.get("type").getAsString());
+        return streamingDTO;
+
+    }
+}
