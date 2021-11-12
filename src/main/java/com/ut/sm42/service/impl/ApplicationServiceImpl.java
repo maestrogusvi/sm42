@@ -252,6 +252,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         return info;
     }
+    //Header necesario para el request de la api.
     @Override
     public TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException {
         String twitch_url = "https://api.twitch.tv/helix/streams?first=1";
