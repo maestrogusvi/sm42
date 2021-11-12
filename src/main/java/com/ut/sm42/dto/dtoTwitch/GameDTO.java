@@ -18,25 +18,15 @@ public class GameDTO {
     public GameDTO() {
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) {this.id = id;}
 
-    public int getUser_id() {
-        return user_id;
-    }
+    public int getUser_id() {return user_id;}
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
+    public void setUser_id(int user_id) {this.user_id = user_id;}
 
-    public String getUser_login() {
-        return user_login;
-    }
+    public String getUser_login() {return user_login;}
 
     public void setUser_login(String user_login) {
         this.user_login = user_login;
