@@ -32,7 +32,7 @@ public interface ApplicationService {
     //API's
     SpotifyDTO online(SpotifyDTO onlineDTO) throws IOException;
     FacebookDTO redesociales(FacebookDTO redesocialesDTO) throws IOException;
-    MercadoLibreDTO e_commers(MercadoLibreDTO e_commersDTO) throws IOException;
-    TwitchGameDTO streaming(TwitchGameDTO streamingDTO) throws IOException;
+    MercadoLibreDTO e_commers() throws IOException;
+    TwitchGameDTO streaming() throws IOException;
 }
 

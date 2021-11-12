@@ -110,13 +110,11 @@ public class ApplicationController {
         return facebookDTO;
     }
     @GetMapping("/mercadolibre")
-    public MercadoLibreDTO mercadoLibreDTO(@RequestBody MercadoLibreDTO mercadoLibreDTO) throws IOException {
-        applicationService.e_commers(mercadoLibreDTO);
-        return mercadoLibreDTO;
+    public MercadoLibreDTO mercadoLibreDTO() throws IOException {
+        return  applicationService.e_commers();
     }
     @GetMapping("/twitch")
-    public TwitchGameDTO streamingDTO(@RequestBody TwitchGameDTO twitchGameDTO) throws IOException {
-        applicationService.streaming(twitchGameDTO);
-        return twitchGameDTO;
+    public TwitchGameDTO streamingDTO() throws IOException {
+        return   applicationService.streaming();
     }
 }

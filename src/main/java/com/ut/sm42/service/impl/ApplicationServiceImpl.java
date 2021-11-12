@@ -2,6 +2,7 @@ package com.ut.sm42.service.impl;
 
 
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
@@ -192,21 +193,25 @@ public class ApplicationServiceImpl implements ApplicationService {
         return redesocialesDTO;
     }
     @Override
-    public MercadoLibreDTO e_commers (MercadoLibreDTO e_commersDTO) throws IOException {
+    public MercadoLibreDTO e_commers () throws IOException {
+        MercadoLibreDTO e_commersDTO = new MercadoLibreDTO();
         JsonParser c= new JsonParser();
         JsonObject json = (JsonObject) c.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/sites/MCO/search?q=xbox", "GET", null, null, "json", null, null));
-        e_commersDTO.setId(json.get("id").getAsInt());
-        e_commersDTO.setSite_id(json.get("site_id").getAsString());
-        e_commersDTO.setTittle(json.get("tittle").getAsString());
+        JsonArray jsonArray = json.get("results").getAsJsonArray();
+        JsonObject t1= jsonArray.get(0).getAsJsonObject();
+        e_commersDTO.setId(t1.get("id").getAsString());
+        e_commersDTO.setSite_id(t1.get("site_id").getAsString());
+        e_commersDTO.setTittle(t1.get("title").getAsString());
         e_commersDTO.setQuery(json.get("query").getAsString());
-        e_commersDTO.setPaging(json.get("paging").getAsString());
-        e_commersDTO.setTotal(json.get("total").getAsInt());
+        e_commersDTO.setPaging("1");
+        e_commersDTO.setTotal(json.get("paging").getAsJsonObject().get("total").getAsInt());
         return e_commersDTO;
     }
 
     @Override
-    public TwitchGameDTO streaming (TwitchGameDTO streamingDTO) throws IOException {
+    public TwitchGameDTO streaming () throws IOException {
         JsonParser d= new JsonParser();
+        TwitchGameDTO streamingDTO = new  TwitchGameDTO();
         JsonObject json = (JsonObject) d.parse(httpService.sendRequestHttpS("https://api.twitch.tv/helix/streams/?client-id=b7vusn4u9jjl4lc2l0w6fv2yrjqy4k&client_secret=qrzq3fawqv6efne3f0b0eomvv7ulmo&grant_type=client_credentials&access_token=kvt2ilqsyexthabqju0fung8hp3a96", "GET", null, null, "json", null, null));
         streamingDTO.setId(json.get("id").getAsInt());
         streamingDTO.setUser_id(json.get("user_id").getAsString());
