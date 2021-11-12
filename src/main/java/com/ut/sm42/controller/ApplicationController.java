@@ -1,16 +1,20 @@
 package com.ut.sm42.controller;
 
-import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.facebook.FacebookDTO;
+import com.ut.sm42.dto.twitch.TwitchStreamsDTO;
+import com.ut.sm42.dto.users.*;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
+import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApplicationController {
 
     @Autowired
@@ -73,6 +77,7 @@ public class ApplicationController {
     @PostMapping("/mezaPOST")
     public MezaDTO mezaPOST(@RequestBody MezaDTO mezaDTO) throws IOException{
         MezaDTO amm =  applicationService.mezaPOST(mezaDTO);
+        applicationService.myObjectMeza();
         return amm;
     }
     @PostMapping("/userPost")
@@ -81,14 +86,26 @@ public class ApplicationController {
         String test = beeceptorDTO.toString();
     }
 
-    //para youtbe
-    @PostMapping("/apiPost")
-    public void apiPost() throws IOException {
-        applicationService.getYouTube();
-
+    @GetMapping("/youtubeitem")
+    public YouTubeMergeDTO youTubeDTO(YouTubeMergeDTO ydto) throws IOException {
+        YouTubeMergeDTO yd = applicationService.mergeYoutube(ydto);
+        return yd;
     }
+    
     @PostMapping("/mercadoPOST")
-    public void mercadoPost() throws IOException{
-        applicationService.getQyA();
+    public MercadoLibreDTO mercadoPost() throws IOException{
+        MercadoLibreDTO ml = applicationService.getQyA();
+        return ml;
+    }
+
+    @GetMapping("/facebook")
+    public FacebookDTO getinfo(FacebookDTO info) throws  IOException{
+        FacebookDTO fb = applicationService.getInfo(info);
+        return fb;
+    }
+    @GetMapping("/twitchSTREAMS")
+    public TwitchStreamsDTO getstream(TwitchStreamsDTO stream) throws  IOException{
+        TwitchStreamsDTO twch = applicationService.getStream(stream);
+        return twch;
     }
 }

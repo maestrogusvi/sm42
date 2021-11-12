@@ -1,11 +1,11 @@
-package com.ut.sm42.dto;
+package com.ut.sm42.dto.users;
 
-public class FragosoDTO {
+public class MezaDTO {
     int id;
     String name;
     String status;
 
-    public FragosoDTO() {
+    public MezaDTO() {
     }
 
     public int getId() {
@@ -34,13 +34,12 @@ public class FragosoDTO {
 
     @Override
     public String toString() {
-        return "FragosoDTO{" +
+        return "MezaDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
-
     public String toJSON() {
         return "{" +
                 "\"id\":" +"\""+id+"\","+
@@ -48,4 +47,5 @@ public class FragosoDTO {
                 "\"status\":" +"\""+status+"\""+
                 '}';
     }
+
 }

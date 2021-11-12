@@ -1,4 +1,4 @@
-package com.ut.sm42.dto.MercadoLibre;
+package com.ut.sm42.dto.mercadolibre;
 
 
 import java.util.List;

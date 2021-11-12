@@ -1,8 +1,17 @@
 package com.ut.sm42.service.impl;
+
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
+import com.ut.sm42.dto.facebook.FacebookDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreAnswerDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
+import com.ut.sm42.dto.mercadolibre.MercadoLibreQuestionsDTO;
+import com.ut.sm42.dto.twitch.TwitchStreamsDTO;
+import com.ut.sm42.dto.users.*;
+import com.ut.sm42.dto.youtube.YouTubeItemsDTO;
+import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
+import com.ut.sm42.dto.youtube.YouTubeSnippetDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -12,6 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
@@ -162,18 +174,95 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void getYouTube() throws IOException {
-        JsonParser pr = new JsonParser();
-        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
-        YouTubeMainDTO yotubestack  = new YouTubeMainDTO();
-
+    public void myObjectMeza() {
+        User aldito = new User();
+        aldito.setName("Meza Moreno");
+        userRepository.save(aldito);
     }
-
 
     @Override
-    public void getQyA() throws IOException{
+    public MercadoLibreDTO getQyA() throws IOException {
         JsonParser por = new JsonParser();
         JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS("https://api.mercadolibre.com/questions/search?item=MLM1321810887", "GET", null, null, "json", null, null));
-        MercadoLibreDTO mercadoLibreDTO = new MercadoLibreDTO();
+        MercadoLibreDTO ml = new MercadoLibreDTO();
+        ml.setTotal(json.get("total").getAsInt());
+        ml.setLimit(json.get("limit").getAsInt());
+        JsonArray listas = json.getAsJsonArray("questions");
+        List<MercadoLibreQuestionsDTO> questionsDTOList = new ArrayList<>();
+        for(int x = 0 ; x > listas.size(); x++){
+            JsonObject job1 = listas.get(x).getAsJsonObject();
+            MercadoLibreQuestionsDTO pan = new MercadoLibreQuestionsDTO();
+            pan.setDate_created(job1.get("data_created").getAsString());
+            pan.setItem_id(job1.get("item_id").getAsString());
+            pan.setSeller_id(job1.get("seller_id").getAsInt());
+            pan.setStatus(job1.get("status").getAsString());
+            pan.setText(job1.get("text").getAsString());
+            pan.setId(job1.get("id").getAsInt());
+            MercadoLibreAnswerDTO answersDTO = new MercadoLibreAnswerDTO();
+            JsonObject answerobject = job1.get("answer").getAsJsonObject();
+            answersDTO.setStatus(answerobject.get("status").getAsString());
+            answersDTO.setDate_created(answerobject.get("date_created").getAsString());
+            answersDTO.setText(answerobject.get("text").getAsString());
+            pan.setMercadoLibreAnswerDTO(answersDTO);
+            questionsDTOList.add(pan);
+        }
+        ml.setMercadoLibreQuestionsDTO(questionsDTOList);
+        return ml;
     }
+
+    @Override
+    public YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO yd) throws IOException {
+        JsonParser pr = new JsonParser();
+        JsonObject json = (JsonObject) pr.parse(httpService.sendRequestHttpS("https://www.googleapis.com/youtube/v3/videos?id=FUJDBXaKBcA&key=AIzaSyC-XbXXpngMiW6CFfPUsoZvQpcuki6nYvI&part=snippet","GET",null,null,"json",null, null));
+        yd.setKind(json.get("kind").getAsString());
+        yd.setEtag(json.get("etag").getAsString());
+        JsonArray listas = json.getAsJsonArray("items");
+        List<YouTubeItemsDTO> youtubeDTOList = new ArrayList<>();
+        for(int x = 0 ; x > listas.size(); x++){
+            JsonObject job1 = listas.get(x).getAsJsonObject();
+            YouTubeItemsDTO y1 = new YouTubeItemsDTO();
+            y1.setKind(job1.get("kind").getAsString());
+            y1.setEtag(job1.get("etag").getAsString());
+            y1.setId(job1.get("id").getAsString());
+            YouTubeSnippetDTO snippetDTO = new YouTubeSnippetDTO();
+            JsonObject snippetobject = job1.get("snippet").getAsJsonObject();
+            snippetDTO.setPublishedAt(snippetobject.get("publishedAt").getAsString());
+            snippetDTO.setChannelId(snippetobject.get("channelId").getAsString());
+            snippetDTO.setTitle(snippetobject.get("title").getAsString());
+            snippetDTO.setDescription(snippetobject.get("description").getAsString());
+            y1.setSnippetDTO(snippetDTO);
+            youtubeDTOList.add(y1);
+        }
+        yd.setYoutubelista(youtubeDTOList);
+        return yd;
+    }
+
+    @Override
+    public FacebookDTO getInfo(FacebookDTO info) throws IOException {
+        //FacebookDTO info = new FacebookDTO();
+        String token = "EAAIaZBt4w3vkBAK0ZBfhvf6I6wquowu5bYMlLkuaaOB422ZB1HmbFOQdE8ywZAFZCfHCYtZCYNGRefPZCbZBLfDc3FoN6RoGg1mZC2jHT2jXVvbZBkLbSYLYwZA3d8kqJhaW3b09JZAkVsLCZAGl0vcvRqtIhpPkVL0F9t3CWybjlxtuz5DQNgWHEeEIWibM5hQltytDQRZBUY6pKZAFbTTpqZArG2jjgqZBbWwS0UIZAZBTsUiyfADAvLZBpuoP0vxn";
+        String url = "https://graph.facebook.com/me?fields=id,name,name_format,short_name,last_name&access_token=" + token;
+        JsonParser por = new JsonParser();
+        JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS(url,"GET",null,null,"json",null, null));
+        info.setId(json.get("id").getAsString());
+        info.setName(json.get("name").getAsString());
+        if(json.get("short_name")!=null){
+            info.setShort_name(json.get("short_name").getAsString());
+        }
+
+        return info;
+    }
+    //Header necesario para el request de la api.
+    @Override
+    public TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException {
+        String twitch_url = "https://api.twitch.tv/helix/streams?first=1";
+        JsonParser twitchpor = new JsonParser();
+        JsonObject json = (JsonObject) twitchpor.parse(httpService.sendRequestHttpS(twitch_url,"GET",null,null,"json",null, null));
+        stream.setUser_name(json.get("user_id").getAsString());
+        stream.setGame_name(json.get("game_name").getAsString());
+        stream.setViewer_count(json.get("viewer_count").getAsString());
+
+        return stream;
+    }
+
 }

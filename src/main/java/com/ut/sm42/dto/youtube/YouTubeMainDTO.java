@@ -1,11 +1,10 @@
-package com.ut.sm42.dto.YouTube;
+package com.ut.sm42.dto.youtube;
 
-public class YouTubeitemsDTO {
+public class YouTubeMainDTO {
     String kind;
     String etag;
-    String id;
 
-    public YouTubeitemsDTO() {
+    public YouTubeMainDTO() {
     }
 
     public String getKind() {
@@ -24,11 +23,4 @@ public class YouTubeitemsDTO {
         this.etag = etag;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }
