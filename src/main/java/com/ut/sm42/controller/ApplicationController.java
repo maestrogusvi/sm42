@@ -99,8 +99,8 @@ public class ApplicationController {
     }
 
     @GetMapping("/facebook")
-    public FacebookDTO getinfo(FacebookDTO info) throws  IOException{
-        FacebookDTO fb = applicationService.getInfo(info);
+    public FacebookDTO getinfo() throws  IOException{
+        FacebookDTO fb = applicationService.getInfo();
         return fb;
     }
     @GetMapping("/twitchSTREAMS")

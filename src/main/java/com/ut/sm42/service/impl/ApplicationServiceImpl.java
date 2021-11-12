@@ -239,8 +239,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public FacebookDTO getInfo(FacebookDTO info) throws IOException {
-        //FacebookDTO info = new FacebookDTO();
+    public FacebookDTO getInfo() throws IOException {
+        FacebookDTO info = new FacebookDTO();
         String token = "EAAIaZBt4w3vkBAK0ZBfhvf6I6wquowu5bYMlLkuaaOB422ZB1HmbFOQdE8ywZAFZCfHCYtZCYNGRefPZCbZBLfDc3FoN6RoGg1mZC2jHT2jXVvbZBkLbSYLYwZA3d8kqJhaW3b09JZAkVsLCZAGl0vcvRqtIhpPkVL0F9t3CWybjlxtuz5DQNgWHEeEIWibM5hQltytDQRZBUY6pKZAFbTTpqZArG2jjgqZBbWwS0UIZAZBTsUiyfADAvLZBpuoP0vxn";
         String url = "https://graph.facebook.com/me?fields=id,name,name_format,short_name,last_name&access_token=" + token;
         JsonParser por = new JsonParser();

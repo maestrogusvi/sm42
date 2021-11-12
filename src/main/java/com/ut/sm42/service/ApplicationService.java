@@ -29,6 +29,6 @@ public interface ApplicationService {
     //APIS
     MercadoLibreDTO getQyA() throws IOException;
     YouTubeMergeDTO mergeYoutube() throws IOException;
-    FacebookDTO getInfo(FacebookDTO info) throws  IOException;
+    FacebookDTO getInfo() throws  IOException;
     TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException;
 }
