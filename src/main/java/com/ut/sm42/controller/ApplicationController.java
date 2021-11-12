@@ -1,6 +1,7 @@
 package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.facebook.FacebookDTO;
+import com.ut.sm42.dto.twitch.TwitchStreamsDTO;
 import com.ut.sm42.dto.users.*;
 import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
 import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
@@ -101,5 +102,10 @@ public class ApplicationController {
     public FacebookDTO getinfo(FacebookDTO info) throws  IOException{
         FacebookDTO fb = applicationService.getInfo(info);
         return fb;
+    }
+    @GetMapping("/twitchSTREAMS")
+    public TwitchStreamsDTO getstream(TwitchStreamsDTO stream) throws  IOException{
+        TwitchStreamsDTO twch = applicationService.getStream(stream);
+        return twch;
     }
 }

@@ -2,6 +2,7 @@ package com.ut.sm42.service;
 
 import com.ut.sm42.dto.facebook.FacebookDTO;
 import com.ut.sm42.dto.mercadolibre.*;
+import com.ut.sm42.dto.twitch.TwitchStreamsDTO;
 import com.ut.sm42.dto.users.*;
 import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,5 @@ public interface ApplicationService {
     MercadoLibreDTO getQyA() throws IOException;
     YouTubeMergeDTO mergeYoutube(YouTubeMergeDTO y1) throws IOException;
     FacebookDTO getInfo(FacebookDTO info) throws  IOException;
+    TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException;
 }

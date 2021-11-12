@@ -7,6 +7,7 @@ import com.ut.sm42.dto.facebook.FacebookDTO;
 import com.ut.sm42.dto.mercadolibre.MercadoLibreAnswerDTO;
 import com.ut.sm42.dto.mercadolibre.MercadoLibreDTO;
 import com.ut.sm42.dto.mercadolibre.MercadoLibreQuestionsDTO;
+import com.ut.sm42.dto.twitch.TwitchStreamsDTO;
 import com.ut.sm42.dto.users.*;
 import com.ut.sm42.dto.youtube.YouTubeItemsDTO;
 import com.ut.sm42.dto.youtube.YouTubeMergeDTO;
@@ -250,6 +251,17 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
 
         return info;
+    }
+    @Override
+    public TwitchStreamsDTO getStream(TwitchStreamsDTO stream) throws IOException {
+        String twitch_url = "https://api.twitch.tv/helix/streams?first=1";
+        JsonParser twitchpor = new JsonParser();
+        JsonObject json = (JsonObject) twitchpor.parse(httpService.sendRequestHttpS(twitch_url,"GET",null,null,"json",null, null));
+        stream.setUser_name(json.get("user_id").getAsString());
+        stream.setGame_name(json.get("game_name").getAsString());
+        stream.setViewer_count(json.get("viewer_count").getAsString());
+
+        return stream;
     }
 
 }
