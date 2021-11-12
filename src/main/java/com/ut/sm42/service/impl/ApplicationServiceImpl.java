@@ -240,7 +240,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public FacebookDTO getInfo(FacebookDTO info) throws IOException {
         //FacebookDTO info = new FacebookDTO();
-        String token = "EAAIaZBt4w3vkBAGz5ZAsi9wIZBCdqiNoAKs0oUbB3ZA7KsyggDUOKFlTb8jpWaZAcD1oDyWdWtnNnEyvf9dpwoEanf21ucnd0L1fKiMoKtNRpWkSi6jfzN3FkiquZAEIDJqUTwULTKTd8GTs9IMcA9obVFdSp2JptAV2bVTtmz6ZBaeb9OVMc6E6tl34la6pYGoOXvFeWX1plxq7yo0qZBI52oET4QJilPnZCzGtUENWMNtYvZBZAjD99pc";
+        String token = "EAAIaZBt4w3vkBAFGd0ExLsuok9sZBJUkx3b0b06z0Q5VTsVXQJuG2SSSt1w9EjaGXT1PZAPeRw6t3j7oAvdhZCVefiVrNXcHt7fUnz5yhedahE5YWuSnoZCWZClOR0pober4W99PKr3gj5zbtsZAsFvcN3rq5FaZAWZB6XZBD9H5hlAHbhp39KZADuOvtx0OK8LuopueEiZCdMYoXuqPAeuDNdH9FPZAZBivEHgKm2F0ZATV2ZAZAIOUyrTWF31aq";
         String url = "https://graph.facebook.com/me?fields=id,name,name_format,short_name,last_name&access_token=" + token;
         JsonParser por = new JsonParser();
         JsonObject json = (JsonObject) por.parse(httpService.sendRequestHttpS(url,"GET",null,null,"json",null, null));
