@@ -90,7 +90,6 @@ public class ApplicationController {
 
     @PostMapping("/facebookPOST")
     public FacebookDTO facebookDTO() throws IOException {
-
         return applicationService.getfacebook();
     }
 
