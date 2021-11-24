@@ -95,6 +95,6 @@ public class ApplicationController {
 
     @PostMapping("/twitchPOST")
     public GameDTO gameDTO () throws IOException {
-        return applicationService.getGame();;
+        return applicationService.getGame();
     }
 }
