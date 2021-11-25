@@ -1,10 +1,12 @@
 package com.ut.sm42.service;
 
-import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.dto.dtoEquipo.AranaDTO;
+import com.ut.sm42.dto.dtoEquipo.EscobarDTO;
+import com.ut.sm42.dto.dtoEquipo.HuchimDTO;
+import com.ut.sm42.dto.dtoEquipo.LairDTO;
 import com.ut.sm42.dto.dtoFacebook.FacebookDTO;
 import com.ut.sm42.dto.dtoTwitch.GameDTO;
-import com.ut.sm42.dto.dtoTwitch.TwitchDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

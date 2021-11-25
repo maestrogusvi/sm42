@@ -1,6 +1,10 @@
 package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.dtoEquipo.AranaDTO;
+import com.ut.sm42.dto.dtoEquipo.EscobarDTO;
+import com.ut.sm42.dto.dtoEquipo.HuchimDTO;
+import com.ut.sm42.dto.dtoEquipo.LairDTO;
 import com.ut.sm42.dto.dtoFacebook.FacebookDTO;
 import com.ut.sm42.dto.dtoTwitch.GameDTO;
 import com.ut.sm42.exception.BusinessException;

@@ -1,11 +1,12 @@
-package com.ut.sm42.dto;
+package com.ut.sm42.dto.dtoEquipo;
 
-public class LairDTO {
+public class EscobarDTO {
+
     int id;
     String name;
-    String status;
+    String Status;
 
-    public LairDTO() {
+    public EscobarDTO() {
     }
 
     public int getId() {
@@ -25,20 +26,19 @@ public class LairDTO {
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        Status = status;
     }
-
 
     @Override
     public String toString() {
-        return "LairDTO{" +
+        return "EscobarDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
+                ", status='" + Status + '\'' +
                 '}';
     }
 
@@ -46,10 +46,9 @@ public class LairDTO {
         return "{" +
                 "\"id\":" + "\""+id+"\","+
                 "\"name\":" + "\""+name+"\","+
-                "\"status\":" + "\""+status+"\""+
+                "\"status\":" + "\""+Status+"\""+
                 '}';
     }
 
 }
-
 
