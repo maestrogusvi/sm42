@@ -1,5 +1,7 @@
 package com.ut.sm42.resource;
 
+import com.ut.sm42.dto.UserDTO;
+import com.ut.sm42.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -7,14 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
-import voltux.domain.reservation.User;
-import voltux.domain.reservation.UserDTO;
-import voltux.repository.UserRepository;
-import voltux.security.exception.BusinessException;
-import voltux.security.response.GenericResponse;
-import voltux.security.service.AuthenticationService;
+import com.ut.sm42.repository.UserRepository;
+import com.ut.sm42.security.exception.BusinessException;
+import com.ut.sm42.security.response.GenericResponse;
+import com.ut.sm42.security.service.AuthenticationService;
 
-import static voltux.security.constants.AuthenticationConstants.URL_PRIVATE_AUTHETICATION;
+import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETICATION;
 
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS })
@@ -33,7 +33,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/api/v1/user")
-    public @ResponseBody UserDTO newUser(@RequestBody User user) {
+    public @ResponseBody
+    UserDTO newUser(@RequestBody User user) {
         return auhtenticationService.createUser(user);
     }
 
