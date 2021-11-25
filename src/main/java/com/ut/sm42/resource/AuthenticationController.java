@@ -4,15 +4,11 @@ import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.model.User;
 import com.ut.sm42.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import com.ut.sm42.repository.UserRepository;
-import com.ut.sm42.exception.BusinessException;
-import com.ut.sm42.security.response.GenericResponse;
 import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETICATION;
 
 @RestController
