@@ -8,6 +8,8 @@ import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
+import com.ut.sm42.service.AuthenticationService;
+import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -17,8 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import voltux.security.enums.RoleEnum;
 import voltux.security.response.GenericResponse;
 import voltux.security.model.Tokenz;
-import voltux.security.service.AuthenticationService;
-import voltux.service.UserService;
 
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
