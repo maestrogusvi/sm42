@@ -16,10 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import voltux.security.enums.RoleEnum;
-import voltux.security.response.GenericResponse;
-import voltux.security.model.Tokenz;
-
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 import java.util.Optional;
@@ -46,7 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private UserService userService;
 
     @Override
-    public JSONObject loginAuthentication(String username, String rawPassword) {
+    public JSONObject loginAuthentication (String name, String pwd) {
         Optional<User> user = userRepository.findByName(username);
 
         if (!user.isPresent()) {
@@ -82,7 +78,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public UserDTO createUser(User entity) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setname(entity.getName());
+        userDTO.setName(entity.getName());
         userDTO.setStatus(entity.getStatus());
         userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
         userDTO.setRole(entity.getRole().toString());
