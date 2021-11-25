@@ -51,7 +51,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String encodedPassword = user.get().getPassword();
@@ -59,7 +59,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String token = JWT.create().withSubject(username)
@@ -88,6 +88,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         userDTO.setRole(entity.getRole().toString());
         return userService.saveUser(userDTO);
     }
-
+}
 
 
