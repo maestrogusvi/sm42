@@ -10,7 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import com.ut.sm42.repository.UserRepository;
-import com.ut.sm42.security.exception.BusinessException;
+import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.security.response.GenericResponse;
 import com.ut.sm42.security.service.AuthenticationService;
 
@@ -35,7 +35,7 @@ public class AuthenticationController {
     @PostMapping("/api/v1/user")
     public @ResponseBody
     UserDTO newUser(@RequestBody User user) {
-        return auhtenticationService.createUser(user);
+        return authenticationService.createUser(user);
     }
 
 

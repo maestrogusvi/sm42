@@ -35,7 +35,7 @@ public class BusinessException extends RuntimeException {
 				'}';
 	}
 
-	public BusinessException(final String message) {
+	public BusinessException(final String message, HttpStatus unauthorized, int i) {
 		super(message);
 		this.httpStatus = null;
 		this.codigo = null;
