@@ -51,7 +51,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         String encodedPassword = user.get().getPassword();
-        boolean isAuthenticated = passwordEncoder.matches(rawPassword, encodedPassword);
+        boolean isAuthenticated = passwordEncoder.matches(pwd, encodedPassword);
 
         if (!isAuthenticated) {
             // 401 Unauthorized
