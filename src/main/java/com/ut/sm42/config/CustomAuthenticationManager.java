@@ -1,59 +1,48 @@
 package com.ut.sm42.config;
 
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.impl.PublicClaims;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.ut.sm42.dto.UserDTO;
+import com.ut.sm42.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.ut.sm42.service.AuthenticationService;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
+import com.ut.sm42.repository.UserRepository;
+import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETICATION;
 
-import java.security.interfaces.RSAPublicKey;
-public class CustomAuthenticationManager implements AuthenticationManager{
-    public static final String ROLE_ADMIN = "ADMIN";
+@RestController
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS })
+@RequestMapping(path = URL_PRIVATE_AUTHETICATION, produces= MediaType.APPLICATION_JSON_VALUE)
+public class AuthenticationController<AuthenticationService> {
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
-    private RSAPublicKey secretKey;
+    @Autowired
+    private AuthenticationService authenticationService;
 
-    @Value("${spring.security.jwt.token.prefix}")
-    private String tokenPrefix;
+    @Autowired
+    UserRepository userRepository;
 
-    @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String token = authentication.getName();
+    @PostMapping("/login")
+    public UserDTO login(@RequestParam("user") String username,@RequestParam("password")String pwd){
+        return new UserDTO();
+    }
 
-        if (token == null || token.isEmpty()) {
-            throw new BadCredentialsException("JWT not found");
-        }
-
-        try {
-            String user = JWT.require(Algorithm.HMAC512(secretKey.getEncoded())).build()
-                    .verify(token.replace(tokenPrefix, "")).getSubject();
-            Jwt jwt = Jwt.withTokenValue(token).header(PublicClaims.ALGORITHM, "HS512")
-                    .claim(PublicClaims.SUBJECT, user).build();
-
-            UserDetails users = build(user);
-            return new JwtAuthenticationToken(jwt, users.getAuthorities());
-        } catch (Exception e) {
-            //log.error("BadCredentialsException {}", e.getMessage());
-            throw new BadCredentialsException(e.getMessage());
-        }
-
+    @PostMapping("/api/v1/user")
+    public @ResponseBody
+    UserDTO newUser(@RequestBody User user) { return (UserDTO) authenticationService.createUser(user);
     }
 
 
-    private UserDetails build(String user) {
-        User.UserBuilder builder = null;
-        builder = User.withUsername(user);
-        builder.password(user);
-        builder.roles(ROLE_ADMIN);
-        return builder.build();
+    @GetMapping({ URL_PRIVATE_AUTHETICATION, "/voltux" })
+    public String index(@AuthenticationPrincipal Jwt jwt) {
+        return String.format("Hello, %s!", jwt.getSubject());
     }
+
+    @GetMapping("/api/v1/especialrequest/test")
+    String test(){
+        return "Success";
+    }
+
 }

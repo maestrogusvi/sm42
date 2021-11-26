@@ -21,7 +21,7 @@ import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETIC
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationService authenticationService;
+    private AuthenticationService  authenticationService;
 
     @Autowired
     UserRepository userRepository;
