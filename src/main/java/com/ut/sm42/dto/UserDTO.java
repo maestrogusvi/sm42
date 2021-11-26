@@ -1,33 +1,21 @@
 package com.ut.sm42.dto;
 
 public class UserDTO {
-    String permisos;
-    String username;
-    String role;
-    String user;
-    String token;
 
-    public UserDTO() {
+
+
+    String name;
+
+    public String getName() {
+        return name;
     }
 
-    public String getPermisos() {
-        return permisos;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setPermisos(String permisos) {
-        this.permisos = permisos;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getRole() {
-        return role;
+    public Short getRole() {
+        return Short.valueOf(role);
     }
 
     public void setRole(String role) {
@@ -49,4 +37,32 @@ public class UserDTO {
     public void setToken(String token) {
         this.token = token;
     }
-}
+
+    String role;
+    String user;
+    String token;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    String status;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    String password;
+    }
+
+
+
+

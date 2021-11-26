@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
+
+import com.ut.sm42.dto.ExaDTO;
 import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
@@ -18,14 +20,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.io.IOException;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 import java.util.Optional;
 
 @Service
-public class AuthenticationServiceImpl implements AuthenticationService {
+class AutheticationserviceImpl implements AuthenticationService {
 
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
@@ -66,38 +66,42 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(publicKey.getEncoded()));
 
-        UserDTO tokenz = new UserDTO();
-        tokenz.setToken(tokenPrefix + token);
+       ExaDTO exaDTO = new ExaDTO();
+        exaDTO.setToken(tokenPrefix + token);
         JSONObject jsonObject = new JSONObject();
         JSONObject usuario = new JSONObject();
         jsonObject.put("permissions", new JSONArray());
         usuario.put("username", user.get().getName());
         usuario.put("role", user.get().getRole());
         jsonObject.put("user", usuario);
-        jsonObject.put("token", tokenz.getToken());
+        jsonObject.put("token", exaDTO.getToken());
         return jsonObject;
     }
 
     @Override
     @Transactional
     public UserService createUser(User entity) {
-
         UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(entity.getName());userDTO.setToken(entity.getStatus());
-        userDTO.setToken(passwordEncoder.encode(entity.getStatus()));
+        userDTO.setName(entity.getName());
+        userDTO.setStatus(entity.getStatus());
+        userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
         userDTO.setRole(entity.getRole().toString());
         return (UserService) userService.saveUser(userDTO);
-
-       /* public  UserService saveUser() {
-            return new UserService() {
-                @Override
-                public UserDTO saveUser(UserDTO userDTO) {
-                    return null;
-
-            };
-        }*/
-
     }
 
+    @Bean
+    public UserService salvar() {
+        return new UserService() {
+            @Override
+            public UserDTO saveUser(UserDTO userDTO) {
+                return null;
+            }
+
+            @Override
+            public UserDTO salvar(UserDTO userDTO) {
+                return null;
+            }
+        };
+    }
 
 }

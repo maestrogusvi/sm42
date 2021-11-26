@@ -1,11 +1,9 @@
 package com.ut.sm42.resource;
-
-import com.ut.sm42.dto.UserDTO;
+import com.ut.sm42.response.GenericResponse;
+import com.ut.sm42.dto.ExaDTO;
 import com.ut.sm42.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +25,13 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public UserDTO  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new UserDTO();
+    public GenericResponse login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new GenericResponse(200,"success",authenticationService.loginAuthentication(username,pwd));
     }
 
     @PostMapping("/api/v1/user")
-    public @ResponseBody
-    UserDTO newUser(@RequestBody User user) {
-        return (UserDTO) authenticationService.createUser(user);
+    public @ResponseBody ExaDTO newUser(@RequestBody User user) {
+        return (ExaDTO) authenticationService.createUser(user);
     }
 
 

@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     UserDTO saveUser(UserDTO userDTO);
+
+    UserDTO salvar(UserDTO userDTO);
 }
