@@ -32,7 +32,7 @@ public class AuthenticationController {
 
     @PostMapping("/api/v1/user")
     public @ResponseBody UserDTO newUser(@RequestBody User user) {
-        return authenticationService.createUser(user);
+        return (UserDTO) authenticationService.createUser(user);
     }
 
 

@@ -1,7 +1,9 @@
 package com.ut.sm42.service;
 
+import com.nimbusds.jose.shaded.json.JSONObject;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.BeeceptorDTO;
+import com.ut.sm42.model.User;
 import org.springframework.stereotype.Service;
 import com.ut.sm42.dto.EscalanteDTO;
 
@@ -15,6 +17,10 @@ public interface AuthenticationService {
     BeeceptorDTO testHttp() throws IOException;
 
     void authenticationService() throws IOException;
+
+    JSONObject loginAuthentication(String username, String rawPassword);
+
+    UserService createUser(User entity);
 
 
     //----------CARIM MENDOZA----------

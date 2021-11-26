@@ -93,6 +93,11 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     }
 
     @Override
+    public UserService createUser(User entity) {
+        return null;
+    }
+
+    @Override
     public BeeceptorDTO testHttp() throws IOException {
         JsonParser parser = new JsonParser();
         JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm42.free.beeceptor.com","GET",null,null,"json",null, null));
