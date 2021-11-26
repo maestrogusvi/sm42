@@ -9,6 +9,7 @@ import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
+import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

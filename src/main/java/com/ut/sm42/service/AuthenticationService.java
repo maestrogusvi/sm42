@@ -1,4 +1,4 @@
-package com.ut.sm42.service.impl;
+package com.ut.sm42.service;
 
 import com.nimbusds.jose.shaded.json.JSONObject;
 import com.ut.sm42.dto.UserDTO;
