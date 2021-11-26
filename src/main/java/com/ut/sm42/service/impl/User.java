@@ -1,6 +1,4 @@
-package com.ut.sm42.model;
-import  javax.persistence.*;
-
+package com.ut.sm42.service.impl;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
