@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 import java.util.Optional;
@@ -74,5 +76,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jsonObject.put("token", tokenz.getToken());
         return jsonObject;
     }
+
+    @Override
+    @Transactional
+    public UserService createUser(User entity) {
+        //aqui no se como va, lo hizo cesar
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(entity.getName());userDTO.setE(entity.getStatus());
+        userDTO.setToken(passwordEncoder.encode(entity.getStatus()));
+        userDTO.setRole(entity.getRole().toString());
+        return (UserService) userService.saveUser(userDTO);
+
+        @Bean
+        public UserService devuelve() {
+            return new UserService() {
+                @Override
+                public UserDTO saveUser(UserDTO userDTO) {
+                    return null;
+                }
+            };
+        }
+
+    }
+
 
 }
