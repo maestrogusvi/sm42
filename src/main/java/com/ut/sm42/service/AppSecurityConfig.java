@@ -23,7 +23,7 @@ import static com.ut.sm42.constants.AuthenticationConstants.URL_CONFIG_PRIVATE_A
 @Configuration
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     RSAPublicKey publicKey;
 
     @Override

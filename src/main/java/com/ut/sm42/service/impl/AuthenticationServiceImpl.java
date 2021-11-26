@@ -19,12 +19,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 import java.util.Optional;
 
 @Service
-public class AutheticationserviceImpl implements AuthenticationService {
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
@@ -32,7 +33,7 @@ public class AutheticationserviceImpl implements AuthenticationService {
     @Value("${spring.security.jwt.expiration.time}")
     private Long expirationTime;
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     private RSAPublicKey publicKey;
 
     @Autowired
@@ -50,7 +51,7 @@ public class AutheticationserviceImpl implements AuthenticationService {
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String encodedPassword = user.get().getPassword();
@@ -58,7 +59,7 @@ public class AutheticationserviceImpl implements AuthenticationService {
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String token = JWT.create().withSubject(username)
@@ -89,18 +90,20 @@ public class AutheticationserviceImpl implements AuthenticationService {
     }
 
     @Bean
-    public UserService salvar() {
+    public UserService nada() {
         return new UserService() {
             @Override
             public UserDTO saveUser(UserDTO userDTO) {
-                return null;
+                return userDTO;
             }
 
-            @Override
-            public UserDTO salvar(UserDTO userDTO) {
-                return null;
-            }
         };
     }
 
+
 }
+
+
+
+
+

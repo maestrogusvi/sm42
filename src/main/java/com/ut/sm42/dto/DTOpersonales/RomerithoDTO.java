@@ -1,10 +1,13 @@
-package com.ut.sm42.dto;
+package com.ut.sm42.dto.DTOpersonales;
 
-public class MartinDTO {
+public class RomerithoDTO {
 
     String Status;
     int id;
     String name;
+
+    public RomerithoDTO() {
+    }
 
     public String getStatus() {
         return Status;
@@ -32,21 +35,19 @@ public class MartinDTO {
 
     @Override
     public String toString() {
-        return "MartinDTO{" +
-                "Status='" + Status + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
+        return "RomerithoDTO{" +
+                "status=" + name +
+                ", code='" + id + '\'' +
+                ", message='" + name + '\'' +
                 '}';
     }
 
     public String toJSON() {
         return "{" +
-                "\"status\"=" + "\"" + Status + "\"," +
+                "\"status\"=" + "\"" + name + "\"," +
                 "\"code\"=" + "\"" + id + "\"," +
                 "\"message\"=" + "\"" + name + "\"," +
                 '}';
-
-
     }
-
 }
+

@@ -6,10 +6,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.DTOpersonales.MartinDTO;
+import com.ut.sm42.dto.DTOpersonales.RamirezDTO;
+import com.ut.sm42.dto.DTOpersonales.RomerithoDTO;
+import com.ut.sm42.dto.DTOpersonales.TecDTO;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
-import com.ut.sm42.dto.Twitch.TwitchDTO;
 import com.ut.sm42.dto.Twitch.TwitchGameDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.service.ApplicationService;
@@ -19,11 +22,9 @@ import com.ut.sm42.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {

@@ -1,7 +1,10 @@
 package com.ut.sm42.controller;
 
 import com.ut.sm42.dto.BeeceptorDTO;
-import com.ut.sm42.dto.*;
+import com.ut.sm42.dto.DTOpersonales.MartinDTO;
+import com.ut.sm42.dto.DTOpersonales.RamirezDTO;
+import com.ut.sm42.dto.DTOpersonales.RomerithoDTO;
+import com.ut.sm42.dto.DTOpersonales.TecDTO;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 import com.ut.sm42.dto.MercadoLibre.MercadoLibreDTO;
 import com.ut.sm42.dto.Spotify.SpotifyDTO;
@@ -15,13 +18,13 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/voltux/api/v2")
 public class ApplicationController {
 
     @Autowired
     ApplicationService applicationService;
-    private Object applicationservice;
-    private Object streaming;
+
+
 
     @ExceptionHandler({ BusinessException.class })
     @ResponseBody

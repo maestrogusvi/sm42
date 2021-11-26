@@ -1,5 +1,6 @@
 package com.ut.sm42.resource;
 
+import com.ut.sm42.dto.GenericResponse;
 import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
@@ -24,14 +25,14 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public UserDTO  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new UserDTO();
+    public GenericResponse  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new GenericResponse(200, "success", authenticationService.loginAuthentication(username, pwd));
     }
 
     @PostMapping("/api/v1/user")
     public @ResponseBody
     UserDTO newUser(@RequestBody User user) {
-        return (UserDTO) authenticationService.createUser(user);
+        return authenticationService.createUser(user);
     }
 
 

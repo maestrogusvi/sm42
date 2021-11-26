@@ -1,4 +1,4 @@
-package com.ut.sm42.dto;
+package com.ut.sm42.dto.DTOpersonales;
 public class TecDTO {
     String Status;
     int id;
