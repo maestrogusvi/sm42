@@ -8,11 +8,13 @@ import com.ut.sm42.dto.EscalanteDTO;
 import java.io.IOException;
 
 @Service
-public interface ApplicationService {
+public interface AuthenticationService {
 
     String firstService();
 
     BeeceptorDTO testHttp() throws IOException;
+
+    void authenticationService() throws IOException;
 
 
     //----------CARIM MENDOZA----------

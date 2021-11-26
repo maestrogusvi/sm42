@@ -1,15 +1,21 @@
 package com.ut.sm42.model;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String status;
-    String name;
+    private int id;
+    private String status;
+    private String name;
+    private Short role;
+    private String password;
 
     public User() {
     }
@@ -36,5 +42,21 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Short getRole() {
+        return role;
+    }
+
+    public void setRole(Short role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

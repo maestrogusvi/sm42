@@ -2,21 +2,32 @@ package com.ut.sm42.service.impl;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.nimbusds.jose.Algorithm;
+import com.nimbusds.jose.shaded.json.JSONArray;
+import com.nimbusds.jose.shaded.json.JSONObject;
+import com.nimbusds.jwt.JWT;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.redes_sociales.FacebookDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
-import com.ut.sm42.service.ApplicationService;
+import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 import java.io.IOException;
 
+import java.security.interfaces.RSAPublicKey;
+import java.util.Date;
+import java.util.Optional;
+
 @Service
-public class ApplicationServiceImpl implements ApplicationService {
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired
     HttpService httpService;
@@ -27,6 +38,57 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public String firstService(){
         return "service";
+    }
+
+    @Value("${spring.security.jwt.token.prefix}")
+    private String tokenPrefix;
+
+    @Value("${spring.security.jwt.expiration.time}")
+    private Long expirationTime;
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    private RSAPublicKey publicKey;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserService userService;
+
+    @Override
+    public JSONObject loginAuthentication(String username, String rawPassword) {
+        Optional<User> user = userRepository.findByName(username);
+
+        if (!user.isPresent()) {
+            // 401 Unauthorized
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+        }
+
+        String encodedPassword = user.get().getPassword();
+        boolean isAuthenticated = passwordEncoder.matches(rawPassword, encodedPassword);
+
+        if (!isAuthenticated) {
+            // 401 Unauthorized
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+        }
+
+        String token = JWT.create().withSubject(username)
+                .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
+                .sign(Algorithm.HMAC512(publicKey.getEncoded()));
+
+        Tokenz tokenz = new Tokenz();
+        tokenz.setToken(tokenPrefix + token);
+        JSONObject jsonObject = new JSONObject();
+        JSONObject usuario = new JSONObject();
+        jsonObject.put("permissions", new JSONArray());
+        usuario.put("username", user.get().getName());
+        usuario.put("role", RoleEnum.roleFromShort(user.get().getRole()));
+        jsonObject.put("user", usuario);
+        jsonObject.put("token", tokenz.getToken());
+        return jsonObject;
     }
 
     @Override
