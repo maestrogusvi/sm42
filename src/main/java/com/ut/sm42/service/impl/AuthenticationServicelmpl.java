@@ -34,7 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private RSAPublicKey publicKey;
 
     @Autowired
-    private UserRepository UserRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -43,46 +43,36 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private UserService userService;
 
     @Override
-    public JSONObject loginAuthentication (String name, String pwd) {
-        Optional<User> user = UserRepository.findByName(username);
+    public JSONObject loginAuthentication(String username, String rawPassword) {
+        Optional<User> user = userRepository.findByName(username);
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
         }
 
         String encodedPassword = user.get().getPassword();
-        boolean isAuthenticated = passwordEncoder.matches(pwd, encodedPassword);
+        boolean isAuthenticated = passwordEncoder.matches(rawPassword, encodedPassword);
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
         }
 
         String token = JWT.create().withSubject(username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(publicKey.getEncoded()));
 
-        Tokenz tokenz = new Tokenz();
+        UserDTO tokenz = new UserDTO();
         tokenz.setToken(tokenPrefix + token);
         JSONObject jsonObject = new JSONObject();
         JSONObject usuario = new JSONObject();
         jsonObject.put("permissions", new JSONArray());
         usuario.put("username", user.get().getName());
-        usuario.put("role", RoleEnum.roleFromShort(user.get().getRole()));
+        usuario.put("role", user.get().getRole());
         jsonObject.put("user", usuario);
         jsonObject.put("token", tokenz.getToken());
         return jsonObject;
     }
 
-    @Override
-    @Transactional
-    public UserDTO createUser(User entity) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setName(entity.getName());
-        userDTO.setStatus(entity.getStatus());
-        userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
-        userDTO.setRole(entity.getRole().toString());
-        return userService.saveUser(userDTO);
-    }
 }
