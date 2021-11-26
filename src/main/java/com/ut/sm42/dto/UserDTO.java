@@ -15,7 +15,7 @@ public class UserDTO {
    }
 
    public void setPermissions(String permissions) {
-      this.permisos = permissions;
+      this.permissions = permissions;
    }
 
    public String getUsername() {
