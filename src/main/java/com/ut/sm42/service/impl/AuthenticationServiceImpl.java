@@ -13,6 +13,7 @@ import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.HttpService;
+import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Autowired
     HttpService httpService;
@@ -104,6 +105,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         beeceptorDTO.setMessage(json.get("message").getAsString());
         beeceptorDTO.setStatus(json.get("status").getAsString());
         return beeceptorDTO;
+    }
+
+    @Override
+    public void authenticationService() throws IOException {
+
     }
 
 
