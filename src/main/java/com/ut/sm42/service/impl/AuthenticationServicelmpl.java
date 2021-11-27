@@ -31,7 +31,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
     @Value("${spring.security.jwt.expiration.time}")
     private Long expirationTime;
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     private RSAPublicKey publicKey;
 
     @Autowired
@@ -49,7 +49,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String encodedPassword = user.get().getPassword();
@@ -57,7 +57,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
         }
 
         String token = JWT.create().withSubject(username)
@@ -87,14 +87,14 @@ public class AuthenticationServicelmpl implements AuthenticationService {
         return userService.saveUser(userDTO);
     }
 
-        @Bean
-        public UserService savetheuser() {
-            return new UserService() {
-                @Override
-                public UserDTO saveUser(UserDTO userDTO) {
-                    return null;
-                }
-            };
-        }
+    @Bean
+    public UserService gere() {
+        return new UserService() {
+            @Override
+            public UserDTO saveUser(UserDTO userDTO) {
+                return userDTO;
+            }
 
+        };
     }
+}
