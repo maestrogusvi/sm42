@@ -17,7 +17,6 @@ import java.security.interfaces.RSAPublicKey;
 import static com.ut.sm42.constants.AuthenticationConstants.URL_CONFIG_PRIVATE_AUTHETICATION;
 
 
-
 @EnableWebSecurity
 @Configuration
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,12 +34,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                         sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer().jwt().authenticationManager(customAuthenticationManager());
     }
-
     @Bean
     public AuthenticationManager customAuthenticationManager() {
         return new CustomAuthenticationManager();
     }
-
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();}
