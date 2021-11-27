@@ -1,6 +1,7 @@
 package com.ut.sm42.resource;
 
 import com.ut.sm42.dto.user.UserDTO;
+import com.ut.sm42.model.Respuesta;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.AuthenticationService;
@@ -26,8 +27,8 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<GenericResponse>  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new ResponseEntity<>(new GenericResponse(200,"success",authenticationService.loginAuthentication(username,pwd)), HttpStatus.ACCEPTED);
+    public Respuesta login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new Respuesta(200,"success",authenticationService.loginAuthentication(username,pwd));
     }
 
     @PostMapping("/api/v1/user")

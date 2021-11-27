@@ -1,4 +1,5 @@
-package com.ut.sm42.service;
+package com.ut.sm42;
+
 
 import com.ut.sm42.config.CustomAuthenticationManager;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.security.interfaces.RSAPublicKey;
+
+import static com.ut.sm42.constants.AuthenticationConstants.URL_CONFIG_PRIVATE_AUTHETICATION;
 import java.security.interfaces.RSAPublicKey;
 
 import static com.ut.sm42.constants.AuthenticationConstants.URL_CONFIG_PRIVATE_AUTHETICATION;

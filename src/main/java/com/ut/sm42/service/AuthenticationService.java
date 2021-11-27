@@ -16,12 +16,6 @@ public interface AuthenticationService {
 
     BeeceptorDTO testHttp() throws IOException;
 
-    void authenticationService() throws IOException;
-
-    JSONObject loginAuthentication(String username, String rawPassword);
-
-    UserService createUser(User entity);
-
 
     //----------CARIM MENDOZA----------
 
@@ -53,4 +47,8 @@ public interface AuthenticationService {
     void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException;
 
     void saveMyFirstObjectTor();
+
+    Object loginAuthentication(String username, String pwd);
+
+    Object createUser(User user);
 }

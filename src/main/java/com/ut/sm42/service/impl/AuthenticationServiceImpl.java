@@ -1,45 +1,34 @@
 package com.ut.sm42.service.impl;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.nimbusds.jose.Algorithm;
+
 import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
-import com.nimbusds.jwt.JWT;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.ut.sm42.dto.*;
-import com.ut.sm42.dto.redes_sociales.FacebookDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.AuthenticationService;
-import com.ut.sm42.service.HttpService;
 import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-import java.io.IOException;
+import javax.transaction.Transactional;
 
+import java.io.IOException;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 import java.util.Optional;
 
+
 @Service
-public class AuthenticationServiceImpl implements AuthenticationService{
-
-    @Autowired
-    HttpService httpService;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    public String firstService(){
-        return "service";
-    }
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
@@ -60,12 +49,72 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private UserService userService;
 
     @Override
+    public String firstService() {
+        return null;
+    }
+
+    @Override
+    public BeeceptorDTO testHttp() throws IOException {
+        return null;
+    }
+
+    @Override
+    public MendozaDTO master() throws IOException {
+        return null;
+    }
+
+    @Override
+    public void testMendozaHttp(MendozaDTO master) throws IOException {
+
+    }
+
+    @Override
+    public void saveMyFirstObjectMen() {
+
+    }
+
+    @Override
+    public void getCell() throws IOException {
+
+    }
+
+    @Override
+    public EscalanteDTO pan() throws IOException {
+        return null;
+    }
+
+    @Override
+    public void testEscalanteHttp(EscalanteDTO pan) throws IOException {
+
+    }
+
+    @Override
+    public void saveMyFirstObjectEsc() {
+
+    }
+
+    @Override
+    public TorreblancaDTO sayayin() throws IOException {
+        return null;
+    }
+
+    @Override
+    public void testTorreblancaHttp(TorreblancaDTO sayayin) throws IOException {
+
+    }
+
+    @Override
+    public void saveMyFirstObjectTor() {
+
+    }
+
+    @Override
     public JSONObject loginAuthentication(String username, String rawPassword) {
         Optional<User> user = userRepository.findByName(username);
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED);
         }
 
         String encodedPassword = user.get().getPassword();
@@ -73,54 +122,53 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED,401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED);
         }
 
         String token = JWT.create().withSubject(username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(publicKey.getEncoded()));
 
-        Tokenz tokenz = new Tokenz();
-        tokenz.setToken(tokenPrefix + token);
+
+        nuevoDTO miDTO = new nuevoDTO();
+        miDTO.setToken(tokenPrefix + token);
         JSONObject jsonObject = new JSONObject();
         JSONObject usuario = new JSONObject();
         jsonObject.put("permissions", new JSONArray());
         usuario.put("username", user.get().getName());
-        usuario.put("role", RoleEnum.roleFromShort(user.get().getRole()));
+        usuario.put("role", user.get().getRole());
         jsonObject.put("user", usuario);
-        jsonObject.put("token", tokenz.getToken());
+        jsonObject.put("token", miDTO.getToken());
         return jsonObject;
+
     }
 
     @Override
-    public UserService createUser(User entity) {
-        return null;
-    }
-
-    @Override
-    public BeeceptorDTO testHttp() throws IOException {
-        JsonParser parser = new JsonParser();
-        JsonObject json = (JsonObject) parser.parse(httpService.sendRequestHttpS("https://utsm42.free.beeceptor.com","GET",null,null,"json",null, null));
-        BeeceptorDTO beeceptorDTO = new BeeceptorDTO();
-
-        if(json.get("code")== null){
-            throw new BusinessException("Code doesn´t exist", HttpStatus.FORBIDDEN);
-        }
-        beeceptorDTO.setCode(json.get("code").getAsString());
-        beeceptorDTO.setMessage(json.get("message").getAsString());
-        beeceptorDTO.setStatus(json.get("status").getAsString());
-        return beeceptorDTO;
-    }
-
-    @Override
-    public void authenticationService() throws IOException {
-
+    @Transactional
+    public nuevoDTO createUser(User entity) {
+        nuevoDTO userDTO = new nuevoDTO();
+        userDTO.setName(entity.getName());
+        userDTO.setStatus(entity.getStatus());
+        userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
+        userDTO.setRole(Short.valueOf(entity.getRole().toString()));
+        return userService.saveUser(userDTO);
     }
 
 
-    //---------------CARIM MENDOZA---------------
+    @Bean
+    public UserService prueba() {
+        return new UserService() {
+            @Override
+            public nuevoDTO saveUser(nuevoDTO userDTO) {
+                return userDTO;
+            }
+        };
+    }
 
 
+        //---------------CARIM MENDOZA---------------
+
+    /*
     @Override
     public MendozaDTO master() throws IOException {
         JsonParser parser = new JsonParser();
@@ -207,5 +255,5 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         user.setStatus("Bien");
         user.setName("Erick Torreblanca");
         userRepository.save(user);
-    }
+    }*/
 }
