@@ -1,6 +1,5 @@
 package com.ut.sm42.config;
 
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,7 +20,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
     public static final String ROLE_ADMIN = "ADMIN";
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     private RSAPublicKey secretKey;
 
     @Value("${spring.security.jwt.token.prefix}")

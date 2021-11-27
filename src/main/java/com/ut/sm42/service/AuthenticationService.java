@@ -6,6 +6,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AuthenticationService {
+    /**
+     *
+     * @param username
+     * @param rawPassword
+     * @return
+     */
     JSONObject loginAuthentication(String username, String rawPassword);
     UserService createUser(User entity);
 }

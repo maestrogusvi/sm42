@@ -10,7 +10,7 @@ public final class AuthenticationConstants {
     /**
      * config Url access
      */
-    public static final String URL_CONFIG_PRIVATE_AUTHETICATION = "/voltux/api/v1/**";
+    public static final String URL_CONFIG_PRIVATE_AUTHETICATION = "/voltux/api/v2/**";
 
     private AuthenticationConstants() {
         throw new IllegalStateException("Constants class");

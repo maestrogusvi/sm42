@@ -66,7 +66,7 @@ class AutheticationserviceImpl implements AuthenticationService {
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(publicKey.getEncoded()));
 
-       ExaDTO exaDTO = new ExaDTO();
+        ExaDTO exaDTO = new ExaDTO();
         exaDTO.setToken(tokenPrefix + token);
         JSONObject jsonObject = new JSONObject();
         JSONObject usuario = new JSONObject();

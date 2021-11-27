@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import com.ut.sm42.dto.Facebook.FacebookDTO;
 
 import java.io.IOException;
-
+/* solo se agrego el voltux*/
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/voltux/api/v2")
 public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
