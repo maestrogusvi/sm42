@@ -4,17 +4,15 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
-
 import com.ut.sm42.dto.ExaDTO;
 import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
-import com.ut.sm42.model.User;
+import com.ut.sm42.model.User2;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,7 +45,7 @@ class AutheticationserviceImpl implements AuthenticationService {
 
     @Override
     public JSONObject loginAuthentication(String username, String rawPassword) {
-        Optional<User> user = userRepository.findByName(username);
+        Optional<User2> user = userRepository.findByName(username);
 
         if (!user.isPresent()) {
             // 401 Unauthorized
@@ -80,7 +78,7 @@ class AutheticationserviceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public UserService createUser(User entity) {
+    public UserService createUser(User2 entity) {
         UserDTO userDTO = new UserDTO();
         userDTO.setName(entity.getName());
         userDTO.setStatus(entity.getStatus());
@@ -89,7 +87,7 @@ class AutheticationserviceImpl implements AuthenticationService {
         return (UserService) userService.saveUser(userDTO);
     }
 
-    @Bean
+
     public UserService salvar() {
         return new UserService() {
             @Override

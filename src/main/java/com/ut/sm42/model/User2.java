@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name= "user")
-public class User {
+public class User2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class User {
     private Short role;
     private String password;
 
-    public User() {
+    public User2() {
     }
 
     public int getId() {
