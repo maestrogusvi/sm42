@@ -5,12 +5,12 @@ public class GenericResponse {
 
     int code;
     String message;
-    Object nada;
+    Object vacio;
 
-    public GenericResponse(int code, String message, Object nada) {
+    public GenericResponse(int code, String message, Object vacio) {
         this.code = code;
         this.message = message;
-        this.nada = nada;
+        this.vacio = vacio;
     }
 
     public int getCode() {
@@ -30,10 +30,10 @@ public class GenericResponse {
     }
 
     public Object getNada() {
-        return nada;
+        return vacio;
     }
 
     public void setNada(Object nada) {
-        this.nada = nada;
+        this.vacio = vacio;
     }
 }

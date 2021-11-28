@@ -1,12 +1,12 @@
-package com.ut.sm42.model;
+package com.ut.sm42.service.impl;
 
-
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name= "user")
-public class User2 {
+public class Userzxc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class User2 {
     private Short role;
     private String password;
 
-    public User2() {
+    public Userzxc() {
     }
 
     public int getId() {

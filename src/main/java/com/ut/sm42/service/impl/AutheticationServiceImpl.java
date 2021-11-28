@@ -7,7 +7,7 @@ import com.nimbusds.jose.shaded.json.JSONObject;
 import com.ut.sm42.dto.ExaDTO;
 import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
-import com.ut.sm42.model.User2;
+import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.UserService;
@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
-class AutheticationserviceImpl implements AuthenticationService {
+class AutheticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
@@ -45,7 +45,7 @@ class AutheticationserviceImpl implements AuthenticationService {
 
     @Override
     public JSONObject loginAuthentication(String username, String rawPassword) {
-        Optional<User2> user = userRepository.findByName(username);
+        Optional<User> user = userRepository.findByName(username);
 
         if (!user.isPresent()) {
             // 401 Unauthorized
@@ -78,7 +78,7 @@ class AutheticationserviceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public UserService createUser(User2 entity) {
+    public UserService createUser(User entity) {
         UserDTO userDTO = new UserDTO();
         userDTO.setName(entity.getName());
         userDTO.setStatus(entity.getStatus());

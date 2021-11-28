@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.dto.Mercadolibre.MercadoLibreDTO;
 import com.ut.sm42.exception.BusinessException;
-import com.ut.sm42.model.User2;
+import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
 import com.ut.sm42.service.ApplicationService;
 import com.ut.sm42.service.HttpService;
@@ -169,7 +169,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void saveMyFirstObject() {
-        User2 user = new User2();
+        User user = new User();
         user.setName("Lester David");
         user.setStatus("Disponible");
         userRepository.save(user);
