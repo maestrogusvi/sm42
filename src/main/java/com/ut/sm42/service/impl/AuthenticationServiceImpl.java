@@ -13,6 +13,7 @@ import com.ut.sm42.service.AuthenticationService;
 import com.ut.sm42.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
-class AutheticationServiceImpl implements AuthenticationService {
+class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
@@ -31,7 +32,7 @@ class AutheticationServiceImpl implements AuthenticationService {
     @Value("${spring.security.jwt.expiration.time}")
     private Long expirationTime;
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     private RSAPublicKey publicKey;
 
     @Autowired
@@ -78,28 +79,28 @@ class AutheticationServiceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public UserService createUser(User entity) {
+    public UserDTO createUser(User entity) {
         UserDTO userDTO = new UserDTO();
         userDTO.setName(entity.getName());
         userDTO.setStatus(entity.getStatus());
         userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
         userDTO.setRole(entity.getRole().toString());
-        return (UserService) userService.saveUser(userDTO);
+        return (UserDTO) userService.saveUser(userDTO);
     }
 
 
-    public UserService salvar() {
+    @Bean
+    public UserService nada() {
         return new UserService() {
             @Override
             public UserDTO saveUser(UserDTO userDTO) {
-                return null;
-            }
+                return userDTO;}
 
             @Override
-            public UserDTO salvar(UserDTO userDTO) {
+            public UserDTO save(UserDTO userDTO) {
                 return null;
             }
         };
     }
 
-}
+    }

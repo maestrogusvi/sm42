@@ -1,6 +1,6 @@
 package com.ut.sm42.resource;
 import com.ut.sm42.response.GenericResponse;
-import com.ut.sm42.dto.ExaDTO;
+
 import com.ut.sm42.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
-
+import com.ut.sm42.dto.UserDTO;
 
 import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETICATION;
 
@@ -25,13 +25,14 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public GenericResponse login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new GenericResponse(200,"success",authenticationService.loginAuthentication(username,pwd));
+    public GenericResponse  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new GenericResponse(200, "success", authenticationService.loginAuthentication(username, pwd));
     }
 
     @PostMapping("/api/v1/user")
-    public @ResponseBody ExaDTO newUser(@RequestBody User user) {
-        return (ExaDTO) authenticationService.createUser(user);
+    public @ResponseBody
+    UserDTO newUser(@RequestBody User user) {
+        return authenticationService.createUser(user);
     }
 
 
