@@ -1,6 +1,6 @@
 package com.ut.sm42.dto;
 
-public class nuevoDTO {
+public class NuevoDTO {
     int id;
     String status;
     String name;

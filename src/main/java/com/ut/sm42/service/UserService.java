@@ -1,9 +1,14 @@
 package com.ut.sm42.service;
 
-import com.ut.sm42.dto.nuevoDTO;
+import com.ut.sm42.dto.NuevoDTO;
+import com.ut.sm42.dto.user.UserDTO;
+
 import org.springframework.stereotype.Service;
+
 
 @Service
 public interface UserService {
-    nuevoDTO saveUser(nuevoDTO userDTO);
+    NuevoDTO saveUser(NuevoDTO nuevoDTO);
+
+    NuevoDTO save(NuevoDTO nuevoDTO);
 }

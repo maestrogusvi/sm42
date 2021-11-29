@@ -26,6 +26,13 @@ public class BusinessException extends RuntimeException {
 	 */
 	private final HttpStatus httpStatus;
 
+	public BusinessException(String s, HttpStatus unauthorized, int i) {
+		super(s);
+		this.httpStatus = null;
+		this.codigo = null;
+		this.description = s;
+	}
+
 	@Override
 	public String toString() {
 		return "BusinessException{" +

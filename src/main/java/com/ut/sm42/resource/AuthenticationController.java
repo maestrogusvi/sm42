@@ -4,11 +4,9 @@ import com.ut.sm42.dto.user.UserDTO;
 import com.ut.sm42.model.Respuesta;
 import com.ut.sm42.model.User;
 import com.ut.sm42.repository.UserRepository;
-import com.ut.sm42.service.AuthenticationService;
+import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
@@ -21,19 +19,19 @@ import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETIC
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationService authenticationService;
+    private ApplicationService applicationService;
 
     @Autowired
     UserRepository userRepository;
 
     @PostMapping("/login")
     public Respuesta login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new Respuesta(200,"success",authenticationService.loginAuthentication(username,pwd));
+        return new Respuesta(200,"success",applicationService.loginAuthentication(username,pwd));
     }
 
     @PostMapping("/api/v1/user")
     public @ResponseBody UserDTO newUser(@RequestBody User user) {
-        return (UserDTO) authenticationService.createUser(user);
+        return (UserDTO) applicationService.createUser(user);
     }
 
 

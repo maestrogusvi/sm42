@@ -4,7 +4,7 @@ import com.ut.sm42.dto.BeeceptorDTO;
 import com.ut.sm42.dto.*;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.dto.EscalanteDTO;
-import com.ut.sm42.service.AuthenticationService;
+import com.ut.sm42.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class ApplicationController {
 
 
     @Autowired
-    AuthenticationService authenticationService;
+    ApplicationService authenticationService;
 
     @ExceptionHandler({BusinessException.class})
     @ResponseBody

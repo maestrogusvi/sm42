@@ -20,7 +20,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
     public static final String ROLE_ADMIN = "ADMIN";
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.key-value}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.key.value}")
     private RSAPublicKey secretKey;
 
     @Value("${spring.security.jwt.token.prefix}")
