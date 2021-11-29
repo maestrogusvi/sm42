@@ -35,12 +35,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                         sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer().jwt().authenticationManager(customAuthenticationManager());
     }
-
     @Bean
     public AuthenticationManager customAuthenticationManager() {
         return new CustomAuthenticationManager();
     }
-
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();}
