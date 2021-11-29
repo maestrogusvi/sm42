@@ -25,6 +25,7 @@ import java.util.Optional;
 @Service
 public class AuthenticationServicelmpl implements AuthenticationService {
 
+
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
 
@@ -63,6 +64,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
         String token = JWT.create().withSubject(username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(publicKey.getEncoded()));
+
 
         TokenDTO tokenDTO = new TokenDTO();
         tokenDTO.setToken(tokenPrefix + token);
