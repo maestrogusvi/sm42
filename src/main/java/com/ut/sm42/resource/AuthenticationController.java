@@ -4,7 +4,9 @@ import com.ut.sm42.dto.UserDTO;
 import com.ut.sm42.exception.BusinessException;
 import com.ut.sm42.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
@@ -20,21 +22,20 @@ import static com.ut.sm42.constants.AuthenticationConstants.URL_PRIVATE_AUTHETIC
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationServiceImpl auhtenticationService;
+    private AuthenticationServiceImpl authenticationService;
 
     @Autowired
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public GenericResponse login(@RequestParam("user") String username, @RequestParam("password") String pwd) throws BusinessException {
-
-        return new GenericResponse(200,"success", AuthenticationServiceImpl.loginAuthentication(username,pwd));
+    public ResponseEntity<GenericResponse> login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new ResponseEntity<>(new GenericResponse(200,"success",authenticationService.loginAuthentication(username,pwd)), HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/api/v1/user")
     public @ResponseBody
     UserDTO newUser(@RequestBody User user) {
-        return auhtenticationService.createUser(user);
+        return authenticationService.createUser(user);
     }
 
 

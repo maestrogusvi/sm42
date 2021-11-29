@@ -1,21 +1,58 @@
 package com.ut.sm42.model;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
 
-    public String getPassword() {
-        return getPassword();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String status;
+    private String name;
+    private Short role;
+    private String password;
+
+    public User() {
     }
 
-    public Object getName() {
-        return getName();
+    public int getId() {
+        return id;
     }
 
-    public Object getRole() {
-        return getRole();
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStatus() {
-        return getStatus();
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Short getRole() {
+        return role;
+    }
+
+    public void setRole(Short role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
