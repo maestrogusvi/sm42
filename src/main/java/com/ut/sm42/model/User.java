@@ -1,13 +1,9 @@
 package com.ut.sm42.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "user")
+@Table(name="user")
 public class User {
 
     @Id
@@ -61,3 +57,4 @@ public class User {
         this.password = password;
     }
 }
+

@@ -1,44 +1,43 @@
 package com.ut.sm42.dto;
 public class UserDTO {
 
-      String name;
-      String status;
-      String password;
-      String role;
+    private String status;
+    private String name;
+    private Short role;
+    private String password;
 
-      public UserDTO() {
-      }
+    public UserDTO() {
+    }
 
-      public String getName() {
-         return name;
-      }
+    public String getStatus() {
+        return status;
+    }
 
-      public void setName(String name) {
-         this.name = name;
-      }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-      public String getStatus() {
-         return status;
-      }
+    public String getName() {
+        return name;
+    }
 
-      public void setStatus(String status) {
-         this.status = status;
-      }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-      public String getPassword() {
-         return password;
-      }
+    public Short getRole() {
+        return role;
+    }
 
-      public void setPassword(String password) {
-         this.password = password;
-      }
+    public void setRole(Short role) {
+        this.role = role;
+    }
 
-      public String getRole() {
-         return role;
-      }
+    public String getPassword() {
+        return password;
+    }
 
-      public void setRole(String role) {
-         this.role = role;
-      }
-
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

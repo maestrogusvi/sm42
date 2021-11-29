@@ -25,7 +25,6 @@ import java.util.Optional;
 @Service
 public class AuthenticationServicelmpl implements AuthenticationService {
 
-
     @Value("${spring.security.jwt.token.prefix}")
     private String tokenPrefix;
 
@@ -50,7 +49,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
 
         if (!user.isPresent()) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED);
         }
 
         String encodedPassword = user.get().getPassword();
@@ -58,7 +57,7 @@ public class AuthenticationServicelmpl implements AuthenticationService {
 
         if (!isAuthenticated) {
             // 401 Unauthorized
-            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED, 401);
+            throw new BusinessException("Access is denied due to invalid credentials.", HttpStatus.UNAUTHORIZED);
         }
 
         String token = JWT.create().withSubject(username)
@@ -85,22 +84,17 @@ public class AuthenticationServicelmpl implements AuthenticationService {
         userDTO.setName(entity.getName());
         userDTO.setStatus(entity.getStatus());
         userDTO.setPassword(passwordEncoder.encode(entity.getPassword()));
-        userDTO.setRole(entity.getRole().toString());
+        userDTO.setRole(Short.valueOf(entity.getRole().toString()));
         return userService.saveUser(userDTO);
     }
 
     @Bean
-    public UserService gere() {
-        return new UserService() {
-            @Override
-            public UserDTO saveUser(UserDTO userDTO) {
-                return userDTO;}
-
-            @Override
-            public UserDTO save(UserDTO userDTO) {
-                return null;
-            }
+    public UserService prueba()
+    {return new UserService() {
+        @Override
+        public UserDTO saveUser(UserDTO userDTO) {
+            return userDTO;
+             }
         };
     }
-
 }

@@ -10,7 +10,13 @@ public class TokenDTO {
 
     public TokenDTO() {
     }
-
+    public TokenDTO(String permissions, String username, String role, String user, String token) {
+        this.permissions = permissions;
+        this.username= username;
+        this.role = role;
+        this.user = user;
+        this.token = token;
+    }
 
     public String getPermissions() {
         return permissions;

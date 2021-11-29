@@ -24,16 +24,14 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public GenericResponse  login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        return new GenericResponse(200, "success", authenticationService.loginAuthentication(username, pwd));
+    public GenericResponse  loginv1(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        return new GenericResponse(200,"success",authenticationService.loginAuthentication(username,pwd));
     }
 
     @PostMapping("/api/v1/user")
-    public @ResponseBody
-    UserDTO newUser(@RequestBody User user) {
+    public @ResponseBody UserDTO newUser(@RequestBody User user) {
         return authenticationService.createUser(user);
     }
-
 
     @GetMapping({ URL_PRIVATE_AUTHETICATION, "/voltux" })
     public String index(@AuthenticationPrincipal Jwt jwt) {
@@ -44,6 +42,5 @@ public class AuthenticationController {
     String test(){
         return "Success";
     }
-
 
 }
