@@ -94,9 +94,13 @@ public class AuthenticationServicelmpl implements AuthenticationService {
         return new UserService() {
             @Override
             public UserDTO saveUser(UserDTO userDTO) {
-                return userDTO;
-            }
+                return userDTO;}
 
+            @Override
+            public UserDTO save(UserDTO userDTO) {
+                return null;
+            }
         };
     }
+
 }

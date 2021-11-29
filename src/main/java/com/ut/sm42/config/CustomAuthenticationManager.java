@@ -54,5 +54,4 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         builder.roles(ROLE_ADMIN);
         return builder.build();
     }
-
 }
