@@ -32,4 +32,6 @@ public class GenericResponse {
     public void setGere(Object gere) {
         this.gere = gere;
     }
+
+
 }
