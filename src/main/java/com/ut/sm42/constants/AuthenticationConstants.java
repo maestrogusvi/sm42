@@ -6,7 +6,6 @@ public final class AuthenticationConstants {
      * Url authenticated
      */
     public static final String URL_PRIVATE_AUTHETICATION = "/voltux";
-
     /**
      * config Url access
      */
