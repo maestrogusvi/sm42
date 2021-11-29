@@ -15,7 +15,6 @@ public class GenericResponse {
     public int getCode() {
         return code;
     }
-
     public void setCode(int code) {
         this.code = code;
     }
@@ -23,7 +22,6 @@ public class GenericResponse {
     public String getMessage() {
         return message;
     }
-
     public void setMessage(String message) {
         this.message = message;
     }
@@ -31,7 +29,6 @@ public class GenericResponse {
     public Object getGere() {
         return gere;
     }
-
     public void setGere(Object gere) {
         this.gere = gere;
     }
