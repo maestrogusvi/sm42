@@ -18,7 +18,7 @@ public class ApplicationController {
 
 
     @Autowired
-    ApplicationService authenticationService;
+    ApplicationService applicationService;
 
     @ExceptionHandler({BusinessException.class})
     @ResponseBody
@@ -28,13 +28,13 @@ public class ApplicationController {
 
     @GetMapping("/")
     public String inicio2() throws IOException {
-        return authenticationService.firstService();
+        return applicationService.firstService();
 
     }
 
     @GetMapping("/testHttp")
     public BeeceptorDTO testHttp() throws IOException {
-        return authenticationService.testHttp();
+        return applicationService.testHttp();
     }
 
 
@@ -43,19 +43,19 @@ public class ApplicationController {
 
     @GetMapping("/master")
     public MendozaDTO master() throws IOException {
-        return authenticationService.master();
+        return applicationService.master();
     }
 
     @PostMapping("/testMendozaHttp")
     public MendozaDTO testMendozaHttp(@RequestBody MendozaDTO master) throws IOException {
-        authenticationService.testMendozaHttp(master);
+        applicationService.testMendozaHttp(master);
         return master;
     }
 
     @PostMapping("/testPostMen")
     public void testPost(@RequestBody MendozaDTO master) throws IOException {
-        authenticationService.saveMyFirstObjectMen();
-        authenticationService.getCell();
+        applicationService.saveMyFirstObjectMen();
+        applicationService.getCell();
         String test = master.toString();
     }
 
@@ -65,18 +65,18 @@ public class ApplicationController {
 
     @GetMapping("/pan")
     public EscalanteDTO pan() throws IOException {
-        return authenticationService.pan();
+        return applicationService.pan();
     }
 
     @PostMapping("/testEscalanteHttp")
     public EscalanteDTO testEscalanteHttp(@RequestBody EscalanteDTO pan) throws IOException {
-        authenticationService.testEscalanteHttp(pan);
+        applicationService.testEscalanteHttp(pan);
         return pan;
     }
 
     @PostMapping("/testPostEsc")
     public void testPostE(@RequestBody EscalanteDTO pan) {
-        authenticationService.saveMyFirstObjectEsc();
+        applicationService.saveMyFirstObjectEsc();
         String test = pan.toString();
     }
 
@@ -86,18 +86,18 @@ public class ApplicationController {
 
     @GetMapping("/sayayin")
     public TorreblancaDTO sayayin() throws IOException {
-        return authenticationService.sayayin();
+        return applicationService.sayayin();
     }
 
     @PostMapping("/testTorreblancaHttp")
     public TorreblancaDTO testTorreblancaHttp(@RequestBody TorreblancaDTO sayayin) throws IOException {
-        authenticationService.testTorreblancaHttp(sayayin);
+        applicationService.testTorreblancaHttp(sayayin);
         return sayayin;
     }
 
     @PostMapping("/testPostTor")
     public void testPostT(@RequestBody TorreblancaDTO sayayin) {
-        authenticationService.saveMyFirstObjectTor();
+        applicationService.saveMyFirstObjectTor();
         String test = sayayin.toString();
     }
 
