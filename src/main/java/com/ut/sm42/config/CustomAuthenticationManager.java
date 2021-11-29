@@ -46,6 +46,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         }
 
     }
+
     private UserDetails build(String user) {
         User.UserBuilder builder = null;
         builder = User.withUsername(user);
@@ -53,4 +54,5 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         builder.roles(ROLE_ADMIN);
         return builder.build();
     }
+
 }
