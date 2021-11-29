@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/voltux/api/v2")
+@RequestMapping("/voltux/api/v1")
 public class ApplicationController {
 
     @Autowired
